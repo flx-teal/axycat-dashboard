@@ -1,0 +1,20 @@
+$main-blue: #026fc2;
+$sub-gray: #9dafbd;
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+  margin: 60px 0;
+  .title {
+    color: $main-blue;
+    margin: 8px 0;
+  }
+  .sub-title {
+    color: $sub-gray;
+    font-weight: 500;
+    margin: 5px 0;
+  }
+}
