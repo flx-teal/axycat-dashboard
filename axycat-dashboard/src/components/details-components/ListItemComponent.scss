@@ -11,7 +11,7 @@
   justify-content: flex-start;
   width: 100%;
   margin: 0 0 125px 0;
-  .title-container{
+  .title-container {
     margin: 80px 0 25px 0;
   }
   .list-item {
@@ -26,6 +26,7 @@
     color: $sub-gray;
     font-size: 18px;
     height: 75px;
+    z-index: 80;
     .list-item_id {
       width: 85px;
       font-size: 22px;
@@ -51,21 +52,20 @@
         display: flex;
       }
     }
-    .list-item_details-container{
+    .list-item_details-container {
       margin: 0 30px 0 200px;
       display: flex;
       justify-content: space-evenly;
       align-items: center;
       width: 135px;
-      .list-item_details-text{
-        &:hover{
+      .list-item_details-text {
+        &:hover {
           cursor: pointer;
         }
       }
-      .list-item_details-arrow{        
+      .list-item_details-arrow {
         font-size: 19px;
         color: gray;
-        
       }
     }
   }
