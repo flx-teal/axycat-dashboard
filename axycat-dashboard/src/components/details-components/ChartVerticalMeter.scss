@@ -1,0 +1,54 @@
+@import '../../variables.scss';
+.card-data_vertical {
+  width: 100%;
+}
+.meter-chart-vertical {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 180px;
+  .meter-chart-vertical__impact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    .impact-container__meter {
+      width: 100%;
+      height: 14px;
+      min-width: 90px;
+      transform: rotate(-90deg);
+      margin: 30px 0;
+      &::-webkit-meter-bar {
+        background: none;
+        border-radius: 10px;
+      }
+      &::-webkit-meter-optimum-value {
+        background: #d1dbe3;
+        border-radius: 10px;
+      }
+    }
+    .impact-container__value {
+      font-size: 18px;
+      margin: 15px;
+      color: $sub-gray;
+    }
+    .impact-container__text {
+      font-size: 18px;
+      margin: 15px;
+      color: $sub-gray;
+      font-weight: 500;
+    }
+  }
+}
+.meter-chart-vertical__impact-container:nth-child(1) {
+  .impact-container__value {
+    color: $main-blue;
+  }
+  .impact-container__meter {
+    &::-webkit-meter-optimum-value {
+      background: $main-blue;
+      border-radius: 10px;
+    }
+  }
+}
