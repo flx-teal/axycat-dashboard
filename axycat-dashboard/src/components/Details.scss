@@ -9,14 +9,17 @@
 .card-container {
   width: 475px;
   height: 250px;
+  margin: 20px 10px;
 }
 .report-card-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
 }
 .isue-card-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
 }
