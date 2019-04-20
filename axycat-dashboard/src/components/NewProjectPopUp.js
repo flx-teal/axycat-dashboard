@@ -1,11 +1,17 @@
 import React from 'react';
+import Popup from "./Popup";
 
-const NewProjectPopUp = () => {
-    return (
-        <div>
-            <h1>NewProjectPopUp</h1>
-        </div>
-    )
+const NewProjectPopUp = (props) => {
+  const {onClick, closePopup} = props;
+
+  return (
+    <div>
+      <Popup onClick={onClick}
+             closePopup={closePopup}/>
+    </div>
+
+
+  )
 };
 
-export default NewProjectPopUp
+export default NewProjectPopUp;
