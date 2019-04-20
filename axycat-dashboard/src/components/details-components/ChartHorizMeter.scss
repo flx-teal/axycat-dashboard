@@ -1,0 +1,47 @@
+@import '../../variables.scss';
+
+.card-data_meter {
+  width: 100%;
+}
+.meter-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  width: 100%;
+  .meter-chart__impact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+    width: 100%;
+    .impact-container__text {
+      min-width: 50px;
+      font-size: 18px;
+      margin: 0 25px;
+      color: $main-blue;
+      font-weight: 500;
+    }
+    .impact-container__meter {
+      height: 14px;
+      min-width: 20%;
+      width: 100%;
+
+      &::-webkit-meter-bar {
+        background: #eef2f4;
+        border-radius: 10px;
+      }
+      &::-webkit-meter-optimum-value {
+        background: $main-blue;
+        border-radius: 10px;
+      }
+    }
+    .impact-container__value {
+      color: $sub-gray;
+      width: 45px;
+      font-size: 18px;
+      margin: 0 15px;
+    }
+  }
+}

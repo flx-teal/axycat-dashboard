@@ -2,7 +2,7 @@ import React from 'react';
 import Chart from 'react-google-charts';
 
 function GoogleChart() {
-  const data = [['Task', 'Hours per Day'], ['Satisfied', 56], ['Failed', 70]];
+  const data = [['Complliance', 'Satisfaction'], ['Satisfied', 56], ['Failed', 70]];
   const options = {
     pieHole: 0.5,
     is3D: false,

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import TitleComponent from './TitleComponent';
 import ReportCard from './ReportCard';
 import IsueCard from './IsueCard';
+import ReportCardMeter from './ReportCardMeter';
+import ReportCardColumns from './ReportCardColumns';
 
 class DetailsCardComponent extends Component {
   render() {
@@ -13,8 +15,8 @@ class DetailsCardComponent extends Component {
         />
         <div className='report-card-container'>
           <ReportCard />
-          <ReportCard />
-          <ReportCard />
+          <ReportCardColumns />
+          <ReportCardMeter />
         </div>
         <div>
           <TitleComponent title={'Issues by yours users disability type'} />

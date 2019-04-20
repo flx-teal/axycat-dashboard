@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ListItemComponent.scss';
-import InnerListItemComponent from './InnerListItemComponent'
+import InnerListItemComponent from './InnerListItemComponent';
 
 class ListItemComponent extends Component {
   constructor(props) {
@@ -18,12 +18,17 @@ class ListItemComponent extends Component {
     this.setState(prevState => ({
       isClicked: !prevState.isClicked
     }));
+
     console.log(this.state);
   };
   render() {
     return (
-      <div className="list-item-container">
-        <li className='list-item'>
+      <div className='list-item-container'>
+        <li
+          className='list-item'
+          style={{
+            backgroundColor: this.state.isClicked ? '#f1f1f1' : '#fff'
+          }}>
           <p className='list-item_id'>{this.props.data.id}</p>
           <p className='list-item_type'>{this.props.data.issueType}</p>
           <div className='list-item_impact-container'>
@@ -37,10 +42,14 @@ class ListItemComponent extends Component {
             <span className='list-item_details-text' onClick={this.handleClick}>
               viewe details
             </span>
-            <span className='list-item_details-arrow'>&#709;</span>
+            <span className='list-item_details-arrow'>
+              {this.state.isClicked ? '\u02C4' : '\u02C5' }
+            </span>
           </div>
         </li>
-        <div className='inner-list-item-container'>{this.state.isClicked && <InnerListItemComponent />}</div>
+        <div className='inner-list-item-container'>
+          {this.state.isClicked && <InnerListItemComponent />}
+        </div>
       </div>
     );
   }
