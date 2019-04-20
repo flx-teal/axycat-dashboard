@@ -1,0 +1,35 @@
+$main-blue: #026fc2;
+$btn-shadow: 0 4px 6px gray;
+
+.btn-login {
+  margin: 0 20px;
+  width: 155px;
+  height: 55px;
+  border: 2px solid $main-blue;
+  border-radius: 10px;
+  background: transparent;
+  color: $main-blue;
+  font-size: 18px;
+  font-weight: 500;
+  outline: none;
+  &:hover {
+    cursor: pointer;
+    box-shadow: $btn-shadow;
+  }
+}
+.btn-signup {
+  margin: 0 20px;
+  width: 155px;
+  height: 55px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: $main-blue;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  outline: none;
+  &:hover {
+    cursor: pointer;
+    box-shadow: $btn-shadow;
+  }
+}

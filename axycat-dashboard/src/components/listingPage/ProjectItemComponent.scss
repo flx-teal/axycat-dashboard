@@ -1,0 +1,57 @@
+.componentDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 270px;
+	height: 180px;
+	background-color: #ffff;
+	margin-bottom: 40px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 4px -3px rgba(0, 0, 0, 0.75);
+}
+
+.components {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	p {
+		line-height: 0;
+		color: #b2c1cb;
+		padding-left: 15px;
+		margin-bottom: 0;
+	}
+	p.projectName {
+		font-size: 25px;
+		margin-top: 0;
+		margin-bottom: 10px;
+	}
+	p.projectName,
+	p.website {
+		color: #0070c3;
+	}
+	p.website {
+		font-size: 13px;
+		margin-bottom: 9px;
+	}
+	p.date {
+		font-size: 12px;
+	}
+	p.clientName,
+	p.issues {
+		margin-top: 35px;
+	}
+	p.issues {
+		font-size: 14px;
+	}
+	p.status {
+		position: absolute;
+		right: 15px;
+		top: -25px;
+		background-color: #d2d2d2;
+		border-radius: 5px;
+		height: 5px;
+		padding: 5px;
+		font-size: 10px;
+		color: #43474f;
+	}
+}

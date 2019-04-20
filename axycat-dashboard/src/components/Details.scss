@@ -1,0 +1,25 @@
+@import '../variables.scss';
+
+.details-wrapper {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  height: 100%;
+  margin: 20px 0 0;
+}
+.card-container {
+  width: 475px;
+  height: 250px;
+  margin: 20px 10px;
+}
+.report-card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.isue-card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}

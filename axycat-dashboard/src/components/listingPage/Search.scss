@@ -1,0 +1,27 @@
+.searchForm {
+	position: relative;
+	margin-top: 25px;
+}
+
+.searchInput {
+	width: 230px;
+	outline: none;
+	border-radius: 5px;
+	height: 42px;
+	border: 1px solid #bac7d1;
+	font-size: 14px;
+	padding-left: 20px;
+}
+
+.searchButton {
+	position: absolute;
+	height: 26px;
+	width: 26px;
+	top: 8px;
+	right: 8px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	cursor: pointer;
+	background: url(search_icon.png);
+}
