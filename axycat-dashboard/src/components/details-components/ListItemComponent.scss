@@ -45,8 +45,8 @@
       width: 150px;
       margin: 0 0 0 150px;
       .list-item_dot {
-        height: 17px;
-        width: 17px;
+        min-height: 17px;
+        min-width: 17px;
         background: gray;
         border-radius: 50%;
         display: flex;
