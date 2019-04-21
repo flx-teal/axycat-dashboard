@@ -38,8 +38,8 @@ class App extends Component {
               </NavLink>
             </nav>
             <div className='buttons-container'>
-                <ButtonComponent name='Sign up'/>
-                <ButtonComponent name='Login'/>
+                <ButtonComponent class='btn-blue' name='Sign up'/>
+                <ButtonComponent class='btn-white' name='Login'/>
             </div>
           </header>
           <Switch>
