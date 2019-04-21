@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
 
-import Home from "./components/Home";
+import Home from './components/Home';
 import Details from './components/Details'
-import NewProjectPopUp from "./components/NewProjectPopUp";
-import Listing from "./components/Listing";
-import Error from "./components/Error";
+import NewProjectPopUp from './components/NewProjectPopUp/NewProjectPopUp';
+import Listing from './components/Listing';
+import Error from './components/Error';
 import TitleComponent from './components/details-components/TitleComponent'
 import ButtonComponent from './components/details-components/ButtonComponent'
 import './index.scss'
+
 
 class App extends Component {
   activeLink() {}

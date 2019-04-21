@@ -1,19 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ProjectsListData from './listingPage/ProjectsListData';
 import ProjectsListComponent from './listingPage/ProjectsListComponent';
 import FilterPanel from './listingPage/FilterPanel';
-import TitleComponent from './details-components/TitleComponent.js'
+import TitleComponent from './details-components/TitleComponent'
+
 import './Listing.scss';
 
-const Listing = () => {
+export default class Listing extends Component {
+  render() {
     return (
-        <div className='container'>
-            <div className='titleListing'><TitleComponent title='Projects' subtitle='21 Projects'/>
-            </div>
-                <FilterPanel />
-                <ProjectsListComponent projectsListData = {ProjectsListData} />
+      <div className='container'>
+        <div className='titleListing'><TitleComponent title='Projects' subtitle='21 Projects'/>
         </div>
-    )
-};
-
-export default Listing;
+        <FilterPanel/>
+        <ProjectsListComponent projectsListData={ProjectsListData}/>
+      </div>
+    );
+  }
+}
