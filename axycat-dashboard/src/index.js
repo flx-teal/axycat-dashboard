@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
 
 import Home from './components/Home';
 import Details from './components/Details'
-import NewProjectPopUp from './components/NewProjectPopUp';
+import NewProjectPopUp from './components/NewProjectPopUp/NewProjectPopUp';
 import Listing from './components/Listing';
 import Error from './components/Error';
 import TitleComponent from './components/details-components/TitleComponent'

@@ -2,15 +2,12 @@ import React from 'react';
 import Popup from "./Popup";
 
 const NewProjectPopUp = (props) => {
-  const {onClick, closePopup} = props;
+  const {closePopup} = props;
 
   return (
     <div>
-      <Popup onClick={onClick}
-             closePopup={closePopup}/>
+      <Popup closePopup={closePopup}/>
     </div>
-
-
   )
 };
 

@@ -1,0 +1,18 @@
+.label {
+  font-size: 12px;
+  color: #036FC2;
+  font-weight: bold;
+
+  .input {
+    border: #bdc5cb 1px solid;
+    margin-top: 5px;
+    margin-bottom: 12px;
+
+    &::placeholder {
+      height: auto;
+      padding-left: 10px;
+      padding-top: 0;
+      color: #bdc5cb;
+    }
+  }
+}
