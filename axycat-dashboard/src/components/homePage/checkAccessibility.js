@@ -1,8 +1,7 @@
 import React from 'react';
-import createError from "../../store/action/errorAction";
-import {connect} from 'react-redux'
 import './checkAccessibility.scss'
 import {NavLink} from "react-router-dom";
+import {addErrorToCloud, getErrorFromCloudById} from "../../config/fbConfig";
 
 class CheckAccessibility extends React.Component {
     constructor(props) {
@@ -27,14 +26,11 @@ class CheckAccessibility extends React.Component {
             this.setState({showError: true})
         }
         else {
-            this.sendUrl(this.state.value);
-            console.log(this.props);
-
+            this.sendUrl(this.state.value)
         }
     }
 
     sendUrl = (url) => {
-        console.log(this.props.createError);
         fetch('http://localhost:2000/check', {
             body: JSON.stringify({
                 'url': url
@@ -53,7 +49,7 @@ class CheckAccessibility extends React.Component {
                 //Check result
                 if (json.violations) {
                     //If check is correct with violations erorrs, then we send JSON to FIREBASE via creatError function
-                    this.props.createError(json)
+                    addErrorToCloud(json);
                 }
             });
         //Set empty string into input field
@@ -64,10 +60,10 @@ class CheckAccessibility extends React.Component {
         return (
             <div className='check-section'>
                 <h1>Is your website accessible to users with disabilities</h1>
-                <form className='check-form' onSubmit={this.handleSubmit}>
+                <form className='check-form'>
                     <input className='check-input' placeholder='Web site address' type="text" value={this.state.value}
                            onChange={this.handleChange}/>
-                    <NavLink to={{pathname: "./issues"}} className='check-button' type="submit">Check</NavLink>
+                    <NavLink to={{pathname: "/"}} onClick={this.handleSubmit} className='check-button' type="submit">Check</NavLink>
                 </form>
                 {this.state.showError ? <div className="error-list" role="alert">
                     Please enter valid web site address <a href="#" className="error-alert">http://example.com</a>
@@ -78,9 +74,4 @@ class CheckAccessibility extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        createError: (error) => dispatch(createError(error))
-    }
-};
-export default connect(null, mapDispatchToProps)(CheckAccessibility)
+export default CheckAccessibility
