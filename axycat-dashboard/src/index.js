@@ -10,22 +10,7 @@ import Error from './components/Error';
 import TitleComponent from './components/details-components/TitleComponent'
 import ButtonComponent from './components/details-components/ButtonComponent'
 import './index.scss'
-import {createStore, applyMiddleware, compose} from 'redux'
-import rootReducer from './store/reducers/rootReducer'
-import {Provider} from 'react-redux'
-import thunk from 'redux-thunk'
-import {reduxFirestore, getFirestore} from 'redux-firestore'
-import {reactReduxFirebase, getFirebase} from 'react-redux-firebase'
-import fbConfig from './config/fbConfig'
 import Issues from "./components/Pages/Issues";
-
-const store = createStore(rootReducer,
-    compose(
-        applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
-        reduxFirestore(fbConfig),
-        reactReduxFirebase(fbConfig)
-    )
-);
 
 class App extends Component {
     render() {
@@ -39,6 +24,9 @@ class App extends Component {
                         <nav className="navigation">
                             <NavLink className='nav-link' activeClassName="active" to="/">
                                 Home
+                            </NavLink>
+                            <NavLink className='nav-link' activeClassName="active" to={{pathname: "./issues"}}>
+                                Issues
                             </NavLink>
                             <NavLink className='nav-link' activeClassName="active" to={{pathname: "./detail"}}>
                                 Details
@@ -64,7 +52,6 @@ class App extends Component {
                         <Route path="/newproject" component={NewProjectPopUp}/>
                         <Route path="/issues" component={Issues}/>
                         <Route component={Error}/>
-
                     </Switch>
                 </div>
             </BrowserRouter>
@@ -72,4 +59,4 @@ class App extends Component {
     }
 }
 
-ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById("root"));
+ReactDOM.render(<App/>, document.getElementById("root"));
