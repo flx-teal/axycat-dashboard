@@ -1,7 +1,7 @@
 import React from 'react';
 import './checkAccessibility.scss'
 import {NavLink} from "react-router-dom";
-import {addErrorToCloud, getErrorFromCloudById} from "../../config/fbConfig";
+import {addErrorToCloud} from "../../config/fbConfig";
 
 class CheckAccessibility extends React.Component {
     constructor(props) {
