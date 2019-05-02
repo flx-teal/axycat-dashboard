@@ -18,7 +18,7 @@ export default class Input extends Component {
                name={props.name}
                onChange={props.onChange}
                placeholder={props.placeholder}
-               className="input" />
+               className="input"/>
       </label>
     );
   }

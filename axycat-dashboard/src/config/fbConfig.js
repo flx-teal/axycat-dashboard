@@ -15,19 +15,20 @@ const config = {
 firebase.initializeApp(config);
 const db = firebase.firestore();
 
-export const addErrorToCloud = (data) => {
-    firebase.firestore().collection("errors").add({
-        ...data
-    })
-        .then(function (docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function (error) {
-            console.error("Error adding document: ", error);
-        });
+export const addErrorToCloud = async (checkResult, projectData = {}) => {
+  try {
+    const docRef = await firebase.firestore().collection("errors").add({
+      ...checkResult,
+      projectData
+    });
+    console.log("Document written with ID: ", docRef.id);
+    return docRef.id;
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
 };
 
-//Recive all Reports from Firebase
+//Receive all Reports from Firebase
 export const getAllReportsFromCloud = (callBack) => {
     db.collection("errors").get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
@@ -45,19 +46,19 @@ function showData(data){
 getAllReportsFromCloud(showData);
 */
 
-//Recive Report from Firebase by ID
-export const getReportFromCloudById = (id, callback) => {
-    let docRef = db.collection("errors").doc(id);
-    docRef.get().then((doc) => {
-        if (doc.exists) {
-            callback(doc.data());
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    }).catch((error) => {
-        console.error("Error getting document:", error);
-    });
+//Receive Report from Firebase by ID
+export const getReportFromCloudById = async id => {
+  try {
+    const doc = await db.collection("errors").doc(id).get();
+    if (doc.exists) {
+      return doc.data();
+    }
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  } catch (error) {
+    console.error("Error getting document:", error);
+  }
+  return {}
 };
 
 //Example By ID
