@@ -23,6 +23,7 @@
 			background-color: #ffff;
 			border: none;
 			position: relative;
+
 			span {
 				font-size: 40px;
 				position: absolute;
@@ -30,7 +31,12 @@
 				right: 14px;
 				color: #0070c3;
 				font-weight: 700;
+				cursor: pointer;
+				&:hover {
+					color: #004074;
+				}
 			}
+
 		}
 	}
 }

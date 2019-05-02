@@ -10,53 +10,55 @@ import Error from './components/Error';
 import TitleComponent from './components/details-components/TitleComponent'
 import ButtonComponent from './components/details-components/ButtonComponent'
 import './index.scss'
-import Issues from "./components/Pages/Issues";
+//import Issues from "./components/Pages/Issues";
+import ProjectItemNavigation from "./components/ProjectItemNavigation/ProjectItemNavigation";
 
 class App extends Component {
-    render() {
-        return (
-            <BrowserRouter>
-                <div>
-                    <header id='header'>
-                        <div className="logo">
-                            <TitleComponent title='AxyCAT'/>
-                        </div>
-                        <nav className="navigation">
-                            <NavLink className='nav-link' activeClassName="active" to="/">
-                                Home
-                            </NavLink>
-                            <NavLink className='nav-link' activeClassName="active" to={{pathname: "./issues"}}>
-                                Issues
-                            </NavLink>
-                            <NavLink className='nav-link' activeClassName="active" to={{pathname: "./detail"}}>
-                                Details
-                            </NavLink>
-                            <NavLink className='nav-link' activeClassName="active" to={{pathname: "./listing"}}>
-                                Listing
-                            </NavLink>
-                            <NavLink className='nav-link'
-                                     activeClassName="active"
-                                     to={{pathname: "./newproject"}}>
-                                NewProject
-                            </NavLink>
-                        </nav>
-                        <div className='buttons-container'>
-                            <ButtonComponent class='btn btn-blue' name='Sign up'/>
-                            <ButtonComponent class='btn btn-white' name='Login'/>
-                        </div>
-                    </header>
-                    <Switch>
-                        <Route path="/" component={Home} exact/>
-                        <Route path="/detail" component={Details}/>
-                        <Route path="/listing" component={Listing}/>
-                        <Route path="/newproject" component={NewProjectPopUp}/>
-                        <Route path="/issues" component={Issues}/>
-                        <Route component={Error}/>
-                    </Switch>
-                </div>
-            </BrowserRouter>
-        );
-    }
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <header id='header'>
+            <div className="logo">
+              <TitleComponent title='AxyCAT'/>
+            </div>
+            <nav className="navigation">
+              <NavLink className='nav-link' activeClassName="active" to="/">
+                Home
+              </NavLink>
+              <NavLink className='nav-link' activeClassName="active" to="/issues">
+                Issues
+              </NavLink>
+              <NavLink className='nav-link' activeClassName="active" to="/detail">
+                Details
+              </NavLink>
+              <NavLink className='nav-link' activeClassName="active" to="/listing">
+                Listing
+              </NavLink>
+              <NavLink className='nav-link'
+                       activeClassName="active"
+                       to="/newproject">
+                NewProject
+              </NavLink>
+            </nav>
+            <div className='buttons-container'>
+              <ButtonComponent class='btn btn-blue' name='Sign up'/>
+              <ButtonComponent class='btn btn-white' name='Login'/>
+            </div>
+          </header>
+          <Switch>
+            <Route path="/" component={Home} exact/>
+            <Route path="/detail" component={Details}/>
+            <Route path="/listing" component={Listing}/>
+            <Route path="/newproject" component={NewProjectPopUp}/>
+            {/*<Route path="/issues" component={Issues}/>*/}
+            <Route path="/project-details" component={ProjectItemNavigation}/>
+            <Route component={Error}/>
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 ReactDOM.render(<App/>, document.getElementById("root"));

@@ -7,10 +7,12 @@
     border: #bdc5cb 1px solid;
     margin-top: 5px;
     margin-bottom: 12px;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 5px;
 
     &::placeholder {
       height: auto;
-      padding-left: 10px;
       padding-top: 0;
       color: #bdc5cb;
     }
