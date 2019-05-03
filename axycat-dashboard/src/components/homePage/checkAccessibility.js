@@ -1,6 +1,5 @@
 import React from 'react';
 import './checkAccessibility.scss'
-import {NavLink} from "react-router-dom";
 import {addErrorToCloud} from "../../config/fbConfig";
 
 class CheckAccessibility extends React.Component {
@@ -63,7 +62,7 @@ class CheckAccessibility extends React.Component {
                 <form className='check-form'>
                     <input className='check-input' placeholder='Web site address' type="text" value={this.state.value}
                            onChange={this.handleChange}/>
-                    <NavLink to={{pathname: "/"}} onClick={this.handleSubmit} className='check-button' type="submit">Check</NavLink>
+                    <button onClick={this.handleSubmit} className='check-button' type="submit">Check</button>
                 </form>
                 {this.state.showError ? <div className="error-list" role="alert">
                     Please enter valid web site address <a href="#" className="error-alert">http://example.com</a>
