@@ -1,0 +1,62 @@
+$main-blue: #026fc2;
+$row-grey: #edf1f2;
+$btn-shadow: 0 4px 6px gray;
+
+.issues {
+  font-size: 14px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  color: grey;
+  &-btn {
+    margin: 10px 0;
+    width: 100px;
+    height: 50px;
+    border: 2px solid $main-blue;
+    border-radius: 5px;
+    background: $main-blue;
+    color: white;
+    font-weight: bold;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+      box-shadow: $btn-shadow;
+    }
+  }
+}
+
+.table {
+  border-spacing: 0;
+  &-head {
+    color: $main-blue;
+    text-align: left;
+  }
+  &-row {
+    height: 50px;
+  }
+  &-name {
+    cursor: pointer;
+  }
+  &-cell {
+    &-priority, &-asignee {
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      background-color: #9bafba;
+    }
+    &-select {
+      outline: none;
+      border-radius: 5px;
+      padding: 5px;
+      background-color: #ebebeb;
+      border: none;
+      color: grey;
+    }
+  }
+}
+
+.table-row-render:nth-child(odd) {
+  background-color: $row-grey;
+}
