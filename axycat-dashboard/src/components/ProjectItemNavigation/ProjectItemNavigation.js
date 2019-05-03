@@ -8,6 +8,7 @@ import Pages from "./Pages";
 //import Issues from "./Issues";
 import Reports from "./Reports";
 import { getReportFromCloudById } from '../../config/fbConfig'
+import Issues from "../Pages/Issues";
 
 export default class ProjectItemNavigation extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ export default class ProjectItemNavigation extends Component {
       </nav>
         <Route path={`${match.path}/accessibility-overview/:projectId`} component={Details}/>
         <Route path={`${match.path}/pages/:projectId`} component={Pages}/>
-{/*       <Route path={`${match.path}/issues/:projectId`} component={Issues}/>*/}
+        <Route path={`${match.path}/issues/:projectId`} component={Issues}/>
         <Route path={`${match.path}/reports/:projectId`} component={Reports}/>
       </>
     )
