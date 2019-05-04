@@ -1,16 +1,49 @@
-.sidebar {
+.sidebar-main-wrapper {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 160px;
-  padding-top: 20px;
-  padding-left: 40px;
-  margin-top: 5px;
-  background-color: #ffffff;
 
-  a {
-    text-decoration: none;
-    color: #9dafbd;
+  .sidebar {
+    height: 100vh;
+    padding-top: 20px;
+    margin-top: 5px;
+    background-color: #ffffff;
+    font-size: 14px;
+
+    .project-name {
+      font-weight: bold;
+      font-size: 16px;
+      margin: 7px 0;
+      padding-left: 30px;
+    }
+
+    .navigation {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      a {
+        text-decoration: none;
+        color: #9dafbd;
+        padding: 8px 0 8px 30px;
+        width: 200px;
+
+        &:hover {
+          background-color: #ecf1f3;
+          color: #026fc2;
+          font-weight: bold;
+        }
+      }
+    }
   }
 
+  .router-content {
+    .project-list-return {;
+      display: block;
+      margin: 28px;
+      border-bottom: solid 1px #cee2f1;
+      padding-bottom: 10px;
+      text-decoration: none;
+      color: #026fc2;
+      font-weight: bold;
+    }
+  }
 }
