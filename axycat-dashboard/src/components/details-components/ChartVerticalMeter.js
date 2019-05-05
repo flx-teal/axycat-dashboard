@@ -36,7 +36,7 @@ class ChartVerticalMeter extends Component {
       mLen = minor.length;
     }
 
-    debugger;
+    
     return (
       <div className='meter-chart-vertical'>
         <div className='meter-chart-vertical__impact-container'>
