@@ -11,9 +11,26 @@ class ListItemComponent extends Component {
 
     this.checkImpact = this.checkImpact.bind(this);
   }
-  checkImpact = props => ({
-    background: `${props.data.impactColor}`
-  });
+  checkImpact(props) {
+    switch (this.props.data.impact) {
+      case 'critical':
+        return {
+          background: `red`
+        };
+      case 'serious':
+        return {
+          background: `orange`
+        };
+      case 'moderate':
+        return {
+          background: `yellow`
+        };
+      default:
+        return {
+          background: `#026fc2`
+        };
+    }
+  }
   handleClick = () => {
     this.setState(prevState => ({
       isClicked: !prevState.isClicked
@@ -22,6 +39,9 @@ class ListItemComponent extends Component {
     console.log(this.state);
   };
   render() {
+    let prData = this.props.data;
+
+    console.log(prData);
     return (
       <div className='list-item-container'>
         <li
@@ -29,8 +49,8 @@ class ListItemComponent extends Component {
           style={{
             backgroundColor: this.state.isClicked ? '#f1f1f1' : '#fff'
           }}>
-          <p className='list-item_id'>{this.props.data.id}</p>
-          <p className='list-item_type'>{this.props.data.issueType}</p>
+          <p className='list-item_id'>{this.props.index}</p>
+          <p className='list-item_type'>{prData.description}</p>
           <div className='list-item_impact-container'>
             <p className='user-impact'>user impact</p>
             <span
@@ -43,7 +63,7 @@ class ListItemComponent extends Component {
               viewe details
             </span>
             <span className='list-item_details-arrow'>
-              {this.state.isClicked ? '\u02C4' : '\u02C5' }
+              {this.state.isClicked ? '\u02C4' : '\u02C5'}
             </span>
           </div>
         </li>
