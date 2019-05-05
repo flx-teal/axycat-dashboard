@@ -6,31 +6,25 @@ class ChartHorizMeter extends Component {
     super(props);
   }
   render() {
-    let prData, incomplete;
+    let prData, violations;
     let critical = [];
     let serious = [];
     let minor = [];
 
     if (this.props.data) {
       prData = this.props.data;
-      incomplete = prData.incomplete;
+      violations = prData.violations;
 
-      for (let i = 0; i < incomplete.length; i++) {
-        switch (incomplete[i].impact) {
+      for (let i = 0; i < violations.length; i++) {
+        switch (violations[i].impact) {
           case 'critical':
-            console.log(`This is critical issue: ${incomplete[i].description}`);
-            critical.push(incomplete[i]);
-
+            critical.push(violations[i]);
             break;
           case 'serious':
-            console.log(`This is serious issue: ${incomplete[i].description}`);
-            serious.push(incomplete[i]);
-
+            serious.push(violations[i]);
             break;
           case 'moderate':
-            console.log(`This is minor issue: ${incomplete[i].description}`);
-            minor.push(incomplete[i]);
-
+            minor.push(violations[i]);
             break;
           default:
             console.log('There is not impacts');

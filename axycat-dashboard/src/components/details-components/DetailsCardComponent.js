@@ -11,7 +11,7 @@ class DetailsCardComponent extends Component {
   }
   render() {
     let projectData = this.props.data;
-    
+
     return (
       <div>
         <TitleComponent
@@ -20,7 +20,7 @@ class DetailsCardComponent extends Component {
         />
         <div className='report-card-container'>
           <ReportCard data={projectData} />
-          <ReportCardColumns />
+          <ReportCardColumns data={projectData} />
           <ReportCardMeter data={projectData} />
         </div>
         <div>

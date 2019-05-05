@@ -15,15 +15,15 @@ class ListItemComponent extends Component {
     switch (this.props.data.impact) {
       case 'critical':
         return {
-          background: `red`
+          background: `#ed213a`
         };
       case 'serious':
         return {
-          background: `orange`
+          background: `#ff9c00`
         };
       case 'moderate':
         return {
-          background: `yellow`
+          background: `#ffe343`
         };
       default:
         return {
@@ -35,13 +35,10 @@ class ListItemComponent extends Component {
     this.setState(prevState => ({
       isClicked: !prevState.isClicked
     }));
-
-    console.log(this.state);
   };
   render() {
     let prData = this.props.data;
 
-    console.log(prData);
     return (
       <div className='list-item-container'>
         <li
@@ -68,7 +65,7 @@ class ListItemComponent extends Component {
           </div>
         </li>
         <div className='inner-list-item-container'>
-          {this.state.isClicked && <InnerListItemComponent />}
+          {this.state.isClicked && <InnerListItemComponent data={prData} />}
         </div>
       </div>
     );

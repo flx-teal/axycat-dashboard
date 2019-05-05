@@ -20,9 +20,8 @@ class Detail extends Component {
       this.setState({ dataProject: data })
     );
   }
-  
+
   render() {
-    console.log(this.state.dataProject)
     return (
       <div className='details-wrapper'>
         <DetailsCardComponent data={this.state.dataProject} />

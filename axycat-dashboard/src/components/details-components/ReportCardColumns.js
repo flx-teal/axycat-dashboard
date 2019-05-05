@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TitleComponent from './TitleComponent';
 import './ReportCard.scss';
 import ChartVerticalMeter from './ChartVerticalMeter';
 
-function ReportCard() {
-  return (
-    <div className='card-container'>
-      <div className='card-title'>
-        <TitleComponent subtitle={`WCAG 2.0 issues`} />
-      </div>
-      <div className='card-data'>
-        <div className='card-data_vertical'>
-          <ChartVerticalMeter />
+class ReportCard extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div className='card-container'>
+        <div className='card-title'>
+          <TitleComponent subtitle={`WCAG 2.0 issues`} />
+        </div>
+        <div className='card-data'>
+          <div className='card-data_vertical'>
+            <ChartVerticalMeter data={this.props.data} />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default ReportCard;

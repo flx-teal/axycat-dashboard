@@ -7,12 +7,12 @@ class ListComponent extends Component {
     super(props);
   }
   render() {
-    let projectData, incomplete, createIssues;
+    let projectData, violations, createIssues;
 
     if (this.props.data) {
       projectData = this.props.data;
-      incomplete = projectData.incomplete;
-      createIssues = incomplete.map((elem, index) => {
+      violations = projectData.violations;
+      createIssues = violations.map((elem, index) => {
         return <ListItemComponent key={index} data={elem} index={index + 1} />;
       });
     }

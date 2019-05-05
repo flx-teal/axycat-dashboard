@@ -13,7 +13,7 @@ class ReportCard extends Component {
       prData = this.props.data;
       console.log(prData);
       passes = prData.passes.length;
-      failed = prData.incomplete.length;
+      failed = prData.violations.length;
     }
 
     return (

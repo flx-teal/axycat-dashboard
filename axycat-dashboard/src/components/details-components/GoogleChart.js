@@ -10,7 +10,7 @@ class GoogleChart extends Component {
     if (this.props.data) {
       projectData = this.props.data;
       satisfied = projectData.passes.length;
-      failed = projectData.incomplete.length;
+      failed = projectData.violations.length;
     }
 
     const data = [
