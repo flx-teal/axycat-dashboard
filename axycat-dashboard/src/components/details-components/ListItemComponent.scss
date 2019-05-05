@@ -17,6 +17,7 @@
   .list-item {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     list-style: none;
     background: #fff;
     margin: 10px 0;
@@ -28,12 +29,13 @@
     height: 75px;
     z-index: 80;
     .list-item_id {
-      width: 85px;
+      width: 5%;
       font-size: 22px;
       margin: 0;
       text-align: center;
     }
     .list-item_type {
+      width: 75%;
       padding: 0 20px;
     }
 

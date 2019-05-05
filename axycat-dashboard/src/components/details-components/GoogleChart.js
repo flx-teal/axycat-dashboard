@@ -1,27 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Chart from 'react-google-charts';
 
-function GoogleChart() {
-  const data = [['Complliance', 'Satisfaction'], ['Satisfied', 56], ['Failed', 70]];
-  const options = {
-    pieHole: 0.5,
-    is3D: false,
-    colors: ['#eef2f4', '#026fc2'],
-    pieStartAngle: 200,
-    legend: 'none',
-    backgroundColor: 'none'
-  };
-  return (
-    <div className='chart-container'>
-      <Chart
-        chartType='PieChart'
-        width='240px'
-        height='240px'
-        data={data}
-        options={options}
-      />
-    </div>
-  );
+class GoogleChart extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    let projectData, satisfied, failed;
+    if (this.props.data) {
+      projectData = this.props.data;
+      satisfied = projectData.passes.length;
+      failed = projectData.violations.length;
+    }
+
+    const data = [
+      ['Complliance', 'Satisfaction'],
+      ['Satisfied', satisfied],
+      ['Failed', failed]
+    ];
+    const options = {
+      pieHole: 0.5,
+      is3D: false,
+      colors: ['#eef2f4', '#026fc2'],
+      pieStartAngle: 0,
+      legend: 'none',
+      backgroundColor: 'none',
+      pieSliceTextStyle: {
+        color: 'black'
+      }
+    };
+    return (
+      <div className='chart-container'>
+        <Chart
+          chartType='PieChart'
+          width='240px'
+          height='240px'
+          data={data}
+          options={options}
+        />
+      </div>
+    );
+  }
 }
 
 export default GoogleChart;

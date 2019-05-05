@@ -6,7 +6,12 @@ import ReportCardMeter from './ReportCardMeter';
 import ReportCardColumns from './ReportCardColumns';
 
 class DetailsCardComponent extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
+    let projectData = this.props.data;
+
     return (
       <div>
         <TitleComponent
@@ -14,9 +19,9 @@ class DetailsCardComponent extends Component {
           subtitle={'www.site/home'}
         />
         <div className='report-card-container'>
-          <ReportCard />
-          <ReportCardColumns />
-          <ReportCardMeter />
+          <ReportCard data={projectData} />
+          <ReportCardColumns data={projectData} />
+          <ReportCardMeter data={projectData} />
         </div>
         <div>
           <TitleComponent title={'Issues by yours users disability type'} />

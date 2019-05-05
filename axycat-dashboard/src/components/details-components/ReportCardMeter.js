@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TitleComponent from './TitleComponent';
 import './ReportCard.scss';
 import ChartHorizMeter from './ChartHorizMeter';
 
-function ReportCard() {
-  return (
-    <div className='card-container'>
-      <div className='card-title'>
-        <TitleComponent subtitle={`User impact and priority of issues`} />
-      </div>
-      <div className='card-data'>
-        <div className='card-data_meter'>
-          <ChartHorizMeter />
+class ReportCard extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div className='card-container'>
+        <div className='card-title'>
+          <TitleComponent subtitle={`User impact and priority of issues`} />
+        </div>
+        <div className='card-data'>
+          <div className='card-data_meter'>
+            <ChartHorizMeter data={this.props.data} />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default ReportCard;
