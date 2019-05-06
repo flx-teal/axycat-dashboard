@@ -35,8 +35,10 @@ export const getAllReportsFromCloud = async () => {
         const response = await db.collection("errors").get();
         const data = await response.docs;
         await data.forEach((report) => {
-            array.push(report.data());
-
+            let item = {};
+            item.id = report.id;
+            item.data = report.data();
+            array.push(item)
         });
         return array;
     }

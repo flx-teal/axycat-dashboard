@@ -6,10 +6,10 @@ export default class ProjectItemComponent extends React.Component {
         super(props)
     }
     render() {
-        let data = this.props.data;
+        let data = this.props.data.data;
         return(
             <div className='componentDiv'>
-            <div  key={this.props.index}  className='components'>
+            <div  key={this.props.data.id}  className='components'>
               <p className='projectName'>{data.projectData.projectName}   </p>
               <p className='website'>  {data.projectData.website} </p>
               <p className='date'> {data.timestamp} </p>
