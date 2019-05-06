@@ -15,15 +15,20 @@ export default class IssuesPopUpDetails extends Component {
             <div>
                 {!this.props.isClicked && <div className='issues-popup'>
                     <div className='issues-popup-inner'>
-                        <div className='issues-popup-inner-ctrl'>
-                            <span className='issues-number'>#{data.index}</span>
-                            <span className="issues-close" onClick={this.props.handleClick}></span>
+                        <div className='issues-popup-inner-wrapper'>
+                            <div className='issues-popup-inner-wrapper-ctrl'>
+                                <span className='issues-number'>#{data.index}</span>
+                                <span className="issues-close" onClick={this.props.handleClick}></span>
+                            </div>
+                            <HeaderPopupDetails data={data}/>
                         </div>
-                        <HeaderPopupDetails data={data}/>
-                        <h2>Issue Details</h2>
-                        <BodyPopupDetails data={data.data}/>
-                        <FooterPopupDetails/>
-
+                        <div className='issues-popup-inner-wrapper wrapper-body'>
+                            <h2>Issue Details</h2>
+                            <BodyPopupDetails data={data.data}/>
+                        </div>
+                        <div className='issues-popup-inner-wrapper'>
+                            <FooterPopupDetails/>
+                        </div>
                     </div>
                 </div>}
 

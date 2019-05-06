@@ -26,7 +26,6 @@ export default class FooterPopupDetails extends React.Component {
                         <input placeholder='Leave comment...'/>
                     </div>
                 </div>
-
             </div>
         )
     }

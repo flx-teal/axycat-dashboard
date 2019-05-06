@@ -5,18 +5,18 @@
   &-info {
     display: flex;
     justify-content: space-between;
-    align-items: start;
     padding: 10px 0;
     h2 {
       margin: 0;
     }
     &-nav {
-      padding-right: 30px;
+      padding: 5px;
+      width: 180px;
     }
+
   }
   &-status {
     display: flex;
-
     &-col {
       width: 25%;
       display: flex;
@@ -36,9 +36,9 @@
         &>select {
           border-radius: 5px;
           padding: 5px;
-          background-color: lightgrey;
+          background-color: #ecedeb;
           border: none;
-          color: grey;
+          color: #b0b4b8;
         }
       }
 

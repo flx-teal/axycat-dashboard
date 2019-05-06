@@ -1,25 +1,32 @@
 .inner-list {
   display: flex;
   justify-content: space-between;
-  &-container {
+  &>div {
     display: flex;
     flex-direction: column;
-  width: 31%;
+    width: 48%;
   }
   h4 {
     margin: 0.5rem 0;
   }
   p {
     margin: 0.5rem 0;
+    color: #b0b4b8;
   }
   input, textarea {
-    color: red;
+    background-color: #f5f7f7;
+    color: #de3e46;
     border-radius: 5px;
     border: 1px solid lightgrey;
     width: 100%;
     padding: 10px 5px;
   }
   textarea {
-    height: 150px;
+    overflow: auto;
+    height: 100px;
+    resize: none;
+  }
+  .flex {
+    display: flex;
   }
 }

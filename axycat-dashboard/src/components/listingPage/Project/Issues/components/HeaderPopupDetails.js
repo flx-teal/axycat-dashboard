@@ -35,11 +35,11 @@ export default class HeaderPopupDetails extends React.Component {
                 <div className='popup-header-info'>
                     <div>
                         <h2>{data.data.description}</h2>
-                        <span>Added by Stepan Uryk</span><span> 30-04-2019 </span><span
-                        className='popup-header-info-date'> | Update 12 min ago</span>
+                        <span>Added by Stepan Uryk</span><span> 30-04-2019 </span>
+                        <span className='popup-header-info-date'> | Update 12 min ago</span>
                     </div>
                     <div className='popup-header-info-nav'>
-                        <span>Prev</span><span> | 1 of 3 | </span><span>Next</span>
+                        <a>&lt; Prev</a><span> | 1 of 3 | </span><a>Next &gt;</a>
                     </div>
                 </div>
                 <div className='popup-header-status'>
