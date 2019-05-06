@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import Input from './Input';
 import ButtonComponent from '../details-components/ButtonComponent';
 import './Form.scss';
-import { Redirect } from 'react-router-dom';
-import { addErrorToCloud } from '../../config/fbConfig';
-import { Spinner } from "./Spinner";
+import {Redirect} from 'react-router-dom';
+import {addErrorToCloud} from '../../config/fbConfig';
+import {Spinner} from "./Spinner";
 
 export default class Form extends Component {
   constructor(props) {
@@ -50,30 +50,36 @@ export default class Form extends Component {
           //If check is correct with violations errors, then we send JSON to FIREBASE via creatError function
           return addErrorToCloud(json, data);
         }
-       })
-       .then((createdProjectId) => {
+      })
+      .then((createdProjectId) => {
         this.setState(() => ({
           isLoading: false,
           createdProjectId: createdProjectId,
           redirect: true
         }));
-       })
-       .catch(error => console.log(error));
-     //Set empty string into input field
-     this.setState({value: ''})
+      })
+      .catch(error => {
+        this.setState(() => ({
+          isLoading: false
+        }));
+        console.log(error)
+        }
+      );
+    //Set empty string into input field
+    this.setState({value: ''})
   };
 
   handleSubmit(event) {
     event.preventDefault();
 
     if (!this.state.projectName ||
-        !this.state.siteUrl ||
-        !this.state.clientName) {
-      return this.setState({ error: 'Please, fill all fields correctly!' });
+      !this.state.siteUrl ||
+      !this.state.clientName) {
+      return this.setState({error: 'Please, fill all fields correctly!'});
     }
 
-    if(!this.state.siteUrl.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)) {
-      return this.setState({ error: 'Please, enter valid URL!' });
+    if (!this.state.siteUrl.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)) {
+      return this.setState({error: 'Please, enter valid URL!'});
     }
 
     const data = {
@@ -90,21 +96,21 @@ export default class Form extends Component {
 
   handleProjectNameChange(event) {
     this.setState({projectName: event.target.value});
-    this.setState({ error: ''});
+    this.setState({error: ''});
   }
 
   handleSiteUrlChange(event) {
     this.setState({siteUrl: event.target.value});
-    this.setState({ error: ''});
+    this.setState({error: ''});
   }
 
   handleClientNameChange(event) {
     this.setState({clientName: event.target.value});
-    this.setState({ error: ''});
+    this.setState({error: ''});
   }
 
   renderRedirect() {
-    const { redirect, projectName, createdProjectId } = this.state;
+    const {redirect, projectName, createdProjectId} = this.state;
     if (redirect) {
       return <Redirect to={{
         pathname: `/project-details/accessibility-overview/${createdProjectId}`,
@@ -117,7 +123,7 @@ export default class Form extends Component {
   }
 
   render() {
-    const { isLoading } = this.state;
+    const {isLoading} = this.state;
     const {closePopup} = this.props;
 
     return (
@@ -142,11 +148,11 @@ export default class Form extends Component {
                onChange={this.handleClientNameChange}
                placeholder={'Enter Client Name'}/>
         <div className="buttons">
-          <ButtonComponent class='btn-white' name='Cancel' onClick={ closePopup }/>
+          <ButtonComponent class='btn-white' name='Cancel' onClick={closePopup}/>
           {this.renderRedirect()}
-          <ButtonComponent class='btn-blue' name='Save' handler={ this.handleSubmit }/>
+          <ButtonComponent class='btn-blue' name='Save' handler={this.handleSubmit}/>
         </div>
-        { isLoading && <Spinner /> }
+        {isLoading && <Spinner/>}
       </form>
     );
   }

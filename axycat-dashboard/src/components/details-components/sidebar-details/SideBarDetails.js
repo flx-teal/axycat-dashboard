@@ -14,11 +14,9 @@ class SideBarDetails extends Component {
   }
 
   componentDidMount() {
-    debugger;
     getReportFromCloudById(this.state.projectId).then(data =>
       this.setState({ dataProject: data })
     );
-    debugger;
   }
 
   render() {
