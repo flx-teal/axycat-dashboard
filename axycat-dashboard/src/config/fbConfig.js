@@ -31,11 +31,14 @@ export const addErrorToCloud = async (checkResult, projectData = {}) => {
 //Receive all Reports from Firebase
 export const getAllReportsFromCloud = async () => {
     try {
+        let array = [];
         const response = await db.collection("errors").get();
         const data = await response.docs;
-        await data.map(report => {
-            return report.data();
-        })
+        await data.forEach((report) => {
+            array.push(report.data());
+
+        });
+        return array;
     }
     catch
         (error) {
@@ -43,7 +46,6 @@ export const getAllReportsFromCloud = async () => {
     }
     return {}
 };
-
 //Receive Report from Firebase by ID
 export const getReportFromCloudById = async id => {
     try {
