@@ -36,7 +36,6 @@ export default class ProjectItemNavigation extends Component {
     const {match} = this.props;
     const {projectId, projectName} = this.state;
     getReportFromCloudById(projectId);
-    debugger
     return (
       <div className="sidebar-main-wrapper">
         <div className="sidebar">

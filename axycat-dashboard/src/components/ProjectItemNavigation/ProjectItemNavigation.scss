@@ -1,10 +1,12 @@
 .sidebar-main-wrapper {
   display: flex;
+
   .sidebar {
-    padding-top: 20px;
-    margin-top: 5px;
     background-color: #ffffff;
     font-size: 14px;
+    padding: 20px 20px;
+    margin: 5px 20px 5px 0;
+
     .project-name {
       font-weight: bold;
       font-size: 16px;
@@ -31,6 +33,7 @@
 
   .router-content {
     width: 100%;
+
     .project-list-return {;
       display: block;
       margin: 20px;

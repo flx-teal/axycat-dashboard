@@ -2,13 +2,15 @@
   font-size: 12px;
   color: #036FC2;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
 
   .input {
     border: #bdc5cb 1px solid;
     margin-top: 5px;
     margin-bottom: 12px;
     outline: none;
-    padding-left: 15px;
+    padding: 12px 0 12px 12px;
     border-radius: 5px;
 
     &::placeholder {
