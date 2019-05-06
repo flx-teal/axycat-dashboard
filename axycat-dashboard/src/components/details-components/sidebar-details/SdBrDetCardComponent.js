@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import TitleComponent from './TitleComponent';
-import ReportCard from './ReportCard';
-import IsueCard from './IsueCard';
-import ReportCardMeter from './ReportCardMeter';
-import ReportCardColumns from './ReportCardColumns';
+import TitleComponent from '../TitleComponent';
+import ReportCard from '../ReportCard';
+import IsueCard from '../IsueCard';
+import ReportCardMeter from '../ReportCardMeter';
+import ReportCardColumns from '../ReportCardColumns';
 
-class DetailsCardComponent extends Component {
+class SdBrDetCardComponent extends Component {
   constructor(props) {
     super(props);
   }
@@ -14,10 +14,6 @@ class DetailsCardComponent extends Component {
 
     return (
       <div>
-        <TitleComponent
-          title={'Automated Web Accessibility Report'}
-          subtitle={projectData.url}
-        />
         <div className='report-card-container'>
           <ReportCard data={projectData} />
           <ReportCardColumns data={projectData} />
@@ -36,4 +32,4 @@ class DetailsCardComponent extends Component {
     );
   }
 }
-export default DetailsCardComponent;
+export default SdBrDetCardComponent;
