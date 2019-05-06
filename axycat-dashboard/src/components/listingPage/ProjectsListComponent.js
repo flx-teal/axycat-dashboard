@@ -13,8 +13,8 @@ export default class ProjectsListComponent extends React.Component {
         let data, createReport;
         if (this.props.reports) {
             data = this.props.reports;
-            createReport = data.map((elem, index) => {
-                return <ProjectItemComponent key={index} data={elem} index={index + 1} />;
+            createReport = data.map((el) => {
+                return <ProjectItemComponent data={el} />;
             });
         }
         return (
