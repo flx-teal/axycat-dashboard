@@ -1,5 +1,9 @@
 @import './variables.scss';
 
+html {
+  height: auto;
+}
+
 body {
   margin: 0;
   background: $bg-color;
