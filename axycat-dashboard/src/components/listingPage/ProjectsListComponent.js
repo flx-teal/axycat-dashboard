@@ -5,23 +5,21 @@ import CreateNewProject from './CreateNewProject';
 import './ProjectsListComponent.scss';
 
 export default class ProjectsListComponent extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
-        let data, createReport;
-        if (this.props.reports) {
-            data = this.props.reports;
-            createReport = data.map((el) => {
-                return <ProjectItemComponent data={el} />;
-            });
+        let data = this.props.reports, showProjects;
+        if(!data) {
+            return (<p>load</p>)
+        }
+        else {
+            showProjects = data.map(projectItem => 
+           <ProjectItemComponent data={projectItem} key={projectItem.id} />
+            );
         }
         return (
             <div>
                 <div className='allProjectsContainer'>
                     <CreateNewProject buttonName='Create new project' buttonContent='+'/>
-                    {createReport}
+                    {showProjects}
                 </div>
                 <ListPagination/>
             </div>

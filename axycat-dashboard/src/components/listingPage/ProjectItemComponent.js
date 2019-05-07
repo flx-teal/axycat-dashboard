@@ -9,13 +9,13 @@ export default class ProjectItemComponent extends React.Component {
         let data = this.props.data.data;
         return(
             <div className='componentDiv'>
-            <div  key={this.props.data.id}  className='components'>
-              <p className='projectName'>{data.projectData.projectName}   </p>
-              <p className='website'>  {data.projectData.website} </p>
-              <p className='date'> {data.timestamp} </p>
-              <p className='clientName'>  {data.projectData.clientName}  </p>
-              <p className='issues'>  {data.inapplicable.length}  </p>
-              <p className='status'>  {data.projectData.status}  </p>
+            <div  key={this.props.data.id} className='components'>
+              <p className='projectName'>{data.projectData.projectName}</p>
+              <p className='website'>{data.projectData.website}</p>
+              <p className='date'>{data.timestamp}</p>
+              <p className='clientName'>{data.projectData.clientName}</p>
+              <p className='issues'>Issues - {data.violations.length}</p>
+              <p className='status'>{data.projectData.status}</p>
             </div>
             </div>
         );
