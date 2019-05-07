@@ -5,8 +5,10 @@ import Search from './Search';
 import './FilterPanel.scss';
 
 export default class FilterPanel extends React.Component {
+    constructor(props){
+        super(props)
+    }
     render() {
-        let data = this.props.reports;
         return(
             <div className='filterPanel'>
             <FilterButtons buttonName='All' reports={this.props.reports}/>
@@ -14,7 +16,7 @@ export default class FilterPanel extends React.Component {
             <FilterButtons buttonName='In progress'/>
             <FilterButtons buttonName='Done'/>
             <SortDropdown />
-            <Search  reports={this.props.reports} />
+            <Search  updateData={this.props.updateData} reports={this.props.reports} />
             </div>
         );
     }

@@ -5,14 +5,26 @@ import CreateNewProject from './CreateNewProject';
 import './ProjectsListComponent.scss';
 
 export default class ProjectsListComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         let data = this.props.reports, showProjects;
-        if(!data) {
-            return (<p>load</p>)
+        let inputValue = this.props.inputValue;
+        if (!data) {
+            return (<p>Loading...</p>)
         }
-        else {
-            showProjects = data.map(projectItem => 
-           <ProjectItemComponent data={projectItem} key={projectItem.id} />
+        if (inputValue !== '') {
+            let array = data.filter(el => {
+                return el.data.projectData.projectName === inputValue
+            });
+            showProjects = array.map(projectItem =>
+                <ProjectItemComponent data={projectItem} key={projectItem.id}/>
+            );
+        } else {
+            showProjects = data.map(projectItem =>
+                <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
         return (

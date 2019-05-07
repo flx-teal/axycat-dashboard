@@ -9,9 +9,14 @@ export default class Listing extends Component {
     constructor(props){
         super(props);
         this.state = {
-            reports: ''
+            reports: [],
+            inputValue: ''
         };
     }
+
+    updateData = (value) => {
+        this.setState({ inputValue: value });
+    };
 
     componentDidMount() {
         getAllReportsFromCloud().then(data =>
@@ -24,8 +29,8 @@ export default class Listing extends Component {
       <div className='container'>
         <div className='titleListing'><TitleComponent title='Projects' subtitle={this.state.reports.length + ' Projects'} />
         </div>
-        <FilterPanel reports={this.state.reports}/>
-        <ProjectsListComponent reports={this.state.reports}/>
+        <FilterPanel updateData={this.updateData} reports={this.state.reports}/>
+        <ProjectsListComponent inputValue={this.state.inputValue} reports={this.state.reports}/>
       </div>
     );
   }
