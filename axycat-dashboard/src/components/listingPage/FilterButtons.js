@@ -2,7 +2,9 @@ import React from 'react';
 import './FilterButtons.scss';
 
 class FilterButtons extends React.Component {
-    
+    constructor(props) {
+        super(props)
+    }
     buttonClick = () => {
      console.log(`button "${this.props.buttonName}" clicked`)
     }

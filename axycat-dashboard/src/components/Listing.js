@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-import ProjectsListData from './listingPage/ProjectsListData';
 import ProjectsListComponent from './listingPage/ProjectsListComponent';
 import FilterPanel from './listingPage/FilterPanel';
 import TitleComponent from './details-components/TitleComponent'
-
-import './Listing.scss';
 import {getAllReportsFromCloud} from "../config/fbConfig";
+import './Listing.scss';
 
 export default class Listing extends Component {
     constructor(props){
@@ -24,9 +22,9 @@ export default class Listing extends Component {
   render() {
       return (
       <div className='container'>
-        <div className='titleListing'><TitleComponent title='Projects' subtitle='21 Projects'/>
+        <div className='titleListing'><TitleComponent title='Projects' subtitle={this.state.reports.length + ' Projects'} />
         </div>
-        <FilterPanel/>
+        <FilterPanel reports={this.state.reports}/>
         <ProjectsListComponent reports={this.state.reports}/>
       </div>
     );
