@@ -22,6 +22,7 @@ render() {
                 <select className='selected' value={this.state.value} onChange={this.handleChange}>
                     <option  value='Date'>Date</option>
                     <option value='Issues'>Issues</option>
+                    <option value='Name'>Name</option>
                 </select>
             </label>
         </form>

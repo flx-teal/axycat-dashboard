@@ -39,7 +39,7 @@ export default class Listing extends Component {
         <FilterPanel 
         updateData={this.updateData} 
         filterData={this.filterData} 
-        sortData={this.state.sortData} 
+        sortData={this.sortData} 
         reports={this.state.reports}/>
         <ProjectsListComponent 
         inputValue={this.state.inputValue} 
