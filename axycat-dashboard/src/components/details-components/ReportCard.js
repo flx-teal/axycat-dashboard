@@ -11,7 +11,6 @@ class ReportCard extends Component {
     let prData, passes, failed;
     if (this.props.data) {
       prData = this.props.data;
-      console.log(prData);
       passes = prData.passes.length;
       failed = prData.violations.length;
     }
