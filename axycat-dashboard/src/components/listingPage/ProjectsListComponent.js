@@ -11,21 +11,22 @@ export default class ProjectsListComponent extends React.Component {
 
     render() {
         let data = this.props.reports, showProjects;
-        let inputValue = this.props.inputValue;
+        let inputValue = this.props.inputValue.toLowerCase();
         if (!data) {
             return (<p>Loading...</p>)
-        }
-        if (inputValue !== '') {
-            let array = data.filter(el => {
-                return el.data.projectData.projectName === inputValue
-            });
-            showProjects = array.map(projectItem =>
-                <ProjectItemComponent data={projectItem} key={projectItem.id}/>
-            );
         } else {
-            showProjects = data.map(projectItem =>
-                <ProjectItemComponent data={projectItem} key={projectItem.id}/>
-            );
+            if (inputValue !== '') {
+                let array = data.filter(el => {
+                    return el.data.projectData.projectName.toLowerCase().includes(inputValue)
+                });
+                showProjects = array.map(projectItem =>
+                    <ProjectItemComponent data={projectItem} key={projectItem.id}/>
+                );
+            } else {
+                showProjects = data.map(projectItem =>
+                    <ProjectItemComponent data={projectItem} key={projectItem.id}/>
+                );
+            }
         }
         return (
             <div>
