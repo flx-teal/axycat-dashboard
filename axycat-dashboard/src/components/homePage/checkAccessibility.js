@@ -1,6 +1,7 @@
 import React from 'react';
 import './checkAccessibility.scss'
 import {addErrorToCloud} from "../../config/fbConfig";
+import {Link, Redirect} from "react-router-dom";
 
 class CheckAccessibility extends React.Component {
     constructor(props) {
@@ -8,7 +9,9 @@ class CheckAccessibility extends React.Component {
         this.state = {
             value: '',
             items: [],
-            showError: false
+            showError: false,
+            id: '',
+            redirect: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,12 +48,8 @@ class CheckAccessibility extends React.Component {
                 this.setState({
                     items: json.violations
                 });
-                //Check result
-                if (json.violations) {
-                    //If check is correct with violations erorrs, then we send JSON to FIREBASE via creatError function
-                    addErrorToCloud(json);
-                }
-            });
+            })
+            .catch(error => console.log(error));
         //Set empty string into input field
         this.setState({value: ''})
     };
@@ -67,7 +66,7 @@ class CheckAccessibility extends React.Component {
                 {this.state.showError ? <div className="error-list" role="alert">
                     Please enter valid web site address <a href="#" className="error-alert">http://example.com</a>
                 </div> : null}
-                <p>1 billion people aroud the world live with a disability - 15% of global population</p>
+                <p>1 billion people around the world live with a disability - 15% of global population</p>
             </div>
         );
     }
