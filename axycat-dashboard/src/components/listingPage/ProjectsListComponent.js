@@ -16,18 +16,46 @@ export default class ProjectsListComponent extends React.Component {
         let sortValue = this.props.sortValue;
         let filteredList = [];
         let searchResults = [];
-        if (sortValue === 'Issues') {
-            console.log('works')
-        }
+        let sortedList = [];
 
         if (!data) {
             return (<p>load</p>)
         } else {
-            showProjects = data.map(projectItem =>
-                <ProjectItemComponent data={projectItem} key={projectItem.id}/>
+            sortedList = data.sort((a,b) => {
+                if( a.data.timestamp < b.data.timestamp)
+               return  -1;
+             });
+             showProjects = sortedList.map(projectItem =>
+                 <ProjectItemComponent data={projectItem} key={projectItem.id} />
+             );
+        }
+        if (sortValue === 'Issues') {
+           sortedList = data.sort((a,b) => {
+              return  a.data.violations.length-b.data.violations.length
+            });
+            showProjects = sortedList.map(projectItem =>
+                <ProjectItemComponent data={projectItem} key={projectItem.id} />
             );
         }
-
+        if (sortValue === 'Date') {
+           sortedList = data.sort((a,b) => {
+               if( a.data.timestamp < b.data.timestamp)
+              return  -1;
+            });
+            showProjects = sortedList.map(projectItem =>
+                <ProjectItemComponent data={projectItem} key={projectItem.id} />
+            );
+        }
+        if (sortValue === 'Name') {
+           sortedList = data.sort((a,b) => {
+               if (a.data.projectData.projectName.toLowerCase() <b.data.projectData.projectName.toLowerCase()) {
+               return -1
+            }
+            });
+            showProjects = sortedList.map(projectItem =>
+                <ProjectItemComponent data={projectItem} key={projectItem.id} />
+                );
+        }
         if (buttonName === 'New') {
             filteredList = data.filter(projectItem => {
                 return projectItem.data.projectData.status === 'new'

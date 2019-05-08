@@ -11,7 +11,6 @@ export default class ProjectItemComponent extends React.Component {
             createdProjectId: ''
         };
     }
-
     render() {
         let data = this.props.data.data;
         let id = this.props.data.id;
