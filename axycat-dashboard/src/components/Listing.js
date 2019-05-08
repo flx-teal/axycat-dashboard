@@ -10,17 +10,24 @@ export default class Listing extends Component {
         super(props);
         this.state = {
             reports: [],
-            inputValue: ''
+            inputValue: '',
+            buttonName: '',
+            sortValue: ''
         };
     }
 
     updateData = (value) => {
         this.setState({ inputValue: value });
     };
-
+    filterData = (value) => {
+        this.setState({ buttonName: value })
+    };
+    sortData = (value) => {
+      this.setState({ sortValue: value });
+  };
     componentDidMount() {
         getAllReportsFromCloud().then(data =>
-            this.setState({reports: data})
+            this.setState({ reports: data })
         )
     }
 
@@ -29,8 +36,16 @@ export default class Listing extends Component {
       <div className='container'>
         <div className='titleListing'><TitleComponent title='Projects' subtitle={this.state.reports.length + ' Projects'} />
         </div>
-        <FilterPanel updateData={this.updateData} reports={this.state.reports}/>
-        <ProjectsListComponent inputValue={this.state.inputValue} reports={this.state.reports}/>
+        <FilterPanel 
+        updateData={this.updateData} 
+        filterData={this.filterData} 
+        sortData={this.state.sortData} 
+        reports={this.state.reports}/>
+        <ProjectsListComponent 
+        inputValue={this.state.inputValue} 
+        buttonName={this.state.buttonName} 
+        sortValue={this.state.sortValue} 
+        reports={this.state.reports}/>
       </div>
     );
   }

@@ -5,19 +5,21 @@ export default class SortDropdown extends React.Component {
 constructor(props){
     super(props);
     this.state = {
-        value: 'Date',
+        value: ''
     };
+    this.handleChange = this.handleChange.bind(this)
 }
 
 handleChange(event){
     this.setState({value: event.target.value});
-    console.log(`sorting by`)
+    this.props.sortData(event.target.value)
+    console.log(event.target.value)
 }
 render() {
     return(
         <form className='sortForm'>
             <label className='sortBy'> Sort by 
-                <select className='selected' value={this.state.value} onChange={this.handleChange = this.handleChange.bind(this)}>
+                <select className='selected' value={this.state.value} onChange={this.handleChange}>
                     <option  value='Date'>Date</option>
                     <option value='Issues'>Issues</option>
                 </select>
