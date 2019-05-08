@@ -8,66 +8,90 @@ export default class ProjectsListComponent extends React.Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         let data = this.props.reports, showProjects;
         let inputValue = this.props.inputValue.toLowerCase();
         let buttonName = this.props.buttonName;
         let sortValue = this.props.sortValue;
-        if(sortValue === 'Issues') {
+        let filteredList = [];
+        let searchResults = [];
+        if (sortValue === 'Issues') {
             console.log('works')
         }
 
-
-    if(!data){
+        if (!data) {
             return (<p>load</p>)
-        } else {  showProjects = data.map(projectItem =>
-            <ProjectItemComponent data={projectItem} key={projectItem.id}/>
-          );}
-          
-    if(buttonName){
+        } else {
+            showProjects = data.map(projectItem =>
+                <ProjectItemComponent data={projectItem} key={projectItem.id}/>
+            );
+        }
+
         if (buttonName === 'New') {
-            let filteredList = data.filter(projectItem => {
+            filteredList = data.filter(projectItem => {
                 return projectItem.data.projectData.status === 'new'
             });
             showProjects = filteredList.map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
-        } else if (buttonName === 'In progress') {
-            let filteredList = data.filter(projectItem => {
+        }
+        if (buttonName === 'In progress') {
+            filteredList = data.filter(projectItem => {
                 return projectItem.data.projectData.status === 'in progress'
             });
             showProjects = filteredList.map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
-        else if (buttonName === 'Done') {
-            let filteredList = data.filter(projectItem => {
+        if (buttonName === 'Done') {
+            filteredList = data.filter(projectItem => {
                 return projectItem.data.projectData.status === 'done'
             });
             showProjects = filteredList.map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
-        } else { 
+        }
+        if (buttonName === 'All') {
             showProjects = data.map(projectItem =>
-                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
+                <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
-    }
-        
-    if (inputValue !== ''){
-            let searchResults = data.filter(projectItem => {
+        if (buttonName !== '' && inputValue !== '') {
+            searchResults = filteredList.filter(projectItem => {
                 return projectItem.data.projectData.projectName.toLowerCase().includes(inputValue)
-             });
+            });
             showProjects = searchResults.map(projectItem =>
-                  <ProjectItemComponent data={projectItem} key={projectItem.id}/>
-                );
-            } 
-        
+                <ProjectItemComponent data={projectItem} key={projectItem.id}/>
+            );
+        }
+        if (buttonName === 'All' && inputValue !== '') {
+            searchResults = data.filter(projectItem => {
+                return projectItem.data.projectData.projectName.toLowerCase().includes(inputValue)
+            });
+            showProjects = searchResults.map(projectItem =>
+                <ProjectItemComponent data={projectItem} key={projectItem.id}/>
+            );
+        }
+        if (buttonName === '' && inputValue !== '') {
+            searchResults = data.filter(projectItem => {
+                return projectItem.data.projectData.projectName.toLowerCase().includes(inputValue)
+            });
+            showProjects = searchResults.map(projectItem =>
+                <ProjectItemComponent data={projectItem} key={projectItem.id}/>
+            );
+        }
+        if (buttonName === '' && inputValue === '') {
+            showProjects = data.map(projectItem =>
+                <ProjectItemComponent data={projectItem} key={projectItem.id}/>
+            );
+        }
+
         return (
             <div>
                 <div className='allProjectsContainer'>
                     <CreateNewProject buttonName='Create new project' buttonContent='+'/>
-        {showProjects}
+                    {showProjects}
                 </div>
                 <ListPagination/>
             </div>
