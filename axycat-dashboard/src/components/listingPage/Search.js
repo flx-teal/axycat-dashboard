@@ -7,9 +7,7 @@ export default class Search extends React.Component {
         this.state = {
             value: ''
         };
-
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
@@ -17,18 +15,13 @@ export default class Search extends React.Component {
         this.props.updateData(event.target.value)
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        //this.props.updateData(this.state.value)
-    }
-
     render() {
         return (
-            <form className='searchForm' onSubmit={this.handleSubmit}>
+            <form className='searchForm'>
                 <label>
                     <input value={this.state.value} onChange={this.handleChange} className='searchInput' type='text'
                            placeholder='Search by Name'/>
-                    <button className='searchButton' type='Submit' value='Submit'></button>
+                    <button className='searchButton' type='button' disabled></button>
                 </label>
             </form>
         );

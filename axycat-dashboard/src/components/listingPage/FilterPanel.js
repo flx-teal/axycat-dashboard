@@ -11,11 +11,11 @@ export default class FilterPanel extends React.Component {
     render() {
         return(
             <div className='filterPanel'>
-            <FilterButtons buttonName='All' reports={this.props.reports}/>
-            <FilterButtons buttonName='New'/>
-            <FilterButtons buttonName='In progress'/>
-            <FilterButtons buttonName='Done'/>
-            <SortDropdown />
+            <FilterButtons buttonName='All' filterData={this.props.filterData} reports={this.props.reports}/>
+            <FilterButtons buttonName='New' filterData={this.props.filterData} reports={this.props.reports}/>
+            <FilterButtons buttonName='In progress' filterData={this.props.filterData} reports={this.props.reports}/>
+            <FilterButtons buttonName='Done' filterData={this.props.filterData} reports={this.props.reports}/>
+            <SortDropdown sortData={this.props.sortData} reports={this.props.reports}/>
             <Search  updateData={this.props.updateData} reports={this.props.reports} />
             </div>
         );

@@ -1,8 +1,7 @@
 import React from 'react';
 import './ProjectItemComponent.scss';
 import {NavLink, Redirect, Route, Switch} from "react-router-dom";
-import ProjectItemNavigation from "../ProjectItemNavigation/ProjectItemNavigation";
-import {getReportFromCloudById} from "../../config/fbConfig";
+
 
 export default class ProjectItemComponent extends React.Component {
     constructor(props) {
@@ -16,6 +15,8 @@ export default class ProjectItemComponent extends React.Component {
     render() {
         let data = this.props.data.data;
         let id = this.props.data.id;
+        let date = data.timestamp;
+        let format = require('date-fns/format')
         return (
             <div className='componentDiv'>
                 <div key={this.props.data.id} className='components'>
@@ -29,7 +30,7 @@ export default class ProjectItemComponent extends React.Component {
                         {data.projectData.projectName}
                     </NavLink>
                     <p className='website'>{data.projectData.website}</p>
-                    <p className='date'>{data.timestamp}</p>
+                    <p className='date'>{format(date, 'DD-MM-YYYY')}</p>
                     <p className='clientName'>{data.projectData.clientName}</p>
                     <p className='issues'>Issues - {data.violations.length}</p>
                     <p className='status'>{data.projectData.status}</p>
