@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SignUp extends React.Component {
+class Login extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,7 +13,7 @@ class SignUp extends React.Component {
                 {!this.props.isClicked && <div className='issues-popup'>
                     <div className='issues-popup-inner'>
                         <div className='issues-popup-inner-wrapper'>
-                            <h1 onClick={this.props.handleClick}>SignUp work</h1>
+                            <h1 onClick={this.props.handleClick}>Login</h1>
                         </div>
                     </div>
                 </div>}
@@ -22,4 +22,4 @@ class SignUp extends React.Component {
     }
 }
 
-export default SignUp;
+export default Login;
