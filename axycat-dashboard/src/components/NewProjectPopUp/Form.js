@@ -115,9 +115,10 @@ export default class Form extends Component {
   }
 
   renderRedirect() {
-    const {redirect, createdProjectId} = this.state;
+    const {redirect, createdProjectId, projectName} = this.state;
     localStorage.clear();
     localStorage.setItem('createdProjectId', createdProjectId);
+    localStorage.setItem('projectName', projectName);
 
     if (redirect) {
       return <Redirect to={{
