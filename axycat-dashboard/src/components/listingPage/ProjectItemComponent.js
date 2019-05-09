@@ -16,15 +16,14 @@ export default class ProjectItemComponent extends React.Component {
         let id = this.props.data.id;
         let date = data.timestamp;
         let format = require('date-fns/format');
+        localStorage.clear();
+        localStorage.setItem('createdProjectId', id);
+
         return (
             <div className='componentDiv'>
                 <div key={this.props.data.id} className='components'>
                     <NavLink className='projectName' to={{
-                        pathname: `/project-details/accessibility-overview/${id}`,
-                        state: {
-                            createdProjectId: id,
-                            projectName: data.projectData.projectName
-                        }
+                        pathname: `/project-details/${id}/accessibility-overview/`,
                     }}>
                         {data.projectData.projectName}
                     </NavLink>

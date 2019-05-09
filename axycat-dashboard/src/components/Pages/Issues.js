@@ -8,12 +8,12 @@ class Issues extends Component {
     constructor(props){
         super(props);
         this.state = {
-            projectId: localStorage.getItem('createdProjectId') || '',
+            projectId: localStorage.getItem('createdProjectId'),
             dataProject: ''
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         getReportFromCloudById(this.state.projectId).then(data =>
             this.setState({ dataProject: data })
         );
