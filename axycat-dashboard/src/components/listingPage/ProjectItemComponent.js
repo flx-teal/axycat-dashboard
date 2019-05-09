@@ -15,7 +15,7 @@ export default class ProjectItemComponent extends React.Component {
         let data = this.props.data.data;
         let id = this.props.data.id;
         let date = data.timestamp;
-        let format = require('date-fns/format')
+        let format = require('date-fns/format');
         return (
             <div className='componentDiv'>
                 <div key={this.props.data.id} className='components'>
