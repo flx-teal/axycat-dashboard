@@ -11,9 +11,8 @@ import Issues from "../Pages/Issues";
 export default class ProjectItemNavigation extends Component {
   constructor(props) {
     super(props);
-    const {location: {state: {createdProjectId} = {}} = {}} = props;
     this.state = {
-      projectId: createdProjectId || '',
+      projectId: localStorage.getItem('createdProjectId') || '',
       projectName: ''
     }
   }
@@ -41,16 +40,16 @@ export default class ProjectItemNavigation extends Component {
         <div className="sidebar">
           <p className="project-name">{projectName}</p>
           <nav className="navigation">
-            <Link to={`${match.url}/accessibility-overview/${projectId}`} data={projectId}>
+            <Link to={`${match.url}/${projectId}/accessibility-overview`} data={projectId}>
               Accessibility Overview
             </Link>
-            <Link to={`${match.url}/pages/${projectId}`}>
+            <Link to={`${match.url}/${projectId}/pages`}>
               Pages
             </Link>
-            <Link to={`${match.url}/issues/${projectId}`}>
+            <Link to={`${match.url}/${projectId}/issues`}>
               Issues
             </Link>
-            <Link to={`${match.url}/reports/${projectId}`}>
+            <Link to={`${match.url}/${projectId}/reports`}>
               Reports
             </Link>
           </nav>
@@ -59,10 +58,10 @@ export default class ProjectItemNavigation extends Component {
           <NavLink className='project-list-return' activeClassName="active" to="/listing">
             &#8592; All Projects
           </NavLink>
-          <Route path={`${match.path}/accessibility-overview/:projectId`} component={SideBarDetails} />
-          <Route path={`${match.path}/pages/:projectId`} component={Pages}/>
-          <Route path={`${match.path}/issues/:projectId`} component={Issues}/>
-          <Route path={`${match.path}/reports/:projectId`} component={Reports}/>
+          <Route path={`${match.path}/:projectId/accessibility-overview`} component={SideBarDetails} />
+          <Route path={`${match.path}/:projectId/pages`} component={Pages}/>
+          <Route path={`${match.path}/:projectId/issues`} component={Issues}/>
+          <Route path={`${match.path}/:projectId/reports`} component={Reports}/>
         </div>
       </div>
     )

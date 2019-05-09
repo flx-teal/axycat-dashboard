@@ -8,7 +8,7 @@ class Issues extends Component {
     constructor(props){
         super(props);
         this.state = {
-            projectId: this.props.match.params.projectId,
+            projectId: localStorage.getItem('createdProjectId') || '',
             dataProject: ''
         };
     }
