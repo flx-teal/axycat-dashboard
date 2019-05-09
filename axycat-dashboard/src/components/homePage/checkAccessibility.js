@@ -1,14 +1,13 @@
 import React from 'react';
 import './checkAccessibility.scss'
-import {addErrorToCloud} from "../../config/fbConfig";
-import {Link, Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 
 class CheckAccessibility extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             value: '',
-            items: [],
+            reports: [],
             showError: false,
             id: '',
             redirect: false
@@ -24,15 +23,36 @@ class CheckAccessibility extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        if (!/^https?:\/\/[\w?.&-=]+$/i.test(this.state.value)) {
-            this.setState({showError: true})
+        let inputValue = this.state.value;
+        if (!inputValue.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)) {
+            return this.setState({showError: true})
         }
-        else {
-            this.sendUrl(this.state.value)
+        if (inputValue !== '' && !/^https?/i.test(inputValue)) {
+            inputValue = 'http://' + inputValue;
+        }
+        if (/^https?:\/\/[\w?.&-=]+$/i.test(inputValue)) {
+            return this.sendUrl(inputValue)
+        }
+        if (!/^https?:\/\/[\w?.&-=]+$/i.test(inputValue)) {
+            return this.setState({showError: true})
+        }
+
+    }
+
+    renderRedirect() {
+        const {redirect, reports} = this.state;
+        if (redirect) {
+            return <Redirect to={{
+                pathname: `/detail`,
+                state: {
+                    reports
+                }
+            }}/>
         }
     }
 
     sendUrl = (url) => {
+        localStorage.clear();
         fetch('http://localhost:2000/check', {
             body: JSON.stringify({
                 'url': url
@@ -46,12 +66,15 @@ class CheckAccessibility extends React.Component {
             .then(json => {
                 //This is only for test, we can delete it later
                 this.setState({
-                    items: json.violations
+                    reports: json
                 });
+                localStorage.setItem("reports", JSON.stringify(this.state.reports));
+                this.setState({redirect: true})
             })
             .catch(error => console.log(error));
         //Set empty string into input field
-        this.setState({value: ''})
+        this.setState({value: ''});
+
     };
 
     render() {
@@ -61,10 +84,11 @@ class CheckAccessibility extends React.Component {
                 <form className='check-form'>
                     <input className='check-input' placeholder='Web site address' type="text" value={this.state.value}
                            onChange={this.handleChange}/>
+                    {this.renderRedirect()}
                     <button onClick={this.handleSubmit} className='check-button' type="submit">Check</button>
                 </form>
                 {this.state.showError ? <div className="error-list" role="alert">
-                    Please enter valid web site address <a href="#" className="error-alert">http://example.com</a>
+                    Please enter valid web site address <a href="#" className="error-alert">www.example.com</a>
                 </div> : null}
                 <p>1 billion people around the world live with a disability - 15% of global population</p>
             </div>
