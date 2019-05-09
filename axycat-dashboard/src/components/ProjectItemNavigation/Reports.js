@@ -5,7 +5,7 @@ const Reports = ({ match }) => {
   return (
     <div>
       <p>Reports page</p>
-      <p>Project id: {match.params.projectId}</p>
+      <p>Project id: {localStorage.getItem('createdProjectId')}</p>
     </div>
   )
 };

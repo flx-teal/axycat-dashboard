@@ -5,6 +5,7 @@ const Pages = () => {
   return (
     <div>
       <p>Pages page</p>
+      <p>Project id: {localStorage.getItem('createdProjectId')}</p>
     </div>
   )
 };

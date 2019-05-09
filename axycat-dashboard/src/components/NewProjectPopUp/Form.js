@@ -78,13 +78,18 @@ export default class Form extends Component {
       return this.setState({error: 'Please, fill all fields correctly!'});
     }
 
-    if (!this.state.siteUrl.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)) {
+    if (!this.state.siteUrl.trim().match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)) {
       return this.setState({error: 'Please, enter valid URL!'});
+    }
+
+    let newSiteUrl = this.state.siteUrl;
+    if (this.state.siteUrl.trim().match(/^((?!https?).)*$/g)) {
+      newSiteUrl = 'http://' + this.state.siteUrl.trim();
     }
 
     const data = {
       projectName: this.state.projectName,
-      website: this.state.siteUrl,
+      website: newSiteUrl,
       clientName: this.state.clientName,
       date: new Date(),
       issues: '',
@@ -110,14 +115,13 @@ export default class Form extends Component {
   }
 
   renderRedirect() {
-    const {redirect, projectName, createdProjectId} = this.state;
+    const {redirect, createdProjectId} = this.state;
+    localStorage.clear();
+    localStorage.setItem('createdProjectId', createdProjectId);
+
     if (redirect) {
       return <Redirect to={{
-        pathname: `/project-details/accessibility-overview/${createdProjectId}`,
-        state: {
-          projectName,
-          createdProjectId
-        }
+        pathname: `/project-details/${createdProjectId}/accessibility-overview`,
       }}/>
     }
   }
