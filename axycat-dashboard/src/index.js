@@ -1,17 +1,37 @@
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import {BrowserRouter, Route, Switch, NavLink} from "react-router-dom";
-
 import Home from './components/Home';
 import Details from './components/Details'
 import Listing from './components/Listing';
 import Error from './components/Error';
 import TitleComponent from './components/details-components/TitleComponent'
-import ButtonComponent from './components/details-components/ButtonComponent'
 import './index.scss'
 import ProjectItemNavigation from "./components/ProjectItemNavigation/ProjectItemNavigation";
+import SignUp from "./components/SignUp/SignUp";
+import Login from "./components/Login/Login";
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isSignUp: false,
+            isLogin: false
+        };
+    }
+
+    handleSignUp = () => {
+        this.setState(prevState => ({
+            isSignUp: !prevState.isSignUp
+        }));
+    };
+
+    handleLogin = () => {
+        this.setState(prevState => ({
+            isLogin: !prevState.isLogin
+        }));
+    };
+
     render() {
         return (
             <BrowserRouter>
@@ -38,8 +58,13 @@ class App extends Component {
                             </NavLink>
                         </nav>
                         <div className='buttons-container'>
-                            <ButtonComponent class='btn btn-blue' name='Sign up'/>
-                            <ButtonComponent class='btn btn-white' name='Login'/>
+
+                            <button onClick={this.handleSignUp} className='btn btn-blue' name='Sign up'>Sing Up</button>
+                            <div>{this.state.isSignUp && <SignUp handleSignUp={this.handleSignUp}/>}</div>
+
+                            <button onClick={this.handleLogin} className='btn btn-white' name='Sign up'>Login</button>
+                            <div>{this.state.isLogin && <Login handleLogin={this.handleLogin}/>}</div>
+
                         </div>
                     </header>
                     <Switch>
