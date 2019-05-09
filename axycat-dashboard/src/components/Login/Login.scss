@@ -1,0 +1,49 @@
+.issues-popup {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    .issues-popup-inner {
+        margin: 5% 15%;
+        border-radius: 5px;
+        background: white;
+        overflow: auto;
+        .wrapper-body{
+            background-color: #f5f7f7;
+        }
+        &-wrapper {
+            padding: 15px 30px;
+            &-ctrl {
+                display: flex;
+                justify-content: space-between;
+            }
+            .issues-close {
+                position: relative;
+                width: 20px;
+                height: 20px;
+                opacity: 0.5;
+                cursor: pointer;
+            }
+            .issues-close:hover {
+                opacity: 1;
+            }
+            .issues-close:before, .issues-close:after {
+                position: absolute;
+                content: ' ';
+                right: 10px;
+                height: 18px;
+                width: 1.5px;
+                background-color: #536370;
+            }
+            .issues-close:before {
+                transform: rotate(45deg);
+            }
+            .issues-close:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
