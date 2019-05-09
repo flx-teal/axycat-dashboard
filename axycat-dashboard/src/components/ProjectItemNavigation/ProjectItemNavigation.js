@@ -9,23 +9,48 @@ import {getReportFromCloudById} from '../../config/fbConfig'
 import Issues from "../Pages/Issues";
 
 export default class ProjectItemNavigation extends Component {
+
   constructor(props) {
     super(props);
+    const {location: {state: {createdProjectId, projectName} = {}} = {}} = props;
     this.state = {
-      projectId: localStorage.getItem('createdProjectId') || '',
-      projectName: ''
+      projectId: createdProjectId || '',
+      dataProject: '',
+      projectName: projectName || ''
     }
   }
 
   componentDidMount() {
-    const {projectId} = this.state;
+    const { projectId, projectName } = this.state;
+
     if (projectId) {
+      localStorage.clear();
+      localStorage.setItem('createdProjectId', projectId);
+      localStorage.setItem('projectName', projectName);
+      this.setState({
+        projectId: localStorage.getItem('createdProjectId'),
+        projectName: localStorage.getItem('projectName')
+      });
+    } else {
+      this.setState({
+        projectId: localStorage.getItem('createdProjectId'),
+        projectName: localStorage.getItem('projectName')
+      });
+    }
+
+    if (projectId) {
+
+      console.log('This is ' + projectId);
       getReportFromCloudById(projectId)
         .then(({projectData: {projectName} = {}}) => {
+
           if (projectName) {
             this.setState({
               projectName
-            })
+            });
+            localStorage.clear();
+            localStorage.setItem('createdProjectId', projectId);
+            localStorage.setItem('projectName', projectName);
           }
         })
     }
@@ -34,11 +59,13 @@ export default class ProjectItemNavigation extends Component {
   render() {
     const {match} = this.props;
     const {projectId, projectName} = this.state;
-    getReportFromCloudById(projectId);
+    getReportFromCloudById(projectId)
+      .catch(error => console.log(error));
+
     return (
       <div className="sidebar-main-wrapper">
         <div className="sidebar">
-          <p className="project-name">{projectName}</p>
+          <p className="project-name">{ projectName }</p>
           <nav className="navigation">
             <Link to={`${match.url}/${projectId}/accessibility-overview`} data={projectId}>
               Accessibility Overview
