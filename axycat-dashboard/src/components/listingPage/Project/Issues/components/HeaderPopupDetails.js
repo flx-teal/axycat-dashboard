@@ -30,6 +30,7 @@ export default class HeaderPopupDetails extends React.Component {
 
     render() {
         let data = this.props.data;
+        console.log(this.props.data.data.impact)
         return (
             <div className='popup-header'>
                 <div className='popup-header-info'>
@@ -45,8 +46,9 @@ export default class HeaderPopupDetails extends React.Component {
                 <div className='popup-header-status'>
                     <div className='popup-header-status-col'>
                         <div>Status: <select className='popup-header-status-select-status'>
-                                            <option value='inProgress'>In progress</option>
-                                            <option value='done'>Done</option>
+                                            <option value='New'>New</option>
+                                            <option value='In progress'>In progress</option>
+                                            <option value='Done'>Done</option>
                                             </select>
                         </div>
                         <div className='popup-header-status-col-priority'>Priority: <span className='popup-header-status-select-priority'
@@ -65,7 +67,6 @@ export default class HeaderPopupDetails extends React.Component {
                         </div>
                     </div>
                 </div>
-
             </div>
         )
     }

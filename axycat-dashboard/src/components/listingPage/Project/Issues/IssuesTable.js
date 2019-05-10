@@ -7,12 +7,21 @@ class IssuesTable extends Component {
     }
 
     render() {
-        let projectData, violations, createIssues;
-        if (this.props.data) {
-            projectData = this.props.data;
-            violations = projectData.violations;
-            createIssues = violations.map((elem, index) => {
-                return <IssuesTableRow key={index} data={elem} index={index + 1} />;
+        let issuesData = this.props.issuesList, showIssues;
+        let inputValue = this.props.inputValue.toLowerCase();
+        let searchResults = [];
+        if (this.props.issuesList) {
+            showIssues = issuesData.violations.map((issue, index) => {
+                return <IssuesTableRow key={index} data={issue} index={index + 1} />;
+            });
+        }
+
+        if(inputValue !== ''){
+            searchResults = issuesData.violations.filter(issue => {
+                return issue.description.toLowerCase().includes(inputValue)
+            });
+               showIssues = searchResults.map((issue, index) => {
+                return <IssuesTableRow key={index} data={issue} index={index + 1} />;
             });
         }
         return (
@@ -29,7 +38,7 @@ class IssuesTable extends Component {
                 </tr>
                 </thead>
                 <tbody className="table-body">
-                {createIssues}
+                {showIssues}
                 </tbody>
             </table>
         )
