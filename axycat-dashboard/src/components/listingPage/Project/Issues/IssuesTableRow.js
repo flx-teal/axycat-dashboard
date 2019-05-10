@@ -37,10 +37,12 @@ class IssuesTableRow extends React.Component {
         this.setState(prevState => ({
             isClicked: !prevState.isClicked
         }));
+        // this.setState (event.target.value)
     };
 
     render() {
         let data = this.props;
+        let date = data.data.timestamp;
         return (
             <tr className="table-row table-row-render">
                 <td className="table-cell">
@@ -55,12 +57,13 @@ class IssuesTableRow extends React.Component {
                 <td className="table-cell table-name" onClick={this.handleClick}>{data.data.description}</td>
                 <td className="table-cell">
                     <select className='table-cell-select'>
-                        <option value='inProgress'>In progress</option>
-                        <option value='done'>Done</option>
+                    <option value='New'>New</option>
+                    <option value='In progress'>In progress</option>
+                    <option value='Done'>Done</option>
                     </select>
                 </td>
                 <td className="table-cell"><span className="table-cell-asignee"></span></td>
-                <td className="table-cell">28-04-2019</td>
+                <td className="table-cell">{}</td>
                 <td className=''>
                     {this.state.isClicked && <IssuesPopUpDetails handleClick={this.handleClick} data={data}/>}
                 </td>

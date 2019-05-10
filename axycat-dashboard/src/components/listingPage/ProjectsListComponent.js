@@ -22,7 +22,7 @@ export default class ProjectsListComponent extends React.Component {
             return (<p>load</p>)
         } else {
             sortedList = data.sort((a,b) => {
-                if( a.data.timestamp < b.data.timestamp)
+                if( a.data.timestamp > b.data.timestamp)
                return  -1;
              });
              showProjects = sortedList.map(projectItem =>
@@ -31,7 +31,7 @@ export default class ProjectsListComponent extends React.Component {
         }
         if (sortValue === 'Issues') {
            sortedList = data.sort((a,b) => {
-              return  a.data.violations.length-b.data.violations.length
+              return  b.data.violations.length-a.data.violations.length
             });
             showProjects = sortedList.map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id} />
