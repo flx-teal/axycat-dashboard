@@ -1,8 +1,8 @@
 import React from 'react';
 import TitleComponent from './TitleComponent';
-import './IsueCard.scss';
+import './IssueCard.scss';
 
-function IsueCard(props) {
+function IssueCard(props) {
   return (
     <div className='card-container'>
       <div className='card-title'>
@@ -19,4 +19,4 @@ function IsueCard(props) {
   );
 }
 
-export default IsueCard;
+export default IssueCard;

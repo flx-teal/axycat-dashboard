@@ -4,16 +4,9 @@ import TitleComponent from './TitleComponent';
 import './ReportCard.scss';
 
 class ReportCard extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
-    let prData, passes, failed;
-    if (this.props.data) {
-      prData = this.props.data;
-      passes = prData.passes.length;
-      failed = prData.violations.length;
-    }
+    const { data } = this.props;
+    const { passes, violations } = data;
 
     return (
       <div className='card-container'>
@@ -23,13 +16,15 @@ class ReportCard extends Component {
         <div className='card-data'>
           <div className='card-data_satisfy'>
             <p className='card-data_satisfy__title-gray'>Satisfied :</p>
-            <p className='card-data_satisfy__value-gray'>{passes} </p>
+            <p className='card-data_satisfy__value-gray'>{passes.length} </p>
             <p className='card-data_satisfy__title-blue'>Failed :</p>
-            <p className='card-data_satisfy__value-blue'>{failed}</p>
+            <p className='card-data_satisfy__value-blue'>{violations.length}</p>
           </div>
           <div className='card-data_chart'>
-            <GoogleChart data={prData} />
-            <p className='card-data_total'>{passes + failed}</p>
+            <GoogleChart data={data} />
+            <p className='card-data_total'>
+              {passes.length + violations.length}
+            </p>
           </div>
         </div>
       </div>
@@ -37,4 +32,10 @@ class ReportCard extends Component {
   }
 }
 
+ReportCard.defaultProps = {
+  data: {
+    passes: [],
+    violations: []
+  }
+};
 export default ReportCard;

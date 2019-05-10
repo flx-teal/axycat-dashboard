@@ -2,40 +2,36 @@ import React, { Component } from 'react';
 import './ChartVerticalMeter.scss';
 
 class ChartVerticalMeter extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
-    let prData, violations, len, cLen, sLen, mLen;
-    let critical = [];
-    let serious = [];
-    let minor = [];
+    const { data } = this.props;
+    const { violations } = data;
 
-    if (this.props.data) {
-      prData = this.props.data;
-      violations = prData.violations;
-      len = violations.length;
+    let cLen, sLen, mLen;
+    const len = violations.length;
+    const critical = [];
+    const serious = [];
+    const minor = [];
 
-      for (let i = 0; i < violations.length; i++) {
-        switch (violations[i].impact) {
-          case 'critical':
-            critical.push(violations[i]);
-            break;
-          case 'serious':
-            serious.push(violations[i]);
-            break;
-          case 'moderate':
-            minor.push(violations[i]);
-            break;
-          default:
-            console.log('There is not impacts');
-        }
+    for (let i = 0; i < len; i++) {
+      switch (violations[i].impact) {
+        case 'critical':
+          critical.push(violations[i]);
+          break;
+        case 'serious':
+          serious.push(violations[i]);
+          break;
+        case 'moderate':
+          minor.push(violations[i]);
+          break;
+        default:
+          console.log('There is not impacts');
       }
-      cLen = critical.length;
-      sLen = serious.length;
-      mLen = minor.length;
     }
+    cLen = critical.length;
+    sLen = serious.length;
+    mLen = minor.length;
 
+    
     return (
       <div className='meter-chart-vertical'>
         <div className='meter-chart-vertical__impact-container'>
@@ -82,5 +78,10 @@ class ChartVerticalMeter extends Component {
     );
   }
 }
+ChartVerticalMeter.defaultProps = {
+  data: {
+    violations: []
+  }
+};
 
 export default ChartVerticalMeter;

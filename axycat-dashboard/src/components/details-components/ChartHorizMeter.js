@@ -2,35 +2,34 @@ import React, { Component } from 'react';
 import './ChartHorizMeter.scss';
 
 class ChartHorizMeter extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
-    let prData, violations;
+    const { data } = this.props;
+    const { violations } = data;
+
     let critical = [];
     let serious = [];
     let minor = [];
 
-    if (this.props.data) {
-      prData = this.props.data;
-      violations = prData.violations;
-
-      for (let i = 0; i < violations.length; i++) {
-        switch (violations[i].impact) {
-          case 'critical':
-            critical.push(violations[i]);
-            break;
-          case 'serious':
-            serious.push(violations[i]);
-            break;
-          case 'moderate':
-            minor.push(violations[i]);
-            break;
-          default:
-            console.log('There is not impacts');
-        }
+    for (let i = 0; i < violations.length; i++) {
+      switch (violations[i].impact) {
+        case 'critical':
+          critical.push(violations[i]);
+          break;
+        case 'serious':
+          serious.push(violations[i]);
+          break;
+        case 'moderate':
+          minor.push(violations[i]);
+          break;
+        case 'minor':
+          minor.push(violations[i]);
+          break;
+        default:
+          console.log('There is not impacts');
       }
     }
+    const maxVal = critical.length + serious.length + minor.length;
+
     return (
       <div className='meter-chart'>
         <div className='meter-chart__impact-container'>
@@ -39,7 +38,7 @@ class ChartHorizMeter extends Component {
             className='impact-container__meter'
             value={critical.length}
             min='0'
-            max='20'
+            max={maxVal}
           />
           <p className='impact-container__value'>{critical.length}</p>
         </div>
@@ -49,7 +48,7 @@ class ChartHorizMeter extends Component {
             className='impact-container__meter'
             value={serious.length}
             min='0'
-            max='20'
+            max={maxVal}
           />
           <p className='impact-container__value'>{serious.length}</p>
         </div>
@@ -59,7 +58,7 @@ class ChartHorizMeter extends Component {
             className='impact-container__meter'
             value={minor.length}
             min='0'
-            max='20'
+            max={maxVal}
           />
           <p className='impact-container__value'>{minor.length}</p>
         </div>

@@ -3,9 +3,6 @@ import ListItemComponent from './ListItemComponent';
 import TitleComponent from './TitleComponent';
 
 class ListComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     let projectData, violations, createIssues;
 

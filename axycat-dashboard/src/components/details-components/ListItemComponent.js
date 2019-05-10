@@ -6,13 +6,14 @@ class ListItemComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      projectData: this.props.data,
       isClicked: false
     };
 
     this.checkImpact = this.checkImpact.bind(this);
   }
   checkImpact(props) {
-    switch (this.props.data.impact) {
+    switch (this.state.projectData.impact) {
       case 'critical':
         return {
           background: `#ed213a`
@@ -37,8 +38,6 @@ class ListItemComponent extends Component {
     }));
   };
   render() {
-    let prData = this.props.data;
-
     return (
       <div className='list-item-container'>
         <li
@@ -47,7 +46,7 @@ class ListItemComponent extends Component {
             backgroundColor: this.state.isClicked ? '#f1f1f1' : '#fff'
           }}>
           <p className='list-item_id'>{this.props.index}</p>
-          <p className='list-item_type'>{prData.description}</p>
+          <p className='list-item_type'>{this.state.projectData.description}</p>
           <div className='list-item_impact-container'>
             <p className='user-impact'>user impact</p>
             <span
@@ -57,7 +56,7 @@ class ListItemComponent extends Component {
           </div>
           <div className='list-item_details-container'>
             <span className='list-item_details-text' onClick={this.handleClick}>
-              viewe details
+              view details
             </span>
             <span className='list-item_details-arrow'>
               {this.state.isClicked ? '\u02C4' : '\u02C5'}
@@ -65,7 +64,9 @@ class ListItemComponent extends Component {
           </div>
         </li>
         <div className='inner-list-item-container'>
-          {this.state.isClicked && <InnerListItemComponent data={prData} />}
+          {this.state.isClicked && (
+            <InnerListItemComponent data={this.state.projectData} />
+          )}
         </div>
       </div>
     );

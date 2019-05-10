@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import Chart from 'react-google-charts';
 
 class GoogleChart extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     let projectData, satisfied, failed;
     if (this.props.data) {

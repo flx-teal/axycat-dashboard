@@ -4,14 +4,31 @@ import './InnerListItemComponent.scss';
 class InnerListItemComponent extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      data: this.props.data
+    };
   }
 
   render() {
-    let prData = this.props.data;
-    let node = prData.nodes[0];
-    let tags = prData.tags;
+    const node = this.state.data.nodes;
+    const tags = this.state.data.tags;
     const reg = /(wcag|section)+(\w+)?\.?(\w+)\.?(\w+)/;
-    let issuesTypeArr = tags.filter(checkIssue);
+    const issuesTypeArr = tags.filter(checkIssue);
+
+    function getTarget(arr) {
+      const _targets = [];
+      arr.map(function(elem) {
+        _targets.push(elem.target);
+      });
+      return _targets;
+    }
+    function getSrc(arr) {
+      const _source = [];
+      arr.map(function(elem) {
+        _source.push(elem.html);
+      });
+      return _source;
+    }
 
     function checkIssue(val) {
       return val.match(reg);
@@ -22,15 +39,15 @@ class InnerListItemComponent extends Component {
         <div className='inner-container'>
           <div className='inner-item'>
             <h4 className='inner-item__title'>Rule description</h4>
-            <p className='inner-item__text'>{prData.help}</p>
+            <p className='inner-item__text'>{this.state.data.help}</p>
           </div>
           <div className='inner-item'>
             <h4 className='inner-item__title'>Element location</h4>
-            <textarea type='text' value={node.target} />
+            <textarea type='text' value={getTarget(node)} readOnly />
           </div>
           <div className='inner-item'>
             <h4 className='inner-item__title'>Element source</h4>
-            <textarea value={node.html} />
+            <textarea value={getSrc(node)} readOnly />
           </div>
         </div>
         <div className='inner-container'>
@@ -56,7 +73,9 @@ class InnerListItemComponent extends Component {
         <div className='inner-container'>
           <div className='inner-item'>
             <h4 className='inner-item__title'>User impact</h4>
-            <p className='inner-item__text capitalize'>{prData.impact}</p>
+            <p className='inner-item__text capitalize'>
+              {this.state.data.impact}
+            </p>
           </div>
           <div className='inner-item'>
             <h4 className='inner-item__title'>Disabilities Affected</h4>

@@ -4,9 +4,6 @@ import './ReportCard.scss';
 import ChartHorizMeter from './ChartHorizMeter';
 
 class ReportCard extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className='card-container'>
