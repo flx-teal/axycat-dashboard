@@ -153,9 +153,9 @@ export default class Form extends Component {
                onChange={this.handleClientNameChange}
                placeholder={'Enter Client Name'}/>
         <div className="buttons">
-          <ButtonComponent class='btn-white' name='Cancel' onClick={closePopup}/>
           {this.renderRedirect()}
           <ButtonComponent class='btn-blue' name='Save' handler={this.handleSubmit}/>
+          <ButtonComponent class='btn-white' name='Cancel' onClick={closePopup}/>
         </div>
         {isLoading && <Spinner/>}
       </form>

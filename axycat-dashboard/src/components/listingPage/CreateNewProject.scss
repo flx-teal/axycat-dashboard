@@ -1,43 +1,46 @@
 .createNewProject {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 270px;
-	height: 180px;
-	background-color: #ffff;
-	margin-bottom: 2%;
-	border-radius: 5px;
-	box-shadow: 0px 0px 4px -3px rgba(0, 0, 0, 0.75);
-	background-color: #0070c3;
-	margin-right: 2%;
-	.createNewProjectContent {
-		text-align: center;
-		p {
-			color: #ffff;
-			font-size: 20px;
-			font-weight: 500;
-		}
-		button {
-			border-radius: 50px;
-			width: 50px;
-			height: 50px;
-			background-color: #ffff;
-			border: none;
-			position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 270px;
+  height: 180px;
+  background-color: #ffff;
+  margin-bottom: 2%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px -3px rgba(0, 0, 0, 0.75);
+  background-color: #0070c3;
+  margin-right: 2%;
+  .createNewProjectContent {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      color: #ffff;
+      font-size: 20px;
+      font-weight: 500;
+    }
+    div {
+      border-radius: 50px;
+      width: 50px;
+      height: 50px;
+      background-color: #ffff;
+      border: none;
+      position: relative;
 
-			span {
-				font-size: 40px;
-				position: absolute;
-				bottom: 3px;
-				right: 14px;
-				color: #0070c3;
-				font-weight: 700;
-				cursor: pointer;
-				&:hover {
-					color: #004074;
-				}
-			}
+      span {
+        font-size: 40px;
+        position: absolute;
+        bottom: 0;
+        right: 14px;
+        color: #0070c3;
+        font-weight: 700;
+        cursor: pointer;
+        &:hover {
+          color: #004074;
+        }
+      }
 
-		}
-	}
+    }
+  }
 }
