@@ -15,9 +15,14 @@ class SideBarDetails extends Component {
   }
 
   componentDidMount() {
-    getReportFromCloudById(this.state.projectId).then(data =>
-      this.setState({ dataProject: data })
-    );
+    if (this.state.dataProject === null) {
+      getReportFromCloudById(this.state.projectId).then(data =>
+        this.setState({ dataProject: data })
+      );
+    }
+  }
+  componentWillUnmount() {
+    this.setState({ dataProject: null });
   }
   render() {
     return (

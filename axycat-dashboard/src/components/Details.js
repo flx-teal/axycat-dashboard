@@ -17,7 +17,7 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    if (this.state.dataProject === '') {
+    if (this.state.dataProject === null) {
       getReportFromCloudById(this.state.projectId).then(data =>
         this.setState({ dataProject: data })
       );
