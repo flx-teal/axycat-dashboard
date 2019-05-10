@@ -1,0 +1,9 @@
+.reports-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .title-container {
+    margin: 5px;
+  }
+}

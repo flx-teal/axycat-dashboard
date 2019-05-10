@@ -22,7 +22,7 @@ export default class CreateNewProject extends Component {
       <div className='createNewProject'>
         <div className='createNewProjectContent'>
           {props.buttonContent &&
-          <button onClick={this.togglePopup.bind(this)}><span>{props.buttonContent}</span></button>}
+          <div className="button" onClick={this.togglePopup.bind(this)}><span>{props.buttonContent}</span></div>}
           {props.buttonName &&
           <p>{props.buttonName}</p>
           }

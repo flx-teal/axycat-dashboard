@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Link, NavLink} from "react-router-dom";
+import { Route, Link, NavLink } from 'react-router-dom';
 
 import './ProjectItemNavigation.scss';
 import SideBarDetails from "../details-components/sidebar-details/SideBarDetails";
@@ -82,7 +82,7 @@ export default class ProjectItemNavigation extends Component {
           </nav>
         </div>
         <div className="router-content">
-          <NavLink className='project-list-return' activeClassName="active" to="/listing">
+          <NavLink className='project-list-return' activeClassName="active" to="/listing" >
             &#8592; All Projects
           </NavLink>
           <Route path={`${match.path}/:projectId/accessibility-overview`} component={SideBarDetails} />
