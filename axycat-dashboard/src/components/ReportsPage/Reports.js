@@ -4,6 +4,7 @@ import './Reports.scss';
 import ButtonComponent from '../details-components/ButtonComponent';
 import ProgressBar from './ProgressBar';
 import IssuesAmountCart from './IssuesAmountCart'
+import TotalFlowChart from './TotalFlowChart';
 
 class Reports extends Component {
   constructor(props) {
@@ -30,6 +31,9 @@ class Reports extends Component {
           </div>
         </div>
         {/*<p>Project id: {localStorage.getItem('createdProjectId')}</p>*/}
+        <div>
+          <TotalFlowChart/>
+        </div>
       </div>
     )
   }
