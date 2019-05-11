@@ -60,11 +60,13 @@
       align-items: center;
       width: 135px;
       .list-item_details-text {
+        margin: 0;
         &:hover {
           cursor: pointer;
         }
       }
       .list-item_details-arrow {
+        margin: 0;
         font-size: 19px;
         color: gray;
       }
