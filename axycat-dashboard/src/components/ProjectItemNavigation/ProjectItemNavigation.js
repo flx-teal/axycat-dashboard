@@ -4,7 +4,7 @@ import { Route, Link, NavLink } from 'react-router-dom';
 import './ProjectItemNavigation.scss';
 import SideBarDetails from "../details-components/sidebar-details/SideBarDetails";
 import Pages from "./Pages";
-import Reports from "./Reports";
+import Reports from "../ReportsPage/Reports";
 import {getReportFromCloudById} from '../../config/fbConfig'
 import Issues from "../Pages/Issues";
 

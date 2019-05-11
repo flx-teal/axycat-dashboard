@@ -1,0 +1,35 @@
+$main-blue: #026fc2;
+
+.reports-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 15px;
+
+  .reports-pdf {
+    display: flex;
+    align-items: center;
+
+    .title-container {
+      margin: 5px;
+
+      .title {
+        font-weight: 300;
+        font-size: 21px;
+      }
+    }
+
+    .btn-white {
+      font-weight: bold;
+      font-size: 14px;
+      width: 150px;
+      height: 40px;
+      border: 1px solid $main-blue;
+      border-radius: 5px;
+    }
+  }
+
+  .issues-amount {
+    display: flex;
+  }
+}
