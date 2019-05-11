@@ -2,19 +2,19 @@ import React, {Component} from 'react';
 import { Route, Link, NavLink } from 'react-router-dom';
 
 import './ProjectItemNavigation.scss';
-import SideBarDetails from "../details-components/sidebar-details/SideBarDetails";
+import SideBarDetails from '../details-components/sidebar-details/SideBarDetails';
 import Pages from "./Pages";
 import Reports from "../ReportsPage/Reports";
 import {getReportFromCloudById} from '../../config/fbConfig'
-import Issues from "../Pages/Issues";
+import Issues from '../Pages/Issues';
 
 export default class ProjectItemNavigation extends Component {
 
   constructor(props) {
     super(props);
-    const {location: {state: {createdProjectId, projectName} = {}} = {}} = props;
+    const {location: {state: {projectId, projectName} = {}} = {}} = props;
     this.state = {
-      projectId: createdProjectId || '',
+      projectId: projectId || '',
       dataProject: '',
       projectName: projectName || ''
     }
@@ -24,7 +24,8 @@ export default class ProjectItemNavigation extends Component {
     const { projectId, projectName } = this.state;
 
     if (projectId) {
-      localStorage.clear();
+      localStorage.removeItem('projectName');
+      localStorage.removeItem('createdProjectId');
       localStorage.setItem('createdProjectId', projectId);
       localStorage.setItem('projectName', projectName);
       this.setState({
@@ -48,7 +49,8 @@ export default class ProjectItemNavigation extends Component {
             this.setState({
               projectName
             });
-            localStorage.clear();
+            localStorage.removeItem('projectName');
+            localStorage.removeItem('createdProjectId');
             localStorage.setItem('createdProjectId', projectId);
             localStorage.setItem('projectName', projectName);
           }
@@ -82,7 +84,7 @@ export default class ProjectItemNavigation extends Component {
           </nav>
         </div>
         <div className="router-content">
-          <NavLink className='project-list-return' activeClassName="active" to="/listing" >
+          <NavLink id='project-list-return' activeClassName="active" to="/listing" >
             &#8592; All Projects
           </NavLink>
           <Route path={`${match.path}/:projectId/accessibility-overview`} component={SideBarDetails} />
@@ -90,6 +92,7 @@ export default class ProjectItemNavigation extends Component {
           <Route path={`${match.path}/:projectId/issues`} component={Issues}/>
           <Route path={`${match.path}/:projectId/reports`} component={Reports}/>
         </div>
+
       </div>
     )
   }

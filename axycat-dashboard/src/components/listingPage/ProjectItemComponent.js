@@ -22,7 +22,7 @@ export default class ProjectItemComponent extends React.Component {
                     <NavLink className='projectName' to={{
                         pathname: `/project-details/${id}/accessibility-overview/`,
                         state: {
-                          createdProjectId: id,
+                          projectId: id,
                           projectName: data.projectData.projectName
                         }
                     }}>

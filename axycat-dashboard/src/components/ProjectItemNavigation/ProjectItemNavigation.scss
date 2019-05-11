@@ -34,13 +34,26 @@
   .router-content {
     width: 100%;
 
-    .project-list-return {;
+    #project-list-return {;
       display: block;
       margin: 20px;
       border-bottom: solid 1px #cee2f1;
       text-decoration: none;
       color: #026fc2;
       font-weight: bold;
+    }
+  }
+}
+
+@media print {
+  .sidebar-main-wrapper {
+    .sidebar {
+      visibility: hidden;
+      width: 0;
+    }
+
+    #project-list-return {
+      display: none;
     }
   }
 }

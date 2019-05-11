@@ -25,7 +25,7 @@ class IssuesTable extends Component {
             });
         }
         return (
-            <table className='table'>
+            <table className='table pdf'>
                 <thead className="table-head">
                 <tr className="table-row table-header">
                     <th className="table-title"></th>
