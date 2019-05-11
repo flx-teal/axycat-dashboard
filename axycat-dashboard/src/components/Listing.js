@@ -15,7 +15,13 @@ export default class Listing extends Component {
             sortValue: ''
         };
     }
-
+      componentDidMount() {
+        getAllReportsFromCloud()
+        .then(data =>
+          this.setState({ reports: data })
+      )
+      }
+  
     updateData = (value) => {
         this.setState({ inputValue: value });
     };
@@ -25,11 +31,7 @@ export default class Listing extends Component {
     sortData = (value) => {
       this.setState({ sortValue: value });
   };
-    componentDidMount() {
-        getAllReportsFromCloud().then(data =>
-            this.setState({ reports: data })
-        )
-    }
+
 
   render() {
       return (

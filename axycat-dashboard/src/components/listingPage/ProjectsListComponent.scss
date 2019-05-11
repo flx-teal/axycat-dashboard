@@ -6,3 +6,44 @@
     background-color: #f9fbfc;
 
   }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    li{
+      display: inline;
+      a {
+        text-decoration: none;
+      }
+    }
+    li.active {
+      background-color:#0070c3;
+      a { 
+        color: #ffff;
+      }
+    }
+    .pageNumber {
+      display: inline;
+      background-color: #eef2f3;
+      height: 30px;
+      width: 30px;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding: 10px 20px 10px 20px;
+      border-radius: 50%;
+      a {
+        text-decoration: none;
+        color: #43474f;
+      }
+     
+    }
+  }
+  .activeBtn {
+    color: #0070c3;
+  }
+  .btnPrev, .btnNext {
+    font-size: 30px;
+  
+  }
+  li span {
+    margin-top: 15px;
+  }
