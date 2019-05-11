@@ -1,0 +1,15 @@
+$dark-grey: #9dafbd;
+$white:  #ffffff;
+
+.issues-amount-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $dark-grey;
+  border-radius: 5px;
+  color: $white;
+  font-weight: bold;
+  width: 170px;
+  height: 40px;
+  margin: 12px;
+}

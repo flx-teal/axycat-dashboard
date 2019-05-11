@@ -1,0 +1,8 @@
+$main-blue: #026fc2;
+
+.filler {
+  background-color: $main-blue;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+}

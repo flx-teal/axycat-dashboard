@@ -1,0 +1,30 @@
+$main-blue: #026fc2;
+$sub-gray: #9dafbd;
+
+.progress-bar-wrapper {
+  display: flex;
+  align-items: center;
+
+  .title-container {
+    margin: 8px;
+
+    .title {
+      font-weight: 300;
+      font-size: 21px;
+    }
+  }
+
+  .progress-bar {
+    position: relative;
+    height: 5px;
+    width: 700px;
+    border-radius: 50px;
+    border: 1px solid $sub-gray;
+    background-color: $sub-gray;
+  }
+
+  span {
+    color: $main-blue;
+  }
+
+}
