@@ -42,7 +42,8 @@ class IssuesTableRow extends React.Component {
 
     render() {
         let data = this.props;
-        let date = data.data.timestamp;
+        let date = data.issuesList.timestamp;
+        let format = require('date-fns/format');
         return (
             <tr className="table-row table-row-render">
                 <td className="table-cell">
@@ -63,13 +64,11 @@ class IssuesTableRow extends React.Component {
                     </select>
                 </td>
                 <td className="table-cell"><span className="table-cell-asignee"></span></td>
-                <td className="table-cell">{}</td>
+                <td className="table-cell">{format(date, 'DD-MM-YYYY')}</td>
                 <td className=''>
                     {this.state.isClicked && <IssuesPopUpDetails handleClick={this.handleClick} data={data}/>}
                 </td>
             </tr>
-
-
         )
     }
 }
