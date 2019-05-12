@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './TotalFlowChart.scss';
 import Chart from 'react-google-charts';
 
-class TotalFlowChart extends Component {
+export default class TotalFlowChart extends Component {
   render() {
     const data = [
       ['Days', 'To Do', 'In Progress', 'Done'],
@@ -46,8 +46,8 @@ class TotalFlowChart extends Component {
       <div className='tottalflow-chart-container'>
         <h2>Total Flow Chart</h2>
         <Chart
-          width={'1200px'}
-          height={'550px'}
+          width={this.props.width}
+          height={this.props.height}
           chartType='AreaChart'
           loader={<div>Loading Chart</div>}
           data={data}
@@ -57,4 +57,3 @@ class TotalFlowChart extends Component {
     );
   }
 }
-export default TotalFlowChart;

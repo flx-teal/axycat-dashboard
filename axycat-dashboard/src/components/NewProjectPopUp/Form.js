@@ -156,7 +156,7 @@ export default class Form extends Component {
         <div className="buttons">
           {this.renderRedirect()}
           <ButtonComponent class='btn-blue' name='Save' handler={this.handleSubmit}/>
-          <ButtonComponent class='btn-white' name='Cancel' onClick={closePopup}/>
+          <ButtonComponent class='btn-white' name='Cancel' handler={closePopup}/>
         </div>
         {isLoading && <Spinner/>}
       </form>
