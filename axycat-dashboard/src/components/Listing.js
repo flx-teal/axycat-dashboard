@@ -6,49 +6,57 @@ import {getAllReportsFromCloud} from "../config/fbConfig";
 import './Listing.scss';
 
 export default class Listing extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
+        const {location: {state: {userUID} = {}} = {}} = props;
+        if (userUID) {
+            localStorage.setItem('userUID', userUID);
+        }
         this.state = {
+            userUID: localStorage.getItem('userUID') || '',
             reports: [],
             inputValue: '',
             buttonName: '',
             sortValue: ''
         };
     }
-      componentDidMount() {
-        getAllReportsFromCloud()
-        .then(data =>
-          this.setState({ reports: data })
-      )
-      }
-  
+
+    componentDidMount() {
+        getAllReportsFromCloud(this.state.userUID)
+            .then(data =>
+                this.setState({reports: data})
+            )
+    }
+
     updateData = (value) => {
-        this.setState({ inputValue: value });
+        this.setState({inputValue: value});
     };
     filterData = (value) => {
-        this.setState({ buttonName: value })
+        this.setState({buttonName: value})
     };
     sortData = (value) => {
-      this.setState({ sortValue: value });
-  };
+        this.setState({sortValue: value});
+    };
 
 
-  render() {
-      return (
-      <div className='container'>
-        <div className='titleListing'><TitleComponent title='Projects' subtitle={this.state.reports.length + ' Projects'} />
-        </div>
-        <FilterPanel 
-        updateData={this.updateData} 
-        filterData={this.filterData} 
-        sortData={this.sortData} 
-        reports={this.state.reports}/>
-        <ProjectsListComponent 
-        inputValue={this.state.inputValue} 
-        buttonName={this.state.buttonName} 
-        sortValue={this.state.sortValue} 
-        reports={this.state.reports}/>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className='container'>
+                <div className='titleListing'><TitleComponent title='Projects'
+                                                              subtitle={this.state.reports.length + ' Projects'}/>
+                </div>
+                <FilterPanel
+                    updateData={this.updateData}
+                    filterData={this.filterData}
+                    sortData={this.sortData}
+                    reports={this.state.reports}/>
+                <ProjectsListComponent
+                    userUID={this.state.userUID}
+                    inputValue={this.state.inputValue}
+                    buttonName={this.state.buttonName}
+                    sortValue={this.state.sortValue}
+                    reports={this.state.reports}/>
+            </div>
+        );
+    }
 }

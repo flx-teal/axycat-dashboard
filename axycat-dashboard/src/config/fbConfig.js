@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
+import {Redirect} from "react-router-dom";
 
 // Initialize Firebase
 const config = {
@@ -13,7 +14,12 @@ const config = {
 };
 
 firebase.initializeApp(config);
-const db = firebase.firestore();
+export const auth = firebase.auth();
+export const db = firebase.firestore();
+
+export const signOut = () => {
+    auth.signOut();
+};
 
 export const addErrorToCloud = async (checkResult, projectData = {}) => {
     try {
@@ -29,24 +35,46 @@ export const addErrorToCloud = async (checkResult, projectData = {}) => {
 };
 
 //Receive all Reports from Firebase
-export const getAllReportsFromCloud = async () => {
-    try {
-        let array = [];
-        const response = await db.collection("errors").get();
-        const data = await response.docs;
-        await data.map((report) => {
-            let item = {};
-            item.id = report.id;
-            item.data = report.data();
-            array.push(item)
-        });
-        return array;
+export const getAllReportsFromCloud = async (userUID) => {
+    if (userUID) {
+        try {
+            let array = [];
+            const response = await db.collection("errors").get();
+            const data = await response.docs;
+            await data.map((report) => {
+                let item = {};
+                item.id = report.id;
+                item.data = report.data();
+                array.push(item)
+            });
+            return array;
+        }
+        catch
+            (error) {
+            console.error("Error getting document:", error);
+        }
+        return {}
+    } else {
+        try {
+            let array = [];
+            const response = await db.collection('users').doc(userUID).get();
+            const data = await response.docs;
+            console.log(response.data());
+            await data.map((report) => {
+                let item = {};
+                item.id = report.id;
+                item.data = report.data();
+                array.push(item)
+            });
+            console.log(array);
+            return array;
+        }
+        catch
+            (error) {
+            console.error("Error getting document:", error);
+        }
+        return {}
     }
-    catch
-        (error) {
-        console.error("Error getting document:", error);
-    }
-    return {}
 };
 //Receive Report from Firebase by ID
 export const getReportFromCloudById = async id => {

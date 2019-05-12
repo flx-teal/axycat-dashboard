@@ -44,13 +44,20 @@ body {
 .buttons-container {
   display: flex;
   justify-content: space-evenly;
-  width: 25%;
+  align-items: center;
   margin: 0 40px;
   .btn {
     border-radius: 5px;
     width: 130px;
     height: 40px;
     font-size: 16px;
+  }
+  a{
+    position: relative;
+    display: block;
+    border-radius: 25px;
+    background-color: #9bafba;
+    text-decoration: none;
   }
 }
 
