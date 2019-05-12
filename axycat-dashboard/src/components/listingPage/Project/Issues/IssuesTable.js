@@ -12,7 +12,7 @@ class IssuesTable extends Component {
         let searchResults = [];
         if (this.props.issuesList) {
             showIssues = issuesData.violations.map((issue, index) => {
-                return <IssuesTableRow key={index} data={issue} index={index + 1} />;
+                return <IssuesTableRow key={index} data={issue} index={index + 1} issuesList={this.props.issuesList}/>;
             });
         }
 
@@ -21,9 +21,10 @@ class IssuesTable extends Component {
                 return issue.description.toLowerCase().includes(inputValue)
             });
                showIssues = searchResults.map((issue, index) => {
-                return <IssuesTableRow key={index} data={issue} index={index + 1} />;
+                return <IssuesTableRow key={index} data={issue} index={index + 1} issuesList={this.props.issuesList}/>;
             });
         }
+        console.log(this.props.issuesList)
         return (
             <table className='table pdf'>
                 <thead className="table-head">

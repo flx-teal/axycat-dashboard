@@ -249,7 +249,7 @@ export default class ProjectsListComponent extends React.Component {
                 )
             }
         });
-        if (this.props.reports.length < this.state.projectsPerPage) {
+        if (this.props.reports.length <= this.state.projectsPerPage) {
             return (
                 <div>
                     <div className='allProjectsContainer'>
@@ -264,6 +264,12 @@ export default class ProjectsListComponent extends React.Component {
         } else {
             renderPrevBtn = <li className={this.state.isPrevBtnActive}><a href='#' className="btnPrev activeBtn"
                                                                           onClick={this.btnPrevClick}> {'<'} </a></li>
+        }
+        if(this.state.isNextBtnActive === 'disabled') {
+            renderNextBtn = <li className={this.state.isNextBtnActive}><span className="btnNext"> {'>'} </span></li>
+        }
+        else{
+            renderNextBtn = <li className={this.state.isNextBtnActive}><a href='#' className="btnNext activeBtn"  onClick={this.btnNextClick}> {'>'} </a></li>
         }
 
         return (
