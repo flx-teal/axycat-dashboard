@@ -1,0 +1,45 @@
+.pdf-wrapper {
+  .title-container {
+    margin-bottom: 15px;
+  }
+
+  .issues {
+    .title-container {
+      margin-top: 0;
+    }
+  }
+
+  .report {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .issues-amount {
+      display: flex;
+    }
+
+    .flow-chart {
+      page-break-before: always;
+    }
+  }
+}
+
+@media print {
+  .report {
+
+    .progress-bar-wrapper {
+      width: 100%
+    }
+
+    .tottalflow-chart-container {
+      page-break-before: always;
+    }
+
+    .tottalflow-chart-container {
+      page-break-after: avoid;
+    }
+  }
+
+}

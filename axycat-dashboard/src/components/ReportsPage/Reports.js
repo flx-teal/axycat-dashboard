@@ -5,14 +5,17 @@ import ButtonComponent from '../details-components/ButtonComponent';
 import ProgressBar from './ProgressBar';
 import IssuesAmountCart from './IssuesAmountCart'
 import TotalFlowChart from './TotalFlowChart';
+import {addErrorToCloud} from "../../config/fbConfig";
 
 class Reports extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      percentage: 60
-    }
+      percentage: 60,
+      isLoading: false,
+      projectId: props.match.params.projectId || localStorage.getItem('createdProjectId')
+    };
   }
 
   render() {
@@ -20,9 +23,9 @@ class Reports extends Component {
       <div className="reports-wrapper">
         <div className="reports-pdf">
           <TitleComponent title="Status Reports" className="title"/>
-          <ButtonComponent class='btn-white' name='Download report'/>
+          <a href={`http://localhost:2000/report?id=${this.state.projectId}`} className="btn-white" download>Download report</a>
         </div>
-        <div className="pdf">
+        <div>
           <ProgressBar percentage={this.state.percentage}/>
           <div className="issues-amount">
             <IssuesAmountCart name="To Do" amount="100"/>
@@ -30,9 +33,9 @@ class Reports extends Component {
             <IssuesAmountCart name="Done" amount="100"/>
           </div>
         </div>
-        {/*<p>Project id: {localStorage.getItem('createdProjectId')}</p>*/}
+        {/*<p>Project id: </p>*/}
         <div>
-          <TotalFlowChart/>
+          <TotalFlowChart width={'1200px'} height={'550px'}/>
         </div>
       </div>
     )
