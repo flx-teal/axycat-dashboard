@@ -116,7 +116,8 @@ export default class Form extends Component {
 
   renderRedirect() {
     const {redirect, createdProjectId, projectName} = this.state;
-    localStorage.clear();
+    localStorage.removeItem('createdProjectId');
+    localStorage.removeItem('projectName');
     localStorage.setItem('createdProjectId', createdProjectId);
     localStorage.setItem('projectName', projectName);
 

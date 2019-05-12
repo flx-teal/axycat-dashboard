@@ -23,11 +23,11 @@ class Authentication extends React.Component {
         }));
     };
 
-    render () {
-        return(
+    render() {
+        return (
             <div className='buttons-container'>
-                <button onClick={this.handleSignUp} className='btn btn-blue' name='Sign up'>Sing Up</button>
-                <div>{this.state.isSignUp && <SignUp handleSignUp={this.handleSignUp}/>}</div>
+                <button onClick={this.handleSignUp} className='btn btn-blue' name='Sign up'>Sign Up</button>
+                <div> {this.state.isSignUp && <SignUp handleSignUp={this.handleSignUp}/>}</div>
                 <button onClick={this.handleLogin} className='btn btn-white' name='Sign up'>Login</button>
                 <div>{this.state.isLogin && <Login handleLogin={this.handleLogin}/>}</div>
             </div>

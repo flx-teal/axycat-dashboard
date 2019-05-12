@@ -1,10 +1,38 @@
 import React from 'react';
 import './SignUp.scss'
+import {auth, db} from "../../../config/fbConfig";
 
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            userFullName: '',
+            userEmail: '',
+            userPhone: '',
+            userPassword: '',
+            userPasswordRepeat: '',
+        };
+
+        this.handleInputData = this.handleInputData.bind(this);
     }
+
+    handleInputData = (e) => {
+        e.preventDefault();
+        this.setState({[e.target.id]: e.target.value});
+    };
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const {userEmail, userPassword} = this.state;
+        auth.createUserWithEmailAndPassword(userEmail, userPassword).then(cred => {
+            localStorage.removeItem('userUID');
+            this.props.handleSignUp();
+            return db.collection('users').doc(cred.user.uid).set({
+                userFullName: this.state.userFullName,
+                userPhone: this.state.userPhone
+            });
+        })
+    };
 
     render() {
         return (
@@ -14,19 +42,15 @@ class SignUp extends React.Component {
                         <div className='signup-popup-inner-wrapper'>
                             <span onClick={this.props.handleSignUp} className='signup-close'></span>
                             <div className='signup-info'>
-                                <h2>SignUp</h2>
+                                <h2>Sign Up</h2>
                                 <form className="signup-info-form">
-                                    <input type="text" placeholder='Full Name *'/>
-                                    <input type="text" placeholder='Your Email *'/>
-                                    <input type="text" placeholder='Phone'/>
-                                    <input type="text" placeholder='Password *'/>
-                                    <input type="text" placeholder='Repeat Password *'/>
-                                    <div className='signup-info-form-check'>
-                                        <input type="checkbox"/>
-                                        <span>Remember password?</span>
-                                    </div>
+                                    <input onChange={this.handleInputData} id='userFullName' type="text" placeholder='Full Name *'/>
+                                    <input onChange={this.handleInputData} id='userEmail' type="email" placeholder='Your Email *'/>
+                                    <input onChange={this.handleInputData} id='userPhone' data-politespace data-grouplength='3,3,4' type="text" placeholder='Phone'/>
+                                    <input onChange={this.handleInputData} id='userPassword' type="password" placeholder='Password *'/>
+                                    <input onChange={this.handleInputData} id='userPasswordRepeat' type="password" placeholder='Repeat Password *'/>
                                 </form>
-                                <button className='btn btn-blue'>Sign Up</button>
+                                <button onClick={this.handleSubmit} className='btn btn-blue'>Sign Up</button>
                             </div>
                         </div>
                     </div>
@@ -35,5 +59,6 @@ class SignUp extends React.Component {
         )
     }
 }
+
 
 export default SignUp;
