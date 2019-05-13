@@ -51,8 +51,9 @@ export default class ReportPdf extends Component {
             <IssuesAmountCart name="In Progress" amount="100"/>
             <IssuesAmountCart name="Done" amount="100"/>
           </div>
+          <div className="pageBreak"> </div>
           {/*<p>Project id: {localStorage.getItem('createdProjectId')}</p>*/}
-          <div>
+          <div className="flow-chart">
             <TotalFlowChart width={'800px'} height={'420px'} className="flow-chart"/>
           </div>
         </div>
