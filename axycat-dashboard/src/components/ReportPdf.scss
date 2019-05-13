@@ -20,9 +20,10 @@
       display: flex;
     }
 
-    .flow-chart {
-      page-break-before: always;
+    .pageBreak {
+      height: 400px;
     }
+
   }
 }
 
@@ -32,14 +33,5 @@
     .progress-bar-wrapper {
       width: 100%
     }
-
-    .tottalflow-chart-container {
-      page-break-before: always;
-    }
-
-    .tottalflow-chart-container {
-      page-break-after: avoid;
-    }
   }
-
 }
