@@ -81,7 +81,7 @@ export const getReportFromCloudById = async id => {
     try {
         const doc = await db.collection("errors").doc(id).get();
         if (doc.exists) {
-            return doc.data();
+          return doc.data();
         }
         // doc.data() will be undefined in this case
         console.log("No such document!");
@@ -89,4 +89,14 @@ export const getReportFromCloudById = async id => {
         console.error("Error getting document:", error);
     }
     return {}
+};
+
+
+export const updateIssuesInCloud = async (id, item) => {
+  try {
+    await db.collection("errors").doc(id).set(item);
+  } catch (error) {
+    console.error("Error getting document:", error);
+  }
+  return {}
 };

@@ -4,6 +4,7 @@ import ButtonComponent from '../details-components/ButtonComponent';
 import './Form.scss';
 import {Redirect} from 'react-router-dom';
 import {addErrorToCloud} from '../../config/fbConfig';
+import {updateIssuesStatusFromCloudByProjectId} from "../../config/fbConfig";
 import {Spinner} from "./Spinner";
 
 export default class Form extends Component {
@@ -18,6 +19,7 @@ export default class Form extends Component {
       createdProjectId: null,
       isLoading: false
     };
+    this.currentStatus = 'New';
 
     this.handleProjectNameChange = this.handleProjectNameChange.bind(this);
     this.handleSiteUrlChange = this.handleSiteUrlChange.bind(this);
@@ -47,6 +49,12 @@ export default class Form extends Component {
         });
         //Check result
         if (json.violations) {
+          const mappedViolations = json.violations.map((item) => {
+            item.status = 'New';
+            item.creationDate = new Date();
+            return item;
+          });
+          json.violations = mappedViolations;
           //If check is correct with violations errors, then we send JSON to FIREBASE via creatError function
           return addErrorToCloud(json, data);
         }
