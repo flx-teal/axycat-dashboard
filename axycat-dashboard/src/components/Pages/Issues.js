@@ -27,8 +27,11 @@ class Issues extends Component {
   };
 
   componentDidMount() {
-    getReportFromCloudById(this.state.projectId).then(data =>
-      this.setState({issuesList: data})
+    getReportFromCloudById(this.state.projectId).then(data => {
+        this.setState({issuesList: data});
+        console.log(data);
+    }
+
     );
   }
 
@@ -41,6 +44,7 @@ class Issues extends Component {
           filterData={this.filterData}
           sortData={this.sortData}/>
         <IssuesTable
+          projectId={this.state.projectId}
           inputValue={this.state.inputValue}
           buttonName={this.state.buttonName}
           sortValue={this.state.sortValue}
