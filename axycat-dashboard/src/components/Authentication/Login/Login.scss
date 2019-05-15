@@ -1,80 +1,143 @@
 .login-popup {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    &-inner {
-        margin: 5% 30%;
-        border-radius: 5px;
-        background: white;
-        overflow: auto;
-        &-wrapper {
-            padding: 15px 30px;
-        }
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  &-inner {
+    width: 450px;
+    margin: 10% auto;
+    border-radius: 5px;
+    background: white;
+    overflow: auto;
+    &-wrapper {
+      padding: 15px 30px;
     }
+  }
 }
 
 .login-close {
-    float: right;
-    display: block;
-    position: relative;
-    width: 20px;
+  float: right;
+  display: block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  opacity: 0.5;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+  &:before, &:after {
+    position: absolute;
+    content: ' ';
+    right: 10px;
     height: 20px;
-    opacity: 0.5;
-    cursor: pointer;
-    &:hover {
-        opacity: 1;
-    }
-    &:before, &:after {
-        position: absolute;
-        content: ' ';
-        right: 10px;
-        height: 20px;
-        width: 1.5px;
-        background-color: #536370;
-    }
-    &:before {
-        transform: rotate(45deg);
-    }
-    &:after {
-        transform: rotate(-45deg);
-    }
+    width: 1.5px;
+    background-color: #536370;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
 }
 
 .login-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  h2 {
+    text-align: center;
+    margin: 0;
+    color: #026fc2;
+  }
+  &-form {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    h2{
-        color: #026fc2;
+    input {
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #dedede;
+      border-radius: 5px;
+      padding: 10px;
     }
-    &-form {
-        width: 75%;
-        display: flex;
-        flex-direction: column;
-        input {
-            margin: 10px 0;
-            font-size: 16px;
-            border: 1px solid #dedede;
-            border-radius: 5px;
-            padding: 10px;
-        }
-        &-check {
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            &>input {
-                width: 15px;
-                height: 15px;
-                margin-right: 10px;
-            }
-        }
+    &-check {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      & > input {
+        width: 15px;
+        height: 15px;
+        margin-right: 10px;
+      }
     }
-    button {
-        margin: 20px 0;
-    }
+  }
+  button {
+    margin: 20px 0;
+    width: 100% !important;
+  }
+}
+
+.error-message {
+  text-align: center;
+  font-size: 80%;
+  color: red;
+}
+
+.login-choice {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  &-line {
+    background-color: lightgrey;
+    height: 1px;
+    width: 50%
+  }
+  &-or {
+    margin: 10px 10px;
+    color: grey;
+  }
+}
+
+.other-login {
+  display: flex;
+  align-items: center;
+  &-google, &-facebook {
+    margin-left: 30px;
+    padding: 4px 0 0 0;
+    height: 32px;
+    width: 36px;
+    border-radius: 18px;
+    text-align: center;
+    background-color: lightgrey;
+    font-weight: bolder;
+    font-size: 20px;
+    color: #006fc4;
+  }
+  &-label {
+    color: grey;
+  }
+}
+
+.policy-info {
+  margin: 10px auto;
+  width: 55%;
+  font-size: 70%;
+  text-align: center;
+  color: lightgrey;
+}
+
+.login-signup {
+  display: flex;
+  margin: 20px auto;
+  color: #a4abb0;
+  &-accept {
+    cursor: pointer;
+    margin: 0 10px;
+    font-weight: bold;
+    color: #0081de;
+  }
 }
