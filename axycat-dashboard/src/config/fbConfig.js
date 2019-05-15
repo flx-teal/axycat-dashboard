@@ -16,6 +16,7 @@ const config = {
 firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const db = firebase.firestore();
+export const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 export const signOut = () => {
     auth.signOut();
