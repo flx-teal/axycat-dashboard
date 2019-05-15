@@ -3,11 +3,11 @@
   left: 0;
   top: 0;
   right: 0;
-  bottom: 0;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
   &-inner {
-    margin: 5% 30%;
+    width: 450px;
+    margin: 10% auto;
     border-radius: 5px;
     background: white;
     overflow: auto;
@@ -47,13 +47,14 @@
 .signup-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
-  h2{
+  h2 {
+    text-align: center;
+    margin: 0;
     color: #026fc2;
   }
   &-form {
-    width: 75%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     input {
@@ -67,7 +68,7 @@
       font-size: 12px;
       display: flex;
       align-items: center;
-      &>input {
+      & > input {
         width: 15px;
         height: 15px;
         margin-right: 10px;
@@ -76,5 +77,59 @@
   }
   button {
     margin: 20px 0;
+    width: 100% !important;
+  }
+}
+
+.error-message {
+  text-align: center;
+  font-size: 80%;
+  color: red;
+}
+
+.signin-choice {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  &-line {
+    background-color: lightgrey;
+    height: 1px;
+    width: 50%
+  }
+  &-or {
+    margin: 10px 10px;
+    color: grey;
+  }
+}
+
+.other-signin {
+  display: flex;
+  align-items: center;
+  &-google, &-facebook {
+    margin-left: 30px;
+    padding: 4px 0 0 0;
+    height: 32px;
+    width: 36px;
+    border-radius: 18px;
+    text-align: center;
+    background-color: lightgrey;
+    font-weight: bolder;
+    font-size: 20px;
+    color: #006fc4;
+  }
+  &-label {
+    color: grey;
+  }
+}
+
+.signin-signup {
+  display: flex;
+  margin: 20px auto;
+  color: #a4abb0;
+  &-accept {
+    cursor: pointer;
+    margin: 0 10px;
+    font-weight: bold;
+    color: #0081de;
   }
 }

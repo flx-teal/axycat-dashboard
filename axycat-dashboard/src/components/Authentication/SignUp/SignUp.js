@@ -6,6 +6,8 @@ class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            ifLoginError: false,
+            errorMessage: '',
             userFullName: '',
             userEmail: '',
             userPhone: '',
@@ -21,20 +23,37 @@ class SignUp extends React.Component {
         this.setState({[e.target.id]: e.target.value});
     };
 
+    handleSwitch = () => {
+        this.props.handleSignUp();
+        this.props.handleLogin();
+    };
+
     handleSubmit = (e) => {
         e.preventDefault();
-        const {userEmail, userPassword} = this.state;
-        auth.createUserWithEmailAndPassword(userEmail, userPassword).then(cred => {
-            localStorage.removeItem('userUID');
-            this.props.handleSignUp();
-            return db.collection('users').doc(cred.user.uid).set({
-                userFullName: this.state.userFullName,
-                userPhone: this.state.userPhone
+        const {errorMessage, userEmail, userPassword, userFullName, userPhone, userPasswordRepeat} = this.state;
+        if (userFullName === '') {
+            return this.setState({ifLoginError: true, errorMessage: `Please enter Full Name`})
+        }
+        if (userPassword !== userPasswordRepeat) {
+            return this.setState({ifLoginError: true, errorMessage: `Passwords don't match.`})
+        }
+        auth.createUserWithEmailAndPassword(userEmail, userPassword)
+            .then(cred => {
+                this.setState({ifLoginError: false});
+                localStorage.removeItem('userUID');
+                this.props.handleSignUp();
+                return db.collection('users').doc(cred.user.uid).set({
+                    userFullName: userFullName,
+                    userPhone: userPhone
+                });
+            })
+            .catch((e) => {
+                this.setState({ifLoginError: true, errorMessage: e.message});
             });
-        })
     };
 
     render() {
+        console.log(this.props);
         return (
             <div>
                 {!this.props.isSignUp && <div className='signup-popup'>
@@ -44,13 +63,33 @@ class SignUp extends React.Component {
                             <div className='signup-info'>
                                 <h2>Sign Up</h2>
                                 <form className="signup-info-form">
-                                    <input onChange={this.handleInputData} id='userFullName' type="text" placeholder='Full Name *'/>
-                                    <input onChange={this.handleInputData} id='userEmail' type="email" placeholder='Your Email *'/>
-                                    <input onChange={this.handleInputData} id='userPhone' data-politespace data-grouplength='3,3,4' type="text" placeholder='Phone'/>
-                                    <input onChange={this.handleInputData} id='userPassword' type="password" placeholder='Password *'/>
-                                    <input onChange={this.handleInputData} id='userPasswordRepeat' type="password" placeholder='Repeat Password *'/>
+                                    <input onChange={this.handleInputData} id='userFullName' type="text"
+                                           placeholder='Full Name *'/>
+                                    <input onChange={this.handleInputData} id='userEmail' type="email"
+                                           placeholder='Your Email *'/>
+                                    <input onChange={this.handleInputData} id='userPhone' data-politespace
+                                           data-grouplength='3,3,4' type="text" placeholder='Phone'/>
+                                    <input onChange={this.handleInputData} id='userPassword' type="password"
+                                           placeholder='Password *'/>
+                                    <input onChange={this.handleInputData} id='userPasswordRepeat' type="password"
+                                           placeholder='Repeat Password *'/>
+                                    {this.state.ifLoginError ?
+                                        <p className='error-message'>{this.state.errorMessage}</p> : null}
                                 </form>
                                 <button onClick={this.handleSubmit} className='btn btn-blue'>Sign Up</button>
+                                <div className='signin-choice'>
+                                    <span className='signin-choice-line'> </span><p className='signin-choice-or'>or</p>
+                                    <span className='signin-choice-line'> </span>
+                                </div>
+                                <div className='other-signin'>
+                                    <p className='other-signin-label'>Sign Up with: </p>
+                                    <span className='other-signin-google'>G</span>
+                                    <span className='other-signin-facebook'>f</span>
+                                </div>
+                                <div className='signin-signup'>
+                                    <span className='signin-signup-info'>Already have an account?</span><span
+                                    className='signin-signup-accept' onClick={this.handleSwitch}>Sign In</span>
+                                </div>
                             </div>
                         </div>
                     </div>

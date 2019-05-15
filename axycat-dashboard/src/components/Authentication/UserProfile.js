@@ -1,21 +1,28 @@
 import React from 'react';
-import {signOut} from "../../config/fbConfig";
-import {NavLink} from "react-router-dom";
+import {auth, signOut} from "../../config/fbConfig";
+import {NavLink, Redirect} from "react-router-dom";
 import './UserProfile.scss'
 
 class UserProfile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSignOut: false
+            redirect: false
         };
         this.handleSignOut = this.handleSignOut.bind(this);
     }
 
+
+
     handleSignOut() {
-        localStorage.removeItem('userUID');
-        this.setState({isSignOut: true});
-        signOut();
+        this.props.isAuth();
+        this.setState({redirect: true});
+        auth.signOut()
+            .then(() => {
+                localStorage.removeItem('userUID');
+                return <Redirect to='/'/>;
+
+            });
     }
 
     render() {
