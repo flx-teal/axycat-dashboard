@@ -3,20 +3,24 @@ import './IssuesPopUpDetails.scss';
 import HeaderPopupDetails from "./components/HeaderPopupDetails";
 import BodyPopupDetails from "./components/BodyPopupDetails";
 import FooterPopupDetails from "./components/FooterPopupDetails";
-import {updateIssuesInCloud} from '../../../../config/fbConfig'
+import {updateIssuesInCloud} from '../../../../config/fbConfig';
+
 export default class IssuesPopUpDetails extends Component {
     constructor(props) {
         super(props);
     }
     issueStateOnChange = key => event => {
-        console.log(this.props.data.issuesList.violations)
-        this.props.data.issuesList.violations[key].status = event.target.value;
+        console.log(this.props.data.issuesList)
+        this.props.data.issuesList[key].status = event.target.value;
         if(event.target.value === 'In Progress') {
-          this.props.data.issuesList.violations[key].inProgressDate = new Date().toString();
+          this.props.data.issuesList[key].inProgressDate = new Date().toString();
         }
         if(event.target.value === 'Done') {
-          this.props.data.issuesList.violations[key].doneDate = new Date().toString();
+          this.props.data.issuesList[key].doneDate = new Date().toString();
         }
+        if(event.target.value === 'New') {
+            this.props.issuesList[key].creationDate = new Date().toString();
+          }
         updateIssuesInCloud(this.props.projectId, this.props.data.issuesList)
           .then(() => this.setState({value: ''}));
       };
