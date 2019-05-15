@@ -23,7 +23,7 @@ class Reports extends Component {
       <div className="reports-wrapper">
         <div className="reports-pdf">
           <TitleComponent title="Status Reports" className="title"/>
-          <a href={`http://localhost:2000/report?id=${this.state.projectId}`} className="btn-white" download>Download report</a>
+          <a href={`http://localhost:2000/report?id=${this.state.projectId}`} className="btn-white" download="report.pdf">Download report</a>
         </div>
         <div>
           <ProgressBar percentage={this.state.percentage}/>
