@@ -41,7 +41,17 @@ class IssuesTableRow extends React.Component {
 
   render() {
     let data = this.props;
-    let date = data.data.creationDate;
+    let issueDate;
+
+    if(data.data.status === 'New') {
+      issueDate = data.data.creationDate
+    }
+     if(data.data.status === 'In Progress') {
+      issueDate = data.data.inProgressDate
+    }
+    if(data.data.status === 'Done') {
+      issueDate = data.data.doneDate
+      }
     let format = require('date-fns/format');
     return (
       <tr className="table-row table-row-render">
@@ -63,7 +73,7 @@ class IssuesTableRow extends React.Component {
           </select>
         </td>
         <td className="table-cell"><span className="table-cell-asignee"></span></td>
-        <td className="table-cell">{format(date, 'DD-MM-YYYY')}
+        <td className="table-cell">{format(issueDate, 'DD-MM-YYYY')}
           </td>
         <td className=''>
           {this.state.isClicked && <IssuesPopUpDetails handleClick={this.handleClick} data={data}/>}

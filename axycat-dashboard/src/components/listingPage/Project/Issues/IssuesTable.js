@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import IssuesTableRow from "./IssuesTableRow";
-import {updateIssuesInCloud} from '../../../../config/fbConfig'
+import {updateIssuesInCloud} from '../../../../config/fbConfig';
 
 class IssuesTable extends Component {
   constructor(props) {
@@ -15,6 +15,9 @@ class IssuesTable extends Component {
     if(event.target.value === 'Done') {
       this.props.issuesList.violations[key].doneDate = new Date().toString();
     }
+    if(event.target.value === 'New') {
+        this.props.issuesList.violations[key].creationDate = new Date().toString();
+      }
     updateIssuesInCloud(this.props.projectId, this.props.issuesList)
       .then(() => this.setState({value: ''}));
   };
@@ -35,7 +38,7 @@ class IssuesTable extends Component {
               key={index}
               data={issue}
               index={index + 1}
-              issuesList={this.props.issuesList}
+              issuesList={this.props.issuesList.violations}
               issueStateOnChange={this.issueStateOnChange(index)}
             />
           );
@@ -53,7 +56,7 @@ class IssuesTable extends Component {
               key={index}
               data={issue}
               index={index + 1}
-              issuesList={this.props.issuesList}
+              issuesList={this.props.issuesList.violations}
               issueStateOnChange={this.issueStateOnChange(index)}
             />
           );
@@ -71,7 +74,7 @@ class IssuesTable extends Component {
               key={index}
               data={issue}
               index={index + 1}
-              issuesList={this.props.issuesList}
+              issuesList={this.props.issuesList.violations}
               issueStateOnChange={this.issueStateOnChange(index)}
             />
           );
@@ -89,7 +92,7 @@ class IssuesTable extends Component {
               key={index}
               data={issue}
               index={index + 1}
-              issuesList={this.props.issuesList}
+              issuesList={this.props.issuesList.violations}
               issueStateOnChange={this.issueStateOnChange(index)}
             />
           );
@@ -106,7 +109,7 @@ class IssuesTable extends Component {
               key={index}
               data={issue}
               index={index + 1}
-              issuesList={this.props.issuesList}
+              issuesList={this.props.issuesList.violations}
               issueStateOnChange={this.issueStateOnChange(index)}
             />
           );
@@ -123,7 +126,7 @@ class IssuesTable extends Component {
               key={index}
               data={issue}
               index={index + 1}
-              issuesList={this.props.issuesList}
+              issuesList={this.props.issuesList.violations}
               issueStateOnChange={this.issueStateOnChange(index)}
             />
           );
@@ -136,7 +139,7 @@ class IssuesTable extends Component {
               key={index}
               data={issue}
               index={index + 1}
-              issuesList={this.props.issuesList}
+              issuesList={this.props.issuesList.violations}
               issueStateOnChange={this.issueStateOnChange(index)}
             />
           );
@@ -152,7 +155,7 @@ class IssuesTable extends Component {
               key={index}
               data={issue}
               index={index + 1}
-              issuesList={this.props.issuesList}
+              issuesList={this.props.issuesList.violations}
               issueStateOnChange={this.issueStateOnChange(index)}
             />
           );
@@ -168,7 +171,7 @@ class IssuesTable extends Component {
               key={index}
               data={issue}
               index={index + 1}
-              issuesList={this.props.issuesList}
+              issuesList={this.props.issuesList.violations}
               issueStateOnChange={this.issueStateOnChange(index)}
             />
           );
@@ -184,7 +187,7 @@ class IssuesTable extends Component {
               key={index}
               data={issue}
               index={index + 1}
-              issuesList={this.props.issuesList}
+              issuesList={this.props.issuesList.violations}
               issueStateOnChange={this.issueStateOnChange(index)}
             />
           );
