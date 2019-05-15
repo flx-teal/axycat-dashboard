@@ -6,6 +6,7 @@ import {Redirect} from 'react-router-dom';
 import {addErrorToCloud} from '../../config/fbConfig';
 import {updateIssuesStatusFromCloudByProjectId} from "../../config/fbConfig";
 import {Spinner} from "./Spinner";
+let format = require('date-fns/format');
 
 export default class Form extends Component {
   constructor(props) {
@@ -51,7 +52,7 @@ export default class Form extends Component {
         if (json.violations) {
           const mappedViolations = json.violations.map((item) => {
             item.status = 'New';
-            item.creationDate = new Date();
+            item.creationDate = new Date().toString();
             return item;
           });
           json.violations = mappedViolations;
@@ -99,9 +100,8 @@ export default class Form extends Component {
       projectName: this.state.projectName,
       website: newSiteUrl,
       clientName: this.state.clientName,
-      date: new Date(),
-      issues: '',
-      status: 'new'
+      date: new Date().toString(),
+      status: 'New'
     };
 
     this.sendData(data.website, data);

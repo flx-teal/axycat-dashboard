@@ -13,7 +13,7 @@ export default class ProjectItemComponent extends React.Component {
     render() {
         let data = this.props.data.data;
         let id = this.props.data.id;
-        let date = data.timestamp;
+        let date = data.projectData.date;
         let format = require('date-fns/format');
 
         return (

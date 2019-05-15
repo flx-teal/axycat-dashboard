@@ -29,7 +29,6 @@ class Issues extends Component {
   componentDidMount() {
     getReportFromCloudById(this.state.projectId).then(data => {
         this.setState({issuesList: data});
-        console.log(data);
     }
 
     );

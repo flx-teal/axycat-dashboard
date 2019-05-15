@@ -9,11 +9,11 @@ class IssuesTable extends Component {
 
   issueStateOnChange = key => event => {
     this.props.issuesList.violations[key].status = event.target.value;
-    if(event.target.value === 'In progress') {
-      this.props.issuesList.violations[key].inProgressDate = new Date();
+    if(event.target.value === 'In Progress') {
+      this.props.issuesList.violations[key].inProgressDate = new Date().toString();
     }
     if(event.target.value === 'Done') {
-      this.props.issuesList.violations[key].doneDate = new Date();
+      this.props.issuesList.violations[key].doneDate = new Date().toString();
     }
     updateIssuesInCloud(this.props.projectId, this.props.issuesList)
       .then(() => this.setState({value: ''}));
@@ -23,6 +23,7 @@ class IssuesTable extends Component {
     let issuesData = this.props.issuesList, showIssues;
     let inputValue = this.props.inputValue.toLowerCase();
     let searchResults = [];
+    
     if (this.props.issuesList) {
       showIssues = issuesData.violations.map((issue, index) => {
         return <IssuesTableRow key={index}
@@ -41,6 +42,7 @@ class IssuesTable extends Component {
         return <IssuesTableRow key={index} data={issue} index={index + 1} issuesList={this.props.issuesList}/>;
       });
     }
+
     return (
       <table className='table pdf'>
         <thead className="table-head">

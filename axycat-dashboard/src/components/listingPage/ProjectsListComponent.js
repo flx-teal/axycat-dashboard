@@ -9,7 +9,7 @@ export default class ProjectsListComponent extends React.Component {
         this.state = {
             currentPage: 1,
             //projectsPerPage = quantity of displayed projects, you can change it
-            projectsPerPage: 5,
+            projectsPerPage: 3,
             upperPageBound: 2,
             lowerPageBound: 0,
             isPrevBtnActive: 'disabled',
@@ -25,14 +25,14 @@ export default class ProjectsListComponent extends React.Component {
     }
 
     changePage = (event) => {
-        let pageId = Number(event.target.id);
+        let pageValue = Number(event.target.value);
         this.setState({
-            currentPage: pageId
+            currentPage: pageValue
         });
-        this.setPrevAndNextBtnClass(pageId);
+        this.setPrevAndNextBtnClass(pageValue);
     };
 
-    setPrevAndNextBtnClass(pageId) {
+    setPrevAndNextBtnClass(pageValue) {
         let totalPage = Math.ceil(this.props.reports.length / this.state.projectsPerPage);
         this.setState({
             isNextBtnActive: 'disabled'
@@ -40,11 +40,11 @@ export default class ProjectsListComponent extends React.Component {
         this.setState({
             isPrevBtnActive: 'disabled'
         });
-        if (totalPage === pageId && totalPage > 1) {
+        if (totalPage === pageValue && totalPage > 1) {
             this.setState({
                 isPrevBtnActive: ''
             });
-        } else if (pageId === 1 && totalPage > 1) {
+        } else if (pageValue === 1 && totalPage > 1) {
             this.setState({
                 isNextBtnActive: ''
             });
@@ -65,11 +65,11 @@ export default class ProjectsListComponent extends React.Component {
         this.setState({
             lowerPageBound: this.state.lowerPageBound + this.state.pageBound
         });
-        let pageId = this.state.upperPageBound + 1;
+        let pageValue = this.state.upperPageBound + 1;
         this.setState({
-            currentPage: pageId
+            currentPage: pageValue
         });
-        this.setPrevAndNextBtnClass(pageId);
+        this.setPrevAndNextBtnClass(pageValue);
     }
 
     btnDecrementClick() {
@@ -79,11 +79,11 @@ export default class ProjectsListComponent extends React.Component {
         this.setState({
             lowerPageBound: this.state.lowerPageBound - this.state.pageBound
         });
-        let pageId = this.state.upperPageBound - this.state.pageBound;
+        let pageValue = this.state.upperPageBound - this.state.pageBound;
         this.setState({
-            currentPage: pageId
+            currentPage: pageValue
         });
-        this.setPrevAndNextBtnClass(pageId);
+        this.setPrevAndNextBtnClass(pageValue);
     }
 
     btnPrevClick() {
@@ -95,11 +95,11 @@ export default class ProjectsListComponent extends React.Component {
                 lowerPageBound: this.state.lowerPageBound - this.state.pageBound
             });
         }
-        let pageId = this.state.currentPage - 1;
+        let pageValue = this.state.currentPage - 1;
         this.setState({
-            currentPage: pageId
+            currentPage: pageValue
         });
-        this.setPrevAndNextBtnClass(pageId);
+        this.setPrevAndNextBtnClass(pageValue);
     }
 
     btnNextClick() {
@@ -111,11 +111,11 @@ export default class ProjectsListComponent extends React.Component {
                 lowerPageBound: this.state.lowerPageBound + this.state.pageBound
             });
         }
-        let pageId = this.state.currentPage + 1;
+        let pageValue = this.state.currentPage + 1;
         this.setState({
-            currentPage: pageId
+            currentPage: pageValue
         });
-        this.setPrevAndNextBtnClass(pageId);
+        this.setPrevAndNextBtnClass(pageValue);
     }
 
     render() {
@@ -127,12 +127,9 @@ export default class ProjectsListComponent extends React.Component {
         let searchResults = [];
         let sortedList = [];
         let pageNumbers = [];
-        const indexOfLastTodo = this.state.currentPage * this.state.projectsPerPage;
-        const indexOfFirstTodo = indexOfLastTodo - this.state.projectsPerPage;
-        let pageIncrementBtn = null;
-        let pageDecrementBtn = null;
-        let renderPrevBtn = null;
-        let renderNextBtn = null;
+        const indexOfLastProject = this.state.currentPage * this.state.projectsPerPage;
+        const indexOfFirstProject = indexOfLastProject - this.state.projectsPerPage;
+        let pageIncrementBtn, pageDecrementBtn, renderPrevBtn, renderNextBtn;
 
         if (!data) {
             return (<p>load</p>)
@@ -141,7 +138,7 @@ export default class ProjectsListComponent extends React.Component {
                 if (a.data.timestamp > b.data.timestamp)
                     return -1;
             });
-            showProjects = sortedList.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+            showProjects = sortedList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
@@ -150,7 +147,7 @@ export default class ProjectsListComponent extends React.Component {
             sortedList = data.sort((a, b) => {
                 return b.data.violations.length - a.data.violations.length
             });
-            showProjects = sortedList.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+            showProjects = sortedList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
@@ -159,7 +156,7 @@ export default class ProjectsListComponent extends React.Component {
                 if (a.data.timestamp > b.data.timestamp)
                     return -1;
             });
-            showProjects = sortedList.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+            showProjects = sortedList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
@@ -169,36 +166,39 @@ export default class ProjectsListComponent extends React.Component {
                     return -1
                 }
             });
-            showProjects = sortedList.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+            showProjects = sortedList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
+        
         if (buttonName === 'New') {
             filteredList = data.filter(projectItem => {
-                return projectItem.data.projectData.status === 'new'
+                return projectItem.data.projectData.status === 'New'
             });
-            showProjects = filteredList.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+       
+            showProjects = filteredList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
         if (buttonName === 'In progress') {
             filteredList = data.filter(projectItem => {
-                return projectItem.data.projectData.status === 'in progress'
+                return projectItem.data.projectData.status === 'In Progress'
             });
-            showProjects = filteredList.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+          
+            showProjects = filteredList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
         if (buttonName === 'Done') {
             filteredList = data.filter(projectItem => {
-                return projectItem.data.projectData.status === 'done'
+                return projectItem.data.projectData.status === 'Done'
             });
-            showProjects = filteredList.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+            showProjects = filteredList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
         if (buttonName === 'All') {
-            showProjects = data.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+            showProjects = data.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
@@ -206,7 +206,7 @@ export default class ProjectsListComponent extends React.Component {
             searchResults = filteredList.filter(projectItem => {
                 return projectItem.data.projectData.projectName.toLowerCase().includes(inputValue)
             });
-            showProjects = searchResults.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+            showProjects = searchResults.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
@@ -214,20 +214,20 @@ export default class ProjectsListComponent extends React.Component {
             searchResults = data.filter(projectItem => {
                 return projectItem.data.projectData.projectName.toLowerCase().includes(inputValue)
             });
-            showProjects = searchResults.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+            showProjects = searchResults.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
-            );
+            ); 
         }
         if (buttonName === '' && inputValue !== '') {
             searchResults = data.filter(projectItem => {
                 return projectItem.data.projectData.projectName.toLowerCase().includes(inputValue)
             });
-            showProjects = searchResults.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+            showProjects = searchResults.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
-            );
+            ); 
         }
         if (buttonName === '' && inputValue === '') {
-            showProjects = data.slice(indexOfFirstTodo, indexOfLastTodo).map(projectItem =>
+            showProjects = data.slice(indexOfFirstProject, indexOfLastProject).map(projectItem =>
                 <ProjectItemComponent data={projectItem} key={projectItem.id}/>
             );
         }
@@ -236,19 +236,14 @@ export default class ProjectsListComponent extends React.Component {
         }
 
         const renderPageNumbers = pageNumbers.map(number => {
-            if (number === 1 && this.state.currentPage === 1) {
+            if ((number < this.state.upperPageBound + 1) && number > this.state.lowerPageBound) {
                 return (
-                    <li key={number} className='active pageNumber' id={number}><a href='#' id={number}
-                                                                                  onClick={this.changePage}>{number}</a>
-                    </li>
-                )
-            } else if ((number < this.state.upperPageBound + 1) && number > this.state.lowerPageBound) {
-                return (
-                    <li key={number} className='pageNumber' id={number}><a href='#' id={number}
-                                                                           onClick={this.changePage}>{number}</a></li>
+                    <li key={number} className={`pageNumber ${number === this.state.currentPage ? 'active' : ''}`} 
+                    value={number}>{number}</li>
                 )
             }
         });
+
         if (this.props.reports.length <= this.state.projectsPerPage) {
             return (
                 <div>
@@ -260,27 +255,27 @@ export default class ProjectsListComponent extends React.Component {
             )
         }
         if (this.state.isPrevBtnActive === 'disabled') {
-            renderPrevBtn = <li className={this.state.isPrevBtnActive}><span className="btnPrev"> {'<'} </span></li>
+            renderPrevBtn = <li className={this.state.isPrevBtnActive}><span className="btnPrev">&#8249;</span></li>
         } else {
-            renderPrevBtn = <li className={this.state.isPrevBtnActive}><a href='#' className="btnPrev activeBtn"
-                                                                          onClick={this.btnPrevClick}> {'<'} </a></li>
+            renderPrevBtn = <li className={this.state.isPrevBtnActive} onClick={this.btnPrevClick}>
+            <span  className="btnNext activeBtn">&#8249;</span></li>
         }
         if(this.state.isNextBtnActive === 'disabled') {
-            renderNextBtn = <li className={this.state.isNextBtnActive}><span className="btnNext"> {'>'} </span></li>
+            renderNextBtn = <li className={this.state.isNextBtnActive}><span className="btnNext">&#8250;</span></li>
         }
         else{
-            renderNextBtn = <li className={this.state.isNextBtnActive}><a href='#' className="btnNext activeBtn"  onClick={this.btnNextClick}> {'>'} </a></li>
+            renderNextBtn = <li className={this.state.isNextBtnActive}  onClick={this.btnNextClick}>
+            <span  className="btnNext activeBtn">&#8250;</span></li>
         }
-
         return (
             <div>
                 <div className='allProjectsContainer'>
                     <CreateNewProject
                         buttonName='Create new project' buttonContent='+'/>
-                    {showProjects}
+                        {showProjects}
                 </div>
                 <div className='pagination'>
-                    <ul id="page-numbers">
+                    <ul>
                         {renderPrevBtn}
                         {pageDecrementBtn}
                         {renderPageNumbers}

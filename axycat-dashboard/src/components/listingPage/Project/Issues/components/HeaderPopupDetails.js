@@ -30,7 +30,6 @@ export default class HeaderPopupDetails extends React.Component {
 
     render() {
         let data = this.props.data;
-        console.log(this.props.data.data.impact)
         return (
             <div className='popup-header'>
                 <div className='popup-header-info'>
