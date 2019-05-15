@@ -38,12 +38,11 @@ export default class Listing extends Component {
         this.setState({sortValue: value});
     };
 
-
     render() {
+        console.log(this.state.reports)
         return (
             <div className='container'>
-                <div className='titleListing'><TitleComponent title='Projects'
-                                                              subtitle={this.state.reports.length + ' Projects'}/>
+                <div className='titleListing'><TitleComponent title='Projects' subtitle={this.state.reports.length + ' Projects'}/>
                 </div>
                 <FilterPanel
                     updateData={this.updateData}

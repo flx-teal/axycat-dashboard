@@ -20,7 +20,6 @@ render() {
             <label className='sortBy'>
                 <select className='selectValue' value={this.state.value} onChange={this.handleChange}>
                     <option>Filter</option>
-                    <option value='Priority'>Priority</option>
                     <option value='Name'>Name</option>
                     <option value='Date'>Date</option>
                 </select>

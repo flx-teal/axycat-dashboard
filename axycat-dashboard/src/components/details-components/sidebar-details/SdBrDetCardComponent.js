@@ -8,8 +8,6 @@ import ReportCardColumns from '../ReportCardColumns';
 class SdBrDetCardComponent extends Component {
   render() {
     let projectData = this.props.data;
-    
-    console.log(projectData);
     return (
       <div>
         <div className='report-card-container'>

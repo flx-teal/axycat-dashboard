@@ -37,12 +37,11 @@ class IssuesTableRow extends React.Component {
     this.setState(prevState => ({
       isClicked: !prevState.isClicked
     }));
-    // this.setState (event.target.value)
   };
 
   render() {
     let data = this.props;
-    let date = data.issuesList.timestamp;
+    let date = data.data.creationDate;
     let format = require('date-fns/format');
     return (
       <tr className="table-row table-row-render">
@@ -58,13 +57,14 @@ class IssuesTableRow extends React.Component {
         <td className="table-cell table-name" onClick={this.handleClick}>{data.data.description}</td>
         <td className="table-cell">
           <select className='table-cell-select' value={data.data.status} onChange={data.issueStateOnChange}>
-            {['New', 'In progress', 'Done'].map((item, id) => {
+            {['New', 'In Progress', 'Done'].map((item, id) => {
               return <option value={item} key={id}>{item}</option>
             })}
           </select>
         </td>
         <td className="table-cell"><span className="table-cell-asignee"></span></td>
-        <td className="table-cell">{format(date, 'DD-MM-YYYY')}</td>
+        <td className="table-cell">{format(date, 'DD-MM-YYYY')}
+          </td>
         <td className=''>
           {this.state.isClicked && <IssuesPopUpDetails handleClick={this.handleClick} data={data}/>}
         </td>

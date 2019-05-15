@@ -11,7 +11,7 @@ class FilterButtons extends React.Component {
     }
     
     buttonClick (event) {
-    this.setState({name: event.target.value});
+    this.setState({value: event.target.value});
      this.props.filterData(event.target.value)
     }
     render(){
