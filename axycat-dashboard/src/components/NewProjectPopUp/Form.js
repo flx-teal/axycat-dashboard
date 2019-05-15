@@ -18,7 +18,6 @@ export default class Form extends Component {
       createdProjectId: null,
       isLoading: false
     };
-    this.currentStatus = 'New';
 
     this.handleProjectNameChange = this.handleProjectNameChange.bind(this);
     this.handleSiteUrlChange = this.handleSiteUrlChange.bind(this);

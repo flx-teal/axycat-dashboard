@@ -1,5 +1,4 @@
 import React from 'react';
-import ProjectItemNavigation from './ProjectItemNavigation';
 
 const Pages = () => {
   return (
