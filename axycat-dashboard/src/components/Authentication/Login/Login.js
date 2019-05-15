@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.scss'
-import {auth} from "../../../config/fbConfig";
+import {auth, facebookProvider} from "../../../config/fbConfig";
 
 class Login extends React.Component {
     constructor(props) {
@@ -48,6 +48,17 @@ class Login extends React.Component {
         this.props.handleSignUp();
     };
 
+    handleFacebook = () => {
+      auth.signInWithPopup(facebookProvider)
+          .then((result, error) => {
+              if (error) {
+                  console.log(error);
+              } else {
+                  console.log(result);
+              }
+          })
+    };
+
     render() {
         return (
             <div>
@@ -71,7 +82,7 @@ class Login extends React.Component {
                                 <div className='other-login'>
                                     <p className='other-login-label'>Sign In with: </p>
                                     <span className='other-login-google'>G</span>
-                                    <span className='other-login-facebook'>f</span>
+                                    <span className='other-login-facebook' onClick={this.handleFacebook}>f</span>
                                 </div>
                                 <p className='policy-info'>Click "Sign In" above to accept AxyCAT's Terms of Service &
                                     Privacy Policy</p>
