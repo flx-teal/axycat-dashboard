@@ -1,0 +1,17 @@
+$main-blue: #026fc2;
+
+.select-impact {
+  border: #bdc5cb 1px solid;
+  margin-top: 5px;
+  margin-bottom: 12px;
+  outline: none;
+  padding: 12px 0 12px 12px;
+  border-radius: 5px;
+}
+
+.impact {
+  margin: 0;
+  font-size: 13px;
+  color: $main-blue;
+  font-weight: bold;
+}

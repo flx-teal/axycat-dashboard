@@ -4,9 +4,7 @@ import ButtonComponent from '../details-components/ButtonComponent';
 import './Form.scss';
 import {Redirect} from 'react-router-dom';
 import {addErrorToCloud} from '../../config/fbConfig';
-import {updateIssuesStatusFromCloudByProjectId} from "../../config/fbConfig";
 import {Spinner} from "./Spinner";
-let format = require('date-fns/format');
 
 export default class Form extends Component {
   constructor(props) {

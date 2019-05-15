@@ -70,9 +70,6 @@ export default class ProjectItemNavigation extends Component {
             <Link to={`${match.url}/${projectId}/accessibility-overview`} data={projectId}>
               Accessibility Overview
             </Link>
-            <Link to={`${match.url}/${projectId}/pages`}>
-              Pages
-            </Link>
             <Link to={`${match.url}/${projectId}/issues`}>
               Issues
             </Link>
