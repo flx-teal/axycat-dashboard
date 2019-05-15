@@ -91,7 +91,6 @@ export const getReportFromCloudById = async id => {
     return {}
 };
 
-
 export const updateIssuesInCloud = async (id, item) => {
   try {
     await db.collection("errors").doc(id).set(item);

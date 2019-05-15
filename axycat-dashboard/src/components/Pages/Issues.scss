@@ -2,6 +2,12 @@ $main-blue: #026fc2;
 $row-grey: #edf1f2;
 $btn-shadow: 0 4px 6px gray;
 
+.issues-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .issues {
   font-size: 14px;
   margin: 20px;
