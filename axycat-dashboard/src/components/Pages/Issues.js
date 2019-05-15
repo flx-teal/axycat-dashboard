@@ -15,25 +15,20 @@ class Issues extends Component {
       sortValue: ''
     };
   }
-
-  updateData = (value) => {
-    this.setState({inputValue: value});
+  updateData = value => {
+    this.setState({ inputValue: value });
   };
-  filterData = (value) => {
-    this.setState({buttonName: value})
+  filterData = value => {
+    this.setState({ buttonName: value });
   };
-  sortData = (value) => {
-    this.setState({sortValue: value});
+  sortData = value => {
+    this.setState({ sortValue: value });
   };
-
-  componentDidMount() {
+  componentDidMount(){
     getReportFromCloudById(this.state.projectId).then(data => {
-        this.setState({issuesList: data});
-    }
-
-    );
+      this.setState({ issuesList: data });
+    });
   }
-
   render() {
     return (
       <div className="issues">
