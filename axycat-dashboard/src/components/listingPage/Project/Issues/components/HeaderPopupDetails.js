@@ -30,25 +30,30 @@ export default class HeaderPopupDetails extends React.Component {
 
     render() {
         let data = this.props.data;
+        let date = data.data.creationDate;
+        let format = require('date-fns/format');
+        let violationsLength = data.issuesList.violations.length;
         return (
             <div className='popup-header'>
                 <div className='popup-header-info'>
                     <div>
                         <h2>{data.data.description}</h2>
-                        <span>Added by Stepan Uryk</span><span> 30-04-2019 </span>
+                        <span>Added by Stepan Uryk</span><span> {format(date, 'DD-MM-YYYY')} </span>
                         <span className='popup-header-info-date'> | Update 12 min ago</span>
                     </div>
                     <div className='popup-header-info-nav'>
-                        <a>&lt; Prev</a><span> | 1 of 3 | </span><a>Next &gt;</a>
+                        <a>&lt; Prev</a><span> | {data.index} of {violationsLength} | </span><a>Next &gt;</a>
                     </div>
                 </div>
                 <div className='popup-header-status'>
                     <div className='popup-header-status-col'>
-                        <div>Status: <select className='popup-header-status-select-status'>
-                                            <option value='New'>New</option>
-                                            <option value='In progress'>In progress</option>
-                                            <option value='Done'>Done</option>
-                                            </select>
+                        <div>Status: <select className='popup-header-status-select-status' 
+                        value={data.data.status} onChange={data.issueStateOnChange}
+                        >
+            {['New', 'In Progress', 'Done'].map((item, id) => {
+              return <option value={item} key={id}>{item}</option>
+            })}
+          </select>
                         </div>
                         <div className='popup-header-status-col-priority'>Priority: <span className='popup-header-status-select-priority'
                                               style={this.checkImpact(this.props.data)}/>

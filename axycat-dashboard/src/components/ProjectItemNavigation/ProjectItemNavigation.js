@@ -40,8 +40,6 @@ export default class ProjectItemNavigation extends Component {
     }
 
     if (projectId) {
-
-      console.log('This is ' + projectId);
       getReportFromCloudById(projectId)
         .then(({projectData: {projectName} = {}}) => {
 
