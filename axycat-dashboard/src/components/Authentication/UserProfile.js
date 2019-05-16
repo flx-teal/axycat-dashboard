@@ -28,7 +28,6 @@ class UserProfile extends React.Component {
                         userUID: this.props.user.userUID
                     }
                 }}>{nameLogo}</NavLink>
-                {this.redirectRender()}
                 <button onClick={this.handleSignOut} className='btn btn-white' name='Sign up'>Sign out</button>
             </div>
         )
