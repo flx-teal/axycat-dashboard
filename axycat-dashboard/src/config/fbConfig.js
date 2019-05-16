@@ -17,10 +17,7 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const db = firebase.firestore();
 export const facebookProvider = new firebase.auth.FacebookAuthProvider();
-
-export const signOut = () => {
-    auth.signOut();
-};
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export const addErrorToCloud = async (checkResult, projectData = {}) => {
     try {

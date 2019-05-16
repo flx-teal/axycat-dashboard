@@ -1,5 +1,5 @@
 import React from 'react';
-import {auth, signOut} from "../../config/fbConfig";
+import {auth} from "../../config/fbConfig";
 import {NavLink, Redirect} from "react-router-dom";
 import './UserProfile.scss'
 
