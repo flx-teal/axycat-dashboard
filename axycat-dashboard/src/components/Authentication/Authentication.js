@@ -15,14 +15,12 @@ class Authentication extends React.Component {
         this.setState(prevState => ({
             isSignUp: !prevState.isSignUp
         }));
-        this.props.isAuth();
     };
 
     handleLogin = () => {
         this.setState(prevState => ({
             isLogin: !prevState.isLogin
         }));
-        this.props.isAuth();
     };
 
     render() {

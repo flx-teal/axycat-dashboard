@@ -75,7 +75,6 @@ class SignUp extends React.Component {
     };
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 {!this.props.isSignUp && <div className='signup-popup'>
