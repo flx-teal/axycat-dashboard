@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignUp.scss'
-import {auth, db, facebookProvider} from "../../../config/fbConfig";
+import {auth, db, facebookProvider, googleProvider} from "../../../config/fbConfig";
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -63,6 +63,17 @@ class SignUp extends React.Component {
             })
     };
 
+    handleGoogle = () => {
+        auth.signInWithPopup(googleProvider)
+            .then((result, error) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(result);
+                }
+            })
+    };
+
     render() {
         console.log(this.props);
         return (
@@ -94,7 +105,7 @@ class SignUp extends React.Component {
                                 </div>
                                 <div className='other-signin'>
                                     <p className='other-signin-label'>Sign Up with: </p>
-                                    <span className='other-signin-google'>G</span>
+                                    <span className='other-signin-google' onClick={this.handleGoogle}>G</span>
                                     <span className='other-signin-facebook' onClick={this.handleFacebook}>f</span>
                                 </div>
                                 <div className='signin-signup'>
