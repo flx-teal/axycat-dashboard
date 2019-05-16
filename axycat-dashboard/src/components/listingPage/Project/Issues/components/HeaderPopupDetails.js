@@ -30,18 +30,9 @@ export default class HeaderPopupDetails extends React.Component {
 
     render() {
         let data = this.props.data;
-        let issueDate;
+        let issueDate = data.data.creationDate;
         let format = require('date-fns/format');
         let violationsLength = data.issuesList.length;
-        if(data.data.status === 'New') {
-            issueDate = data.data.creationDate
-          }
-           if(data.data.status === 'In Progress') {
-            issueDate = data.data.inProgressDate
-          }
-          if(data.data.status === 'Done') {
-            issueDate = data.data.doneDate
-            }
         return (
             <div className='popup-header'>
                 <div className='popup-header-info'>
@@ -51,7 +42,7 @@ export default class HeaderPopupDetails extends React.Component {
                         <span className='popup-header-info-date'> | Update 12 min ago</span>
                     </div>
                     <div className='popup-header-info-nav'>
-                        <a>&lt; Prev</a><span> | {data.index} of {violationsLength} | </span><a>Next &gt;</a>
+                       <span> | {data.index} of {violationsLength} | </span>
                     </div>
                 </div>
                 <div className='popup-header-status'>

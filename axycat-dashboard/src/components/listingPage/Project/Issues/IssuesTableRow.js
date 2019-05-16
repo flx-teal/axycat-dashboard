@@ -41,17 +41,7 @@ class IssuesTableRow extends React.Component {
 
   render() {
     let data = this.props;
-    let issueDate;
-
-    if(data.data.status === 'New') {
-      issueDate = data.data.creationDate
-    }
-     if(data.data.status === 'In Progress') {
-      issueDate = data.data.inProgressDate
-    }
-    if(data.data.status === 'Done') {
-      issueDate = data.data.doneDate
-      }
+    let issueDate = data.data.creationDate;
     let format = require('date-fns/format');
     return (
       <tr className="table-row table-row-render">
