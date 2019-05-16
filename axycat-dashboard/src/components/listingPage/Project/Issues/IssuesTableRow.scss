@@ -1,9 +1,16 @@
 td>span, .table-cell {
     margin: 0 auto;
     text-align: center;
+    height: 80px;
+    font-size: 20px;
 }
-
-.table-name{
+th.table-title {
+    font-size: 19px;
+    margin-right: 5px;
+    text-align: left;
+    padding: 10px;
+}
+.table-name {
     text-align: left;
     padding: 0 10px;
 }
@@ -15,4 +22,5 @@ input[type='checkbox'] {
 
 td>select {
     float: left;
+    font-size: 20px;
 }
