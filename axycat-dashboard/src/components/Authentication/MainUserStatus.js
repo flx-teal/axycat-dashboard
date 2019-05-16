@@ -12,16 +12,14 @@ export default class MainUserStatus extends React.Component {
             userEmail: '',
             userUID: ''
         };
-
-        this.handleIsAuth = this.handleIsAuth.bind(this);
     }
 
-    handleIsAuth() {
-        auth.onAuthStateChanged((user) => {
+    componentDidMount() {
+        auth.onAuthStateChanged(user => {
             if (user) {
-                this.setState({isAuth: true, userEmail: user.email, userUID: user.uid});
+                this.setState({isAuth: true, userEmail: user.email, userUID: user.uid})
             } else {
-                this.setState({isAuth: false, userEmail: null});
+                this.setState({isAuth: false})
             }
         })
     }
@@ -30,8 +28,8 @@ export default class MainUserStatus extends React.Component {
         return (
             <div>
                 {this.state.isAuth ?
-                    <UserProfile isAuth={this.handleIsAuth} user={this.state}/> :
-                    <Authentication isAuth={this.handleIsAuth}/>
+                    <UserProfile  user={this.state}/> :
+                    <Authentication />
                 }
             </div>
         )

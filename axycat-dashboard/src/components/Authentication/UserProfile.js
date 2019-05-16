@@ -9,20 +9,13 @@ class UserProfile extends React.Component {
         this.state = {
             redirect: false
         };
+
         this.handleSignOut = this.handleSignOut.bind(this);
     }
 
-
-
     handleSignOut() {
-        this.props.isAuth();
         this.setState({redirect: true});
-        auth.signOut()
-            .then(() => {
-                localStorage.removeItem('userUID');
-                return <Redirect to='/'/>;
-
-            });
+        auth.signOut();
     }
 
     render() {
@@ -35,6 +28,7 @@ class UserProfile extends React.Component {
                         userUID: this.props.user.userUID
                     }
                 }}>{nameLogo}</NavLink>
+                {this.redirectRender()}
                 <button onClick={this.handleSignOut} className='btn btn-white' name='Sign up'>Sign out</button>
             </div>
         )
