@@ -39,7 +39,7 @@ class Issues extends Component {
   render() {
     return (
       <div className="issues">
-        <div className="issues-btn" onClick={this.togglePopup.bind(this)}>+ Add Issues</div>
+        <div className="issues-btn" onClick={this.togglePopup.bind(this)}>+ Add Issue</div>
         <IssuesFilterPanel
           updateData={this.updateData}
           filterData={this.filterData}

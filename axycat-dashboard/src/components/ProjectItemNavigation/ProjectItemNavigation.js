@@ -80,7 +80,7 @@ export default class ProjectItemNavigation extends Component {
         </div>
         <div className="router-content">
           <NavLink id='project-list-return' activeClassName="active" to="/listing" >
-            &#8592; All Projects
+            <span className='returnArrow'>&#8592;</span>  All Projects
           </NavLink>
           <Route path={`${match.path}/:projectId/accessibility-overview`} component={SideBarDetails} />
           <Route path={`${match.path}/:projectId/pages`} component={Pages}/>

@@ -16,6 +16,7 @@ handleChange(event){
 }
 render() {
     return(
+    <div>
         <form className='sortForm'>
             <label className='sortBy'> Sort by 
                 <select className='selected' value={this.state.value} onChange={this.handleChange}>
@@ -25,6 +26,7 @@ render() {
                 </select>
             </label>
         </form>
+    </div>
         );
     }
 }
