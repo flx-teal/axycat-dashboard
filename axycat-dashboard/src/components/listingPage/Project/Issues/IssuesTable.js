@@ -10,10 +10,10 @@ class IssuesTable extends Component {
   issueStateOnChange = key => event => {
     this.props.issuesList.violations[key].status = event.target.value;
     if(event.target.value === 'In Progress') {
-      this.props.issuesList.violations[key].inProgressDate = new Date().toString();
+      this.props.issuesList.violations[key].creationDate = new Date().toString();
     }
     if(event.target.value === 'Done') {
-      this.props.issuesList.violations[key].doneDate = new Date().toString();
+      this.props.issuesList.violations[key].creationDate = new Date().toString();
     }
     if(event.target.value === 'New') {
         this.props.issuesList.violations[key].creationDate = new Date().toString();
@@ -64,7 +64,7 @@ class IssuesTable extends Component {
       }
       if (sortValue === "Date") {
         sortedList = issuesData.violations.sort((a, b) => {
-          if (a.creationDate > b.creationDate) {
+          if (a.creationDate < b.creationDate) {
               return -1
             }
         });

@@ -13,10 +13,10 @@ export default class IssuesPopUpDetails extends Component {
         console.log(this.props.data.issuesList)
         this.props.data.issuesList[key].status = event.target.value;
         if(event.target.value === 'In Progress') {
-          this.props.data.issuesList[key].inProgressDate = new Date().toString();
+          this.props.data.issuesList[key].creationDate = new Date().toString();
         }
         if(event.target.value === 'Done') {
-          this.props.data.issuesList[key].doneDate = new Date().toString();
+          this.props.data.issuesList[key].creationDate = new Date().toString();
         }
         if(event.target.value === 'New') {
             this.props.issuesList[key].creationDate = new Date().toString();
