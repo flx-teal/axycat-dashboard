@@ -2,16 +2,15 @@ import React from 'react';
 import FilterButtons from './FilterButtons';
 import SortIssuesDropdown from './SortIssuesDropdown';
 import Search from './Search';
-import './FilterPanel.scss';
+import './IssuesFilterPanel.scss';
 
 export default class IssuesFilterPanel extends React.Component {
     constructor(props) {
         super(props)
     }
-    
     render() {
         return (
-            <div className='filterPanel'>
+            <div className='issuesFilterPanel'>
             <FilterButtons buttonName='All' filterData={this.props.filterData} issuesList={this.props.issuesList}/>
             <FilterButtons buttonName='New' filterData={this.props.filterData} issuesList={this.props.issuesList}/>
             <FilterButtons buttonName='In Progress' filterData={this.props.filterData} issuesList={this.props.issuesList}/>

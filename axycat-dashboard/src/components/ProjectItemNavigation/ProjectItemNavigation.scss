@@ -3,15 +3,15 @@
 
   .sidebar {
     background-color: #ffffff;
-    font-size: 14px;
-    padding: 20px 20px;
+    font-size: 21px;
+    padding: 20px 10px;
     margin: 5px 20px 5px 0;
-
+    width: 380px;
     .project-name {
       font-weight: bold;
-      font-size: 16px;
-      margin: 7px 0;
-      padding-left: 30px;
+      font-size: 26px;
+      margin: 7px 18px;
+      padding-left: 0px;
     }
     .navigation {
       display: flex;
@@ -20,8 +20,8 @@
       a {
         text-decoration: none;
         color: #9dafbd;
-        padding: 8px 0 8px 30px;
-        width: 200px;
+        padding: 15px 0 15px 20px;
+        width: 300px;
         &:hover {
           background-color: #ecf1f3;
           color: #026fc2;
@@ -34,17 +34,19 @@
   .router-content {
     width: 100%;
 
-    #project-list-return {;
+    #project-list-return {
       display: block;
-      margin: 20px;
+      margin: 30px;
       border-bottom: solid 1px #cee2f1;
       text-decoration: none;
       color: #026fc2;
-      font-weight: bold;
+      font-size: 25px;
     }
   }
 }
-
+span.returnArrow{
+  font-size: 40px;
+}
 @media print {
   .sidebar-main-wrapper {
     .sidebar {
