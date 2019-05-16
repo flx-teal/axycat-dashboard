@@ -9,7 +9,7 @@ export default class ProjectsListComponent extends React.Component {
         this.state = {
             currentPage: 1,
             //projectsPerPage = quantity of displayed projects, you can change it
-            projectsPerPage: 9,
+            projectsPerPage: 11,
             upperPageBound: 2,
             lowerPageBound: 0,
             isPrevBtnActive: 'disabled',
@@ -152,6 +152,16 @@ export default class ProjectsListComponent extends React.Component {
                 <ProjectItemComponent data={projectItem} key={projectItem.id} />
               ));
              paginationCounter = filteredList.length;
+             if (filteredList.length <= this.state.projectsPerPage) {
+              return (
+                <div>
+                  <div className="allProjectsContainer">
+                    <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                    {showProjects}
+                  </div>
+                </div>
+              );
+            }
           }
           if (buttonName === "In Progress") {
             filteredList = data.filter(projectItem => {
@@ -161,7 +171,16 @@ export default class ProjectsListComponent extends React.Component {
             showProjects = filteredList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem => (
                 <ProjectItemComponent data={projectItem} key={projectItem.id} />
               ));
-              paginationCounter = filteredList.length;
+              if (filteredList.length <= this.state.projectsPerPage) {
+                return (
+                  <div>
+                    <div className="allProjectsContainer">
+                      <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                      {showProjects}
+                    </div>
+                  </div>
+                );
+              }
           }
           if (buttonName === "Done") {
             filteredList = data.filter(projectItem => {
@@ -170,7 +189,16 @@ export default class ProjectsListComponent extends React.Component {
             showProjects = filteredList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem => (
                 <ProjectItemComponent data={projectItem} key={projectItem.id} />
               ));
-              paginationCounter = filteredList.length;
+              if (filteredList.length <= this.state.projectsPerPage) {
+                return (
+                  <div>
+                    <div className="allProjectsContainer">
+                      <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                      {showProjects}
+                    </div>
+                  </div>
+                );
+              }
           }
           if (buttonName === "All") {
             showProjects = data.slice(indexOfFirstProject, indexOfLastProject).map(projectItem => (

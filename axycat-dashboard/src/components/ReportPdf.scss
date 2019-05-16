@@ -11,7 +11,7 @@
 
   .report {
     width: 60%;
-    margin: auto;
+    margin: 250px auto;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -21,7 +21,7 @@
     }
 
     .pageBreak {
-      height: 400px;
+      height: 0px;
     }
 
   }
