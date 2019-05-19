@@ -200,7 +200,7 @@ class IssuesTable extends Component {
               <th className='table-title'>Name</th>
               <th className='table-title'>Status</th>
               <th className='table-title'>Assignee</th>
-              <th className='table-title'>Update Date</th>
+              <th className='table-title'>Updated Date</th>
             </tr>
           </thead>
           <tbody className='table-body'>{showIssues}</tbody>
