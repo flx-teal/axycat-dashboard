@@ -16,14 +16,33 @@ export default class ReportPdf extends Component {
       inputValue: '',
       buttonName: '',
       sortValue: '',
-      percentage: 60,
-      projectName: ''
+      percentage: '',
+      projectName: '',
+      newIssues: '',
+      inProgressIssues: '',
+      fixedIssues: ''
     };
   }
 
   componentDidMount() {
     getReportFromCloudById(this.state.projectId).then(data => {
         this.setState({issuesList: data, projectName: data.projectData.projectName});
+      const fixedIssues = data.violations.filter(function(item) {
+        return item.status === 'Done';
+      });
+      const inProgressIssues = data.violations.filter(function(item) {
+        return item.status === 'In Progress';
+      });
+      const newIssues = data.violations.filter(function(item) {
+        return item.status === 'New';
+      });
+      const percentOfFixedIssues = Math.round((fixedIssues.length / data.violations.length) * 100);
+      this.setState({
+        percentage: percentOfFixedIssues,
+        newIssues: newIssues.length,
+        inProgressIssues: inProgressIssues.length,
+        fixedIssues: fixedIssues.length
+      })
       }
     );
   }
@@ -47,9 +66,9 @@ export default class ReportPdf extends Component {
           <TitleComponent title="Report" className="title"/>
           <ProgressBar percentage={this.state.percentage} className="progress-bar"/>
           <div className="issues-amount">
-            <IssuesAmountCart name="To Do" amount="100"/>
-            <IssuesAmountCart name="In Progress" amount="100"/>
-            <IssuesAmountCart name="Done" amount="100"/>
+            <IssuesAmountCart name="To Do" amount={this.state.newIssues}/>
+            <IssuesAmountCart name="In Progress" amount={this.state.inProgressIssues}/>
+            <IssuesAmountCart name="Done" amount={this.state.fixedIssues}/>
           </div>
           <div className="pageBreak"> </div>
           {/*<p>Project id: {localStorage.getItem('createdProjectId')}</p>*/}
