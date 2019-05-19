@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CheckAccessibility from "./homePage/checkAccessibility";
+import CheckAccessibility from './homePage/checkAccessibility';
 
 class Home extends Component {
   render() {

@@ -1,6 +1,6 @@
 .container {
 	width: 80%;
-	margin: 10px 10%;
+	margin: 10px 8%;
 }
 
 .titleListing .title-container {
@@ -8,16 +8,16 @@
 	flex-direction: row;
 	justify-content: flex-start;
 	margin: 0;
-	height: 69px;
+	height: 55px;
 	background-color: #f9fbfc;
 	border-bottom: 1px solid #d2d2d2;
 	.title {
 		margin-top: 20px;
-		font-size: 21px;
-		font-weight: 500;
+		font-size: 19px;
+		font-weight: 600;
 	}
 	.sub-title {
-		font-size: 17px;
+		font-size: 16px;
 		margin-left: 23px;
 		margin-top: 20px;
 	}

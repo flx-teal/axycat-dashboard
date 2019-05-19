@@ -6,7 +6,7 @@
   width: 100%;
   background: black;
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   .footer-section_body {
     display: flex;
     justify-content: space-evenly;
@@ -47,29 +47,27 @@
       margin-top: 40px;
       .icon-container {
         display: flex;
-        justify-content: space-around;
-        width: 220px;
+        justify-content: flex-start;
+        width: 200px;
         
-        .facebook-icon {
+        .facebook-icon, .linkedin-icon, .instagram-icon {
           width: 40px;
           height: 40px;
-        }
-        .linkedin-icon {
-          width: 40px;
-          height: 40px;
-        }
-        .instagram-icon {
-          width: 40px;
-          height: 40px;
+          margin-right: 27px;
         }
       }
     }
   }
   .footer-privacy {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    margin-left: 135px;
     height: 60px;
     margin-top: 14px;
+    font-size: 15px;
+    .copyright {
+      margin-right: 60%;
+    }
     .privacy-policy:hover {
       cursor: pointer;
       text-decoration: underline;

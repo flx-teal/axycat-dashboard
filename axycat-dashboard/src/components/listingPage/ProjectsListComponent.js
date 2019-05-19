@@ -8,7 +8,6 @@ export default class ProjectsListComponent extends React.Component {
         super(props);
         this.state = {
             currentPage: 1,
-            //projectsPerPage = quantity of displayed projects, you can change it
             projectsPerPage: 11,
             upperPageBound: 2,
             lowerPageBound: 0,
@@ -35,25 +34,25 @@ export default class ProjectsListComponent extends React.Component {
           this.props.reports.length / this.state.projectsPerPage
         );
         this.setState({
-          isNextBtnActive: "disabled"
+          isNextBtnActive: 'disabled'
         });
         this.setState({
-          isPrevBtnActive: "disabled"
+          isPrevBtnActive: 'disabled'
         });
         if (totalPage === pageValue && totalPage > 1) {
           this.setState({
-            isPrevBtnActive: ""
+            isPrevBtnActive: ''
           });
         } else if (pageValue === 1 && totalPage > 1) {
           this.setState({
-            isNextBtnActive: ""
+            isNextBtnActive: ''
           });
         } else if (totalPage > 1) {
           this.setState({
-            isNextBtnActive: ""
+            isNextBtnActive: ''
           });
           this.setState({
-            isPrevBtnActive: ""
+            isPrevBtnActive: ''
           });
         }
       };
@@ -102,8 +101,9 @@ export default class ProjectsListComponent extends React.Component {
         const indexOfLastProject = this.state.currentPage * this.state.projectsPerPage;
         const indexOfFirstProject = indexOfLastProject - this.state.projectsPerPage;
         let renderPrevBtn, renderNextBtn, paginationCounter;
+        
         if (!data) {
-            return <p>load</p>;
+            return <p>Loading...</p>;
           } else {
             sortedList = data.sort((a, b) => {
               if (a.data.timestamp > b.data.timestamp) return -1;
@@ -114,7 +114,7 @@ export default class ProjectsListComponent extends React.Component {
               paginationCounter = this.props.reports.length;
           }
           
-          if (sortValue === "Issues") {
+          if (sortValue === 'Issues') {
             sortedList = data.sort((a, b) => {
               return b.data.violations.length - a.data.violations.length;
             });
@@ -122,7 +122,7 @@ export default class ProjectsListComponent extends React.Component {
                 <ProjectItemComponent data={projectItem} key={projectItem.id} />
               ));
           }
-          if (sortValue === "Date") {
+          if (sortValue === 'Date') {
             sortedList = data.sort((a, b) => {
               if (a.data.projectData.date > b.data.projectData.date) return -1;
             });
@@ -130,7 +130,7 @@ export default class ProjectsListComponent extends React.Component {
                 <ProjectItemComponent data={projectItem} key={projectItem.id} />
               ));
           }
-          if (sortValue === "Name") {
+          if (sortValue === 'Name') {
             sortedList = data.sort((a, b) => {
               if (
                 a.data.projectData.projectName.toLowerCase() < b.data.projectData.projectName.toLowerCase()
@@ -143,9 +143,9 @@ export default class ProjectsListComponent extends React.Component {
               ));
           }
           
-          if (buttonName === "New") {
+          if (buttonName === 'New') {
             filteredList = data.filter(projectItem => {
-              return projectItem.data.projectData.status === "New";
+              return projectItem.data.projectData.status === 'New';
             });
           
             showProjects = filteredList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem => (
@@ -155,17 +155,17 @@ export default class ProjectsListComponent extends React.Component {
              if (filteredList.length <= this.state.projectsPerPage) {
               return (
                 <div>
-                  <div className="allProjectsContainer">
-                    <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                  <div className='allProjectsContainer'>
+                    <CreateNewProject buttonName='Create New Project' buttonContent='+' />
                     {showProjects}
                   </div>
                 </div>
               );
             }
           }
-          if (buttonName === "In Progress") {
+          if (buttonName === 'In Progress') {
             filteredList = data.filter(projectItem => {
-              return projectItem.data.projectData.status === "In Progress";
+              return projectItem.data.projectData.status === 'In Progress';
             });
           
             showProjects = filteredList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem => (
@@ -174,17 +174,17 @@ export default class ProjectsListComponent extends React.Component {
               if (filteredList.length <= this.state.projectsPerPage) {
                 return (
                   <div>
-                    <div className="allProjectsContainer">
-                      <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                    <div className='allProjectsContainer'>
+                      <CreateNewProject buttonName='Create New Project' buttonContent='+' />
                       {showProjects}
                     </div>
                   </div>
                 );
               }
           }
-          if (buttonName === "Done") {
+          if (buttonName === 'Done') {
             filteredList = data.filter(projectItem => {
-              return projectItem.data.projectData.status === "Done";
+              return projectItem.data.projectData.status === 'Done';
             });
             showProjects = filteredList.slice(indexOfFirstProject, indexOfLastProject).map(projectItem => (
                 <ProjectItemComponent data={projectItem} key={projectItem.id} />
@@ -192,20 +192,20 @@ export default class ProjectsListComponent extends React.Component {
               if (filteredList.length <= this.state.projectsPerPage) {
                 return (
                   <div>
-                    <div className="allProjectsContainer">
-                      <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                    <div className='allProjectsContainer'>
+                      <CreateNewProject buttonName='Create New Project' buttonContent='+' />
                       {showProjects}
                     </div>
                   </div>
                 );
               }
           }
-          if (buttonName === "All") {
+          if (buttonName === 'All') {
             showProjects = data.slice(indexOfFirstProject, indexOfLastProject).map(projectItem => (
                 <ProjectItemComponent data={projectItem} key={projectItem.id} />
               ));
           }
-          if (buttonName === 'New' && inputValue !== "") {
+          if (buttonName === 'New' && inputValue !== '') {
             searchResults = filteredList.filter(projectItem => {
               return projectItem.data.projectData.projectName.toLowerCase().includes(inputValue);
             });
@@ -215,15 +215,15 @@ export default class ProjectsListComponent extends React.Component {
               if (searchResults.length <= this.state.projectsPerPage) {
                 return (
                   <div>
-                    <div className="allProjectsContainer">
-                      <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                    <div className='allProjectsContainer'>
+                      <CreateNewProject buttonName='Create New Project' buttonContent='+' />
                       {showProjects}
                     </div>
                   </div>
                 );
               }
           }
-          if (buttonName ==='Done' && inputValue !== "") {
+          if (buttonName ==='Done' && inputValue !== '') {
             searchResults = filteredList.filter(projectItem => {
               return projectItem.data.projectData.projectName.toLowerCase().includes(inputValue);
             });
@@ -233,15 +233,15 @@ export default class ProjectsListComponent extends React.Component {
               if (searchResults.length <= this.state.projectsPerPage) {
                 return (
                   <div>
-                    <div className="allProjectsContainer">
-                      <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                    <div className='allProjectsContainer'>
+                      <CreateNewProject buttonName='Create New Project' buttonContent='+' />
                       {showProjects}
                     </div>
                   </div>
                 );
               }
           }
-          if (buttonName ==='In Progress' && inputValue !== "") {
+          if (buttonName ==='In Progress' && inputValue !== '') {
             searchResults = filteredList.filter(projectItem => {
               return projectItem.data.projectData.projectName.toLowerCase().includes(inputValue);
             });
@@ -251,15 +251,15 @@ export default class ProjectsListComponent extends React.Component {
               if (searchResults.length <= this.state.projectsPerPage) {
                 return (
                   <div>
-                    <div className="allProjectsContainer">
-                      <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                    <div className='allProjectsContainer'>
+                      <CreateNewProject buttonName='Create New Project' buttonContent='+' />
                       {showProjects}
                     </div>
                   </div>
                 );
               }
           }
-          if (buttonName === "All" && inputValue !== "") {
+          if (buttonName === 'All' && inputValue !== '') {
             searchResults = data.filter(projectItem => {
               return projectItem.data.projectData.projectName.toLowerCase().includes(inputValue);
             });
@@ -269,15 +269,15 @@ export default class ProjectsListComponent extends React.Component {
               if (searchResults.length <= this.state.projectsPerPage) {
                 return (
                   <div>
-                    <div className="allProjectsContainer">
-                      <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                    <div className='allProjectsContainer'>
+                      <CreateNewProject buttonName='Create New Project' buttonContent='+' />
                       {showProjects}
                     </div>
                   </div>
                 );
               }
           }
-          if (buttonName === "" && inputValue !== "") {
+          if (buttonName === '' && inputValue !== '') {
             searchResults = data.filter(projectItem => {
               return projectItem.data.projectData.projectName.toLowerCase().includes(inputValue);
             });
@@ -287,8 +287,8 @@ export default class ProjectsListComponent extends React.Component {
               if (searchResults.length <= this.state.projectsPerPage) {
                 return (
                   <div>
-                    <div className="allProjectsContainer">
-                      <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                    <div className='allProjectsContainer'>
+                      <CreateNewProject buttonName='Create New Project' buttonContent='+' />
                       {showProjects}
                     </div>
                   </div>
@@ -305,7 +305,7 @@ export default class ProjectsListComponent extends React.Component {
               return (
                 <li
                   key={number}
-                  className={`pageNumber ${number === this.state.currentPage ? "active" : ""}`}
+                  className={`pageNumber ${number === this.state.currentPage ? 'active' : ''}`}
                   value={number}>
                   {number}
                 </li>
@@ -315,46 +315,46 @@ export default class ProjectsListComponent extends React.Component {
           if (this.props.reports.length <= this.state.projectsPerPage) {
             return (
               <div>
-                <div className="allProjectsContainer">
-                  <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+                <div className='allProjectsContainer'>
+                  <CreateNewProject buttonName='Create New Project' buttonContent='+' />
                   {showProjects}
                 </div>
               </div>
             );
           }
-          if (this.state.isPrevBtnActive === "disabled") {
+          if (this.state.isPrevBtnActive === 'disabled') {
             renderPrevBtn = (
               <li className={this.state.isPrevBtnActive}>
-                <span className="btnPrev">&#8249;</span>
+                <span className='btnPrev'>&#8249;</span>
               </li>
             );
           } else {
             renderPrevBtn = (
               <li className={this.state.isPrevBtnActive} onClick={this.btnPrevClick}>
-                <span className="btnNext activeBtn">&#8249;</span>
+                <span className='btnNext activeBtn'>&#8249;</span>
               </li>
             );
           }
-          if (this.state.isNextBtnActive === "disabled") {
+          if (this.state.isNextBtnActive === 'disabled') {
             renderNextBtn = (
               <li className={this.state.isNextBtnActive}>
-                <span className="btnNext">&#8250;</span>
+                <span className='btnNext'>&#8250;</span>
               </li>
             );
           } else {
             renderNextBtn = (
               <li className={this.state.isNextBtnActive} onClick={this.btnNextClick}>
-                <span className="btnNext activeBtn">&#8250;</span>
+                <span className='btnNext activeBtn'>&#8250;</span>
               </li>
             );
           }
           return (
             <div>
-              <div className="allProjectsContainer">
-                <CreateNewProject buttonName="Create New Project" buttonContent="+" />
+              <div className='allProjectsContainer'>
+                <CreateNewProject buttonName='Create New Project' buttonContent='+' />
                 {showProjects}
               </div>
-              <div className="pagination">
+              <div className='pagination'>
                 <ul>
                   {renderPrevBtn}
                   {renderPageNumbers}

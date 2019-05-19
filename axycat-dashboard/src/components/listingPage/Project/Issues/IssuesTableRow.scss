@@ -1,26 +1,30 @@
-td>span, .table-cell {
-    margin: 0 auto;
-    text-align: center;
-    height: 80px;
-    font-size: 20px;
+td>span,
+.table-cell {
+	margin: 0 auto;
+	text-align: center;
+	height: 80px;
+	font-size: 16px;
 }
+
 th.table-title {
-    font-size: 19px;
-    margin-right: 5px;
-    text-align: left;
-    padding: 10px;
+	font-size: 16px;
+	margin-right: 5px;
+	text-align: left;
+	padding: 10px;
 }
+
 .table-name {
-    text-align: left;
-    padding: 0 10px;
+	text-align: left;
+	padding: 0 10px;
 }
 
 input[type='checkbox'] {
-    width: 15px;
-    height: 15px;
+	margin-left: 15px;
+	width: 15px;
+	height: 15px;
 }
 
 td>select {
-    float: left;
-    font-size: 20px;
+	float: left;
+	font-size: 16px;
 }

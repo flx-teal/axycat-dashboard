@@ -26,11 +26,11 @@ export default class BodyPopupDetails extends React.Component {
                     </div>
                     <div className='inner-list-container-item'>
                         <h4 className='inner-list-container-item__title'>Element location</h4>
-                        <input type='text' value={node.target} disabled/>
+                        <textarea type='text' value={node.target} readOnly/>
                     </div>
                     <div className='inner-list-container-item'>
                         <h4 className='inner-list-container-item__title'>Element source</h4>
-                        <textarea value={node.html} disabled/>
+                        <textarea value={node.html} readOnly/>
                     </div>
                 </div>
                 <div>

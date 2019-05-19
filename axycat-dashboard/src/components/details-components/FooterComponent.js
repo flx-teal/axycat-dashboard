@@ -51,7 +51,7 @@ function FooterComponent() {
         </div>
       </div>
       <div className='footer-privacy'>
-        <p>Copyright &#9400; All rights reserved</p>
+        <p className='copyright'>Copyright &#9400; All rights reserved</p>
         <p className='privacy-policy'>Privacy Policy</p>
       </div>
     </footer>

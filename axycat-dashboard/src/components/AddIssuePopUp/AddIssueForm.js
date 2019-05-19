@@ -87,31 +87,31 @@ export default class AddIssuePopUp extends React.Component {
     const {closePopup} = this.props;
 
     return (
-      <form className="form">
+      <form className='form'>
         {(this.state.error !== '')
-          ? <span className="error">{this.state.error}</span>
+          ? <span className='error'>{this.state.error}</span>
           : ''
         }
-        <Input type="text"
-               label="Name"
-               name="name"
+        <Input type='text'
+               label='Name'
+               name='name'
                onChange={this.handleNameChange}
                placeholder={'Enter Issue Name'}/>
-        <Input type="text"
-               label="Description"
-               name="description"
+        <Input type='text'
+               label='Description'
+               name='description'
                onChange={this.handleDescriptionChange}
-               placeholder={"Add Description here..."}/>
-        <p className="impact">Impact</p>
-        <select onChange={this.handleImpactChange} className="select-impact">
-          <option name="minor">Minor</option>
-          <option name="moderate">Moderate</option>
-          <option name="critical">Critical</option>
-          <option name="serious">Serious</option>
+               placeholder={'Add Description here...'}/>
+        <p className='impact'>Impact</p>
+        <select onChange={this.handleImpactChange} className='select-impact'>
+          <option name='minor'>Minor</option>
+          <option name='moderate'>Moderate</option>
+          <option name='critical'>Critical</option>
+          <option name='serious'>Serious</option>
         </select>
-        <div className="buttons">
-          <ButtonComponent class="btn-blue" name="Save" handler={this.handleSubmit}/>
-          <ButtonComponent class="btn-white" name="Cancel" handler={closePopup}/>
+        <div className='buttons'>
+          <ButtonComponent class='btn-blue' name='Save' handler={this.handleSubmit}/>
+          <ButtonComponent class='btn-white' name='Cancel' handler={closePopup}/>
         </div>
         {isLoading && <Spinner/>}
       </form>

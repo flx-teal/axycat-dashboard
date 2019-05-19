@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.scss'
-import {auth, facebookProvider, googleProvider} from "../../../config/fbConfig";
+import {auth, facebookProvider, googleProvider} from '../../../config/fbConfig';
 
 class Login extends React.Component {
     constructor(props) {
@@ -79,9 +79,9 @@ class Login extends React.Component {
                             <span onClick={this.props.handleLogin} className='login-close'> </span>
                             <div className='login-info'>
                                 <h2>Sign In</h2>
-                                <form className="login-info-form">
-                                    <input onChange={this.handleEmail} type="email" placeholder='Your Email *'/>
-                                    <input onChange={this.handlePassword} type="password" placeholder='Password *'/>
+                                <form className='login-info-form'>
+                                    <input onChange={this.handleEmail} type='email' placeholder='Your Email *'/>
+                                    <input onChange={this.handlePassword} type='password' placeholder='Password *'/>
                                     {this.state.ifLoginError ?
                                         <p className='error-message'>{this.state.errorMessage}</p> : null}
                                 </form>
@@ -95,7 +95,7 @@ class Login extends React.Component {
                                     <span className='other-login-google' onClick={this.handleGoogle}>G</span>
                                     <span className='other-login-facebook' onClick={this.handleFacebook}>f</span>
                                 </div>
-                                <p className='policy-info'>Click "Sign In" above to accept AxyCAT's Terms of Service &
+                                <p className='policy-info'>Click 'Sign In' above to accept AxyCAT's Terms of Service &
                                     Privacy Policy</p>
                                 <div className='login-signup'>
                                     <span className='login-signup-info'>No account?</span><span

@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignUp.scss'
-import {auth, db, facebookProvider, googleProvider} from "../../../config/fbConfig";
+import {auth, db, facebookProvider, googleProvider} from '../../../config/fbConfig';
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -83,16 +83,16 @@ class SignUp extends React.Component {
                             <span onClick={this.props.handleSignUp} className='signup-close'></span>
                             <div className='signup-info'>
                                 <h2>Sign Up</h2>
-                                <form className="signup-info-form">
-                                    <input onChange={this.handleInputData} id='userFullName' type="text"
+                                <form className='signup-info-form'>
+                                    <input onChange={this.handleInputData} id='userFullName' type='text'
                                            placeholder='Full Name *'/>
-                                    <input onChange={this.handleInputData} id='userEmail' type="email"
+                                    <input onChange={this.handleInputData} id='userEmail' type='email'
                                            placeholder='Your Email *'/>
                                     <input onChange={this.handleInputData} id='userPhone' data-politespace
-                                           data-grouplength='3,3,4' type="text" placeholder='Phone'/>
-                                    <input onChange={this.handleInputData} id='userPassword' type="password"
+                                           data-grouplength='3,3,4' type='text' placeholder='Phone'/>
+                                    <input onChange={this.handleInputData} id='userPassword' type='password'
                                            placeholder='Password *'/>
-                                    <input onChange={this.handleInputData} id='userPasswordRepeat' type="password"
+                                    <input onChange={this.handleInputData} id='userPasswordRepeat' type='password'
                                            placeholder='Repeat Password *'/>
                                     {this.state.ifLoginError ?
                                         <p className='error-message'>{this.state.errorMessage}</p> : null}

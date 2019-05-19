@@ -5,7 +5,6 @@ class ChartVerticalMeter extends Component {
   render() {
     const { data } = this.props;
     const { violations } = data;
-
     let cLen, sLen, mLen;
     const len = violations.length;
     const critical = [];
@@ -24,14 +23,13 @@ class ChartVerticalMeter extends Component {
           minor.push(violations[i]);
           break;
         default:
-          console.log('There is not impacts');
+          console.log('There are no impacts.');
       }
     }
     cLen = critical.length;
     sLen = serious.length;
     mLen = minor.length;
 
-    
     return (
       <div className='meter-chart-vertical'>
         <div className='meter-chart-vertical__impact-container'>

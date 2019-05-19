@@ -8,6 +8,7 @@ import ReportCardColumns from './ReportCardColumns';
 class DetailsCardComponent extends Component {
   render() {
     const projectData = this.props.data;
+    
     return (
       <div>
         <TitleComponent

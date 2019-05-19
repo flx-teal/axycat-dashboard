@@ -32,22 +32,20 @@ export default class HeaderPopupDetails extends React.Component {
         let data = this.props.data;
         let issueDate = data.data.creationDate;
         let format = require('date-fns/format');
-        let violationsLength = data.issuesList.length;
+        
         return (
             <div className='popup-header'>
                 <div className='popup-header-info'>
                     <div>
-                        <h2>{data.data.description}</h2>
-                        <span>Added by Stepan Uryk</span><span> {format(issueDate, 'DD-MM-YYYY')} </span>
-                        <span className='popup-header-info-date'> | Update 12 min ago</span>
-                    </div>
-                    <div className='popup-header-info-nav'>
-                       <span> | {data.index} of {violationsLength} | </span>
+                        <h3>{data.data.description}</h3>
+                        <span className='popup-header-info-user'>Added by Stepan Uryk</span>
+                        <span className='popup-header-info-date'> {format(issueDate, 'DD-MM-YYYY')} </span>
+                        <span className='popup-header-info-date'> | Updated 12 min ago</span>
                     </div>
                 </div>
                 <div className='popup-header-status'>
                     <div className='popup-header-status-col'>
-                        <div>Status: <select className='popup-header-status-select-status' 
+                        <div className='popup-header-title'>Status: <select className='popup-header-status-select-status' 
                         value={data.data.status} onChange={data.issueStateOnChange}
                         >
             {['New', 'In Progress', 'Done'].map((item, id) => {
@@ -55,19 +53,19 @@ export default class HeaderPopupDetails extends React.Component {
             })}
           </select>
                         </div>
-                        <div className='popup-header-status-col-priority'>Priority: <span className='popup-header-status-select-priority'
+                        <div className='popup-header-status-col-priority popup-header-title'>Priority: <span className='popup-header-status-select-priority'
                                               style={this.checkImpact(this.props.data)}/>
-                                        <span>{data.data.impact}</span>
+                                        <span className='popup-header-status-select'>{data.data.impact}</span>
                         </div>
 
                     </div>
                     <div className='popup-header-status-col'>
-                        <div>Assignee: <select className='popup-header-status-select-assignee'>
+                        <div className='popup-header-title'>Assignee: <select className='popup-header-status-select-assignee'>
                                             <option value='rn'>RN</option>
                                             <option value='ot'>OT</option>
                                             </select>
                         </div>
-                        <div>Estimated Time: <span className='popup-header-status-estimated'>4 hours</span>
+                        <div className='popup-header-title'>Estimated Time: <span className='popup-header-status-estimated'>4 hours</span>
                         </div>
                     </div>
                 </div>

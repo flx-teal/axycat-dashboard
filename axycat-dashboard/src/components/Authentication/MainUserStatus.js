@@ -1,8 +1,8 @@
 import React from 'react';
-import Authentication from "./Authentication";
-import {auth} from "../../config/fbConfig";
-import UserProfile from "./UserProfile";
-import {Redirect} from "react-router-dom";
+import Authentication from './Authentication';
+import {auth} from '../../config/fbConfig';
+import UserProfile from './UserProfile';
+import {Redirect} from 'react-router-dom';
 
 export default class MainUserStatus extends React.Component {
     constructor(props) {
