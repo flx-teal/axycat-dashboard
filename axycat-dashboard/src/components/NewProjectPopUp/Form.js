@@ -65,10 +65,10 @@ export default class Form extends Component {
         }));
       })
       .catch(error => {
-        this.setState(() => ({
-          isLoading: false
-        }));
-        console.log(error)
+          this.setState(() => ({
+            isLoading: false
+          }));
+          console.log(error)
         }
       );
     //Set empty string into input field
