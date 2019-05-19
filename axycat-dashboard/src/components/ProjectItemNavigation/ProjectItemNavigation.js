@@ -59,15 +59,13 @@ export default class ProjectItemNavigation extends Component {
   render() {
     const {match} = this.props;
     const {projectId, projectName} = this.state;
-    getReportFromCloudById(projectId)
-      .catch(error => console.log(error));
 
     return (
       <div className="sidebar-main-wrapper">
         <div className="sidebar">
           <p className="project-name">{ projectName }</p>
           <nav className="navigation">
-            <Link to={`${match.url}/${projectId}/accessibility-overview`} data={projectId}>
+            <Link to={`${match.url}/${projectId}/accessibility-overview`}>
               Accessibility Overview
             </Link>
             <Link to={`${match.url}/${projectId}/issues`}>

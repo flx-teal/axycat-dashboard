@@ -9,7 +9,7 @@ class SideBarDetails extends Component {
     super(props);
     const { location: { state: { reports } = {} } = {} } = props;
     this.state = {
-      projectId: localStorage.getItem('createdProjectId'),
+      projectId: this.props.match.params.projectId || localStorage.getItem('createdProjectId'),
       dataProject: reports || null
     };
   }

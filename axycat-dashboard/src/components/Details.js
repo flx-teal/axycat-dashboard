@@ -11,7 +11,7 @@ class Detail extends Component {
     super(props);
     const { location: { state: { reports } = {} } = {} } = props;
     this.state = {
-      projectId: '',
+      projectId: this.props.match.params.projectId || localStorage.getItem('createdProjectId'),
       dataProject: reports || null
     };
   }
