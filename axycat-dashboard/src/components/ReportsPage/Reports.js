@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import TitleComponent from '../details-components/TitleComponent';
 import './Reports.scss';
-import ButtonComponent from '../details-components/ButtonComponent';
 import ProgressBar from './ProgressBar';
 import IssuesAmountCart from './IssuesAmountCart'
 import TotalFlowChart from './TotalFlowChart';
-import {addErrorToCloud} from "../../config/fbConfig";
 
 class Reports extends Component {
   constructor(props) {
@@ -23,7 +21,8 @@ class Reports extends Component {
       <div className="reports-wrapper">
         <div className="reports-pdf">
           <TitleComponent title="Status Reports" className="title"/>
-          <a href={`http://localhost:2000/report?id=${this.state.projectId}`} className="btn-white" download="report.pdf">Download report</a>
+          <a href={`http://localhost:2000/report?id=${this.state.projectId}`} className="btn-white"
+             download="report.pdf">Download report</a>
         </div>
         <div>
           <ProgressBar percentage={this.state.percentage}/>
@@ -33,7 +32,6 @@ class Reports extends Component {
             <IssuesAmountCart name="Done" amount="100"/>
           </div>
         </div>
-        {/*<p>Project id: </p>*/}
         <div>
           <TotalFlowChart width={'1200px'} height={'550px'}/>
         </div>

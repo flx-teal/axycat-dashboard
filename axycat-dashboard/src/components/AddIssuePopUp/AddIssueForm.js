@@ -1,5 +1,5 @@
 import React from 'react';
-import './AddIssueForm.scss'
+import './AddIssueForm.scss';
 import Input from '../NewProjectPopUp/Input';
 import {Spinner} from '../NewProjectPopUp/Spinner';
 import ButtonComponent from '../details-components/ButtonComponent';

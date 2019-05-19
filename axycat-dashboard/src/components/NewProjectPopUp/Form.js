@@ -4,7 +4,7 @@ import ButtonComponent from '../details-components/ButtonComponent';
 import './Form.scss';
 import {Redirect} from 'react-router-dom';
 import {addErrorToCloud} from '../../config/fbConfig';
-import {Spinner} from "./Spinner";
+import {Spinner} from './Spinner';
 
 export default class Form extends Component {
   constructor(props) {
