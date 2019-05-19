@@ -26,6 +26,7 @@ export default class IssuesPopUpDetails extends Component {
       };
     render() {
         let data = this.props.data;
+        
         return (
             <div>
                 {!this.props.isClicked && <div className='issues-popup'>
@@ -44,7 +45,7 @@ export default class IssuesPopUpDetails extends Component {
                             <BodyPopupDetails data={data.data}/>
                         </div>
                         <div className='issues-popup-inner-wrapper'>
-                            <FooterPopupDetails/>
+                            {/* <FooterPopupDetails/> */}
                         </div>
                     </div>
                 </div>}

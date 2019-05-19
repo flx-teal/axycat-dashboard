@@ -138,27 +138,27 @@ export default class Form extends Component {
     const {closePopup} = this.props;
 
     return (
-      <form className="form">
+      <form className='form'>
         {(this.state.error !== '')
-          ? <span className="error">{this.state.error}</span>
+          ? <span className='error'>{this.state.error}</span>
           : ''
         }
-        <Input type="text"
-               label="Project Name"
-               name="projectName"
+        <Input type='text'
+               label='Project Name'
+               name='projectName'
                onChange={this.handleProjectNameChange}
                placeholder={'Enter Project Name'}/>
-        <Input type="text"
-               label="Site URL"
-               name="siteUrl"
+        <Input type='text'
+               label='Site URL'
+               name='siteUrl'
                onChange={this.handleSiteUrlChange}
                placeholder={'www.example.com'}/>
-        <Input type="text"
-               label="Client Name"
-               name="clientName"
+        <Input type='text'
+               label='Client Name'
+               name='clientName'
                onChange={this.handleClientNameChange}
                placeholder={'Enter Client Name'}/>
-        <div className="buttons">
+        <div className='buttons'>
           {this.renderRedirect()}
           <ButtonComponent class='btn-blue' name='Save' handler={this.handleSubmit}/>
           <ButtonComponent class='btn-white' name='Cancel' handler={closePopup}/>

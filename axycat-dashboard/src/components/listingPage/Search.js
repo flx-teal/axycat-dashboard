@@ -17,13 +17,19 @@ export default class Search extends React.Component {
 
     render() {
         return (
-            <form className='searchForm'>
-                <label>
-                    <input value={this.state.value} onChange={this.handleChange} className='searchInput' type='text'
-                           placeholder='Search by Name'/>
-                    <button className='searchButton' type='button' disabled></button>
-                </label>
+            <form className="searchForm">
+              <label>
+                <input
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                  className="searchInput"
+                  type="text"
+                  placeholder="Search by Name"
+                />
+                <button className="searchButton" type="button" disabled />
+              </label>
             </form>
-        );
+          );
+          
     }
 }

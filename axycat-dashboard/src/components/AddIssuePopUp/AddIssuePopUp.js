@@ -12,7 +12,7 @@ export default class Popup extends Component {
     return (
       <div className='popup'>
         <div className='popup-inner small-popup'>
-          <div onClick={closePopup} className="close"></div>
+          <div onClick={closePopup} className='close'></div>
           <TitleComponent title={createNewProjectTitle}/>
           <AddIssueForm
             closePopup={closePopup}

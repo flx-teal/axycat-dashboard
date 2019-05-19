@@ -15,16 +15,21 @@ handleChange(event){
     this.props.sortData(event.target.value)
 }
 render() {
-    return(
+    return (
         <form className='sortForm'>
-            <label className='sortBy'>
-                <select className='selectValue' value={this.state.value} onChange={this.handleChange}>
-                    <option>Filter</option>
-                    <option value='Name'>Name</option>
-                    <option value='Date'>Date</option>
-                </select>
-            </label>
+          <label className='sortBy'>
+            <select
+              className='selectValue'
+              value={this.state.value}
+              onChange={this.handleChange}
+            >
+              <option>Filter</option>
+              <option value='Name'>Name</option>
+              <option value='Date'>Date</option>
+            </select>
+          </label>
         </form>
-        );
+      );
+      
     }
 }

@@ -9,7 +9,6 @@ class GoogleChart extends Component {
       satisfied = projectData.passes.length;
       failed = projectData.violations.length;
     }
-
     const data = [
       ['Complliance', 'Satisfaction'],
       ['Satisfied', satisfied],

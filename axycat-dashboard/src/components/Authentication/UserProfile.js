@@ -1,6 +1,6 @@
 import React from 'react';
-import {auth} from "../../config/fbConfig";
-import {NavLink, Redirect} from "react-router-dom";
+import {auth} from '../../config/fbConfig';
+import {NavLink, Redirect} from 'react-router-dom';
 import './UserProfile.scss'
 
 class UserProfile extends React.Component {
@@ -20,6 +20,7 @@ class UserProfile extends React.Component {
 
     render() {
         let nameLogo = this.props.user.userEmail.substring(0, 1).toUpperCase();
+        
         return (
             <div className='buttons-container'>
                 <NavLink className='logo-name' to={{

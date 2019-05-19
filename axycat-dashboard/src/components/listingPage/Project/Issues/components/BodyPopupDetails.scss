@@ -1,32 +1,51 @@
 .inner-list {
-  display: flex;
-  justify-content: space-between;
-  &>div {
-    display: flex;
-    flex-direction: column;
-    width: 48%;
-  }
-  h4 {
-    margin: 0.5rem 0;
-  }
-  p {
-    margin: 0.5rem 0;
-    color: #b0b4b8;
-  }
-  input, textarea {
-    background-color: #f5f7f7;
-    color: #de3e46;
-    border-radius: 5px;
-    border: 1px solid lightgrey;
-    width: 100%;
-    padding: 10px 5px;
-  }
-  textarea {
-    overflow: auto;
-    height: 100px;
-    resize: none;
-  }
-  .flex {
-    display: flex;
-  }
+	display: flex;
+	justify-content: space-between;
+	&>div {
+		display: flex;
+		flex-direction: column;
+		width: 48%;
+	}
+	h4 {
+		margin: 0.5rem 0;
+	}
+	p {
+		margin: 0.5rem 0;
+		color: #b0b4b8;
+	}
+	textarea[type='text'] {
+		padding: 5px 0px 5px 5px;
+		height: 50px;
+		width: 100%;
+		border-radius: 8px;
+		border: 1px solid lightgray;
+		font-weight: 500;
+		font-size: 16px;
+		color: #de3e46;
+		outline: none;
+	}
+	textarea {
+		background-color: #f5f7f7;
+		color: #de3e46;
+		border-radius: 5px;
+		border: 1px solid lightgrey;
+		width: 100%;
+		padding: 10px 5px;
+		font-size: 16px;
+		overflow: auto;
+		height: 100px;
+		resize: none;
+	}
+	.flex {
+		display: flex;
+	}
+}
+
+.inner-list-container-item__title {
+	font-size: 17px;
+}
+
+.inner-list-container-item__text {
+	color: #adbcc8;
+	font-size: 17px;
 }

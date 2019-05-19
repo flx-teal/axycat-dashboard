@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ProjectsListComponent from './listingPage/ProjectsListComponent';
 import FilterPanel from './listingPage/FilterPanel';
 import TitleComponent from './details-components/TitleComponent'
-import {getAllReportsFromCloud} from "../config/fbConfig";
+import {getAllReportsFromCloud} from '../config/fbConfig';
 import './Listing.scss';
 
 export default class Listing extends Component {
@@ -10,14 +10,14 @@ export default class Listing extends Component {
         super(props);
         const { location: { state: { userUID } = {} } = {} } = props;
         if (userUID) {
-          localStorage.setItem("userUID", userUID);
+          localStorage.setItem('userUID', userUID);
         }
         this.state = {
-          userUID: localStorage.getItem("userUID") || "",
+          userUID: localStorage.getItem('userUID') || '',
           reports: [],
-          inputValue: "",
-          buttonName: "",
-          sortValue: ""
+          inputValue: '',
+          buttonName: '',
+          sortValue: ''
         };
       };
       
@@ -38,11 +38,11 @@ export default class Listing extends Component {
       
     render() {
         return (
-            <div className="container">
-              <div className="titleListing">
+            <div className='container'>
+              <div className='titleListing'>
                 <TitleComponent
-                  title="Projects"
-                  subtitle={this.state.reports.length + " Projects"}
+                  title='Projects'
+                  subtitle={this.state.reports.length + ' Projects'}
                 />
               </div>
               <FilterPanel

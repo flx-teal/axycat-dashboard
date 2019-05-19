@@ -16,14 +16,14 @@ $btn-shadow: 0 4px 6px gray;
   align-items: stretch;
   color: grey;
   &-btn {
-    margin: 20px 0 0 10px;
-    width: 140px;
-    height: 53px;
+    margin-top: 10px;
+    width: 100px;
+    height: 40px;
     border: 2px solid $main-blue;
     border-radius: 5px;
     background: $main-blue;
     color: white;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: bold;
     outline: none;
     &:hover {

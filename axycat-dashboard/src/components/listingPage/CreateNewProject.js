@@ -3,7 +3,6 @@ import './CreateNewProject.scss';
 import NewProjectPopUp from '../NewProjectPopUp/NewProjectPopUp';
 
 export default class CreateNewProject extends Component {
-
   constructor(props) {
     super(props);
     this.state = {showPopup: false};
@@ -17,12 +16,12 @@ export default class CreateNewProject extends Component {
 
   render() {
     const {props} = this;
-
+    
     return (
       <div className='createNewProject'>
         <div className='createNewProjectContent'>
           {props.buttonContent &&
-          <div className="button" onClick={this.togglePopup.bind(this)}><span>{props.buttonContent}</span></div>}
+          <div className='button' onClick={this.togglePopup.bind(this)}><span>{props.buttonContent}</span></div>}
           {props.buttonName &&
           <p>{props.buttonName}</p>
           }

@@ -1,54 +1,65 @@
 .popup-header {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  &-info {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    h2 {
-      margin: 0;
-    }
-    &-nav {
-      padding: 5px;
-      width: 180px;
-    }
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	&-info {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 0;
+		h3 {
+			margin: 0;
+		}
+		&-nav {
+			padding: 5px;
+			width: 180px;
+		}
+	}
+	&-status {
+		display: flex;
+		&-col {
+			width: 25%;
+			display: flex;
+			flex-direction: column;
+			&-priority {
+				display: flex;
+				&>span {
+					margin: 0 5px;
+				}
+			}
+			&>select {
+				border-radius: 5px;
+				padding: 5px;
+			}
+			&>div {
+				margin: 5px 0;
+				&>select {
+					border-radius: 5px;
+					padding: 5px;
+					background-color: #ecedeb;
+					border: none;
+					color: #b0b4b8;
+				}
+			}
+		}
+	}
+	.popup-header-status-select-priority {
+		display: block;
+		width: 20px;
+		height: 20px;
+		border-radius: 10px;
+		color: #adbcc8;
+	}
+}
 
-  }
-  &-status {
-    display: flex;
-    &-col {
-      width: 25%;
-      display: flex;
-      flex-direction: column;
-      &-priority {
-        display: flex;
-        &>span{
-          margin: 0 5px;
-        }
-      }
-      &>select {
-        border-radius: 5px;
-        padding: 5px;
-      }
-      &>div {
-        margin: 5px 0;
-        &>select {
-          border-radius: 5px;
-          padding: 5px;
-          background-color: #ecedeb;
-          border: none;
-          color: #b0b4b8;
-        }
-      }
+.popup-header-title {
+	font-size: 16px;
+}
 
-    }
-
-  }
-  .popup-header-status-select-priority {
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
-  }
+.popup-header-info-user,
+.popup-header-info-date,
+.popup-header-status-select-status,
+.popup-header-status-select,
+.popup-header-status-estimated {
+	font-size: 16px;
+	color: #adbcc8
 }

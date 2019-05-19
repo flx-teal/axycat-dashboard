@@ -72,7 +72,7 @@ class CheckAccessibility extends React.Component {
         this.setState({
           reports: json
         });
-        localStorage.setItem("reports", JSON.stringify(this.state.reports));
+        localStorage.setItem('reports', JSON.stringify(this.state.reports));
         this.setState({
           redirect: true,
           isLoading: false
@@ -93,15 +93,15 @@ class CheckAccessibility extends React.Component {
 
     return (
       <div className='check-section'>
-        <h1>Is your website accessible to users with disabilities</h1>
+        <h1>Is your website accessible to users with disabilities ?</h1>
         <form className='check-form'>
-          <input className='check-input' placeholder='Web site address' type="text" value={this.state.value}
+          <input className='check-input' placeholder='Web site address' type='text' value={this.state.value}
                  onChange={this.handleChange}/>
           {this.renderRedirect()}
-          <button onClick={this.handleSubmit} className='check-button' type="submit">Check</button>
+          <button onClick={this.handleSubmit} className='check-button' type='submit'>Check</button>
         </form>
-        {this.state.showError ? <div className="error-list" role="alert">
-          Please enter valid web site address <a href="#" className="error-alert">www.example.com</a>
+        {this.state.showError ? <div className='error-list' role='alert'>
+          Please enter valid web site address <a href='#' className='error-alert'>www.example.com</a>
         </div> : null}
         <p>1 billion people around the world live with a disability - 15% of global population</p>
         {isLoading && <Spinner/>}

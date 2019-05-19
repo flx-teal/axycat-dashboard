@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './ReportPdf.scss'
-import IssuesTable from "./listingPage/Project/Issues/IssuesTable";
-import {getReportFromCloudById} from "./../config/fbConfig";
+import IssuesTable from './listingPage/Project/Issues/IssuesTable';
+import {getReportFromCloudById} from './../config/fbConfig';
 import TitleComponent from './details-components/TitleComponent';
 import ProgressBar from './ReportsPage/ProgressBar';
 import IssuesAmountCart from './ReportsPage/IssuesAmountCart'
@@ -52,28 +52,27 @@ export default class ReportPdf extends Component {
     const mainTitle = 'Status Report of ' + projectName;
 
     return (
-      <div className="pdf-wrapper">
-        <TitleComponent title={mainTitle} className="title"/>
-        <div className="issues">
-          <TitleComponent title="Issues List" className="title"/>
+      <div className='pdf-wrapper'>
+        <TitleComponent title={mainTitle} className='title'/>
+        <div className='issues'>
+          <TitleComponent title='Issues List' className='title'/>
           <IssuesTable
             inputValue={inputValue}
             buttonName={buttonName}
             sortValue={sortValue}
             issuesList={issuesList}/>
         </div>
-        <div className="report">
-          <TitleComponent title="Report" className="title"/>
-          <ProgressBar percentage={this.state.percentage} className="progress-bar"/>
-          <div className="issues-amount">
-            <IssuesAmountCart name="To Do" amount={this.state.newIssues}/>
-            <IssuesAmountCart name="In Progress" amount={this.state.inProgressIssues}/>
-            <IssuesAmountCart name="Done" amount={this.state.fixedIssues}/>
+        <div className='report'>
+          <TitleComponent title='Report' className='title'/>
+          <ProgressBar percentage={this.state.percentage} className='progress-bar'/>
+          <div className='issues-amount'>
+            <IssuesAmountCart name='To Do' amount={this.state.newIssues}/>
+            <IssuesAmountCart name='In Progress' amount={this.state.inProgressIssues}/>
+            <IssuesAmountCart name='Done' amount={this.state.fixedIssues}/>
           </div>
-          <div className="pageBreak"> </div>
-          {/*<p>Project id: {localStorage.getItem('createdProjectId')}</p>*/}
-          <div className="flow-chart">
-            <TotalFlowChart width={'800px'} height={'420px'} className="flow-chart"/>
+          <div className='pageBreak'> </div>
+          <div className='flow-chart'>
+            <TotalFlowChart width={'800px'} height={'420px'} className='flow-chart'/>
           </div>
         </div>
       </div>

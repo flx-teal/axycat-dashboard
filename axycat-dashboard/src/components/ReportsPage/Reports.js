@@ -4,7 +4,7 @@ import './Reports.scss';
 import ProgressBar from './ProgressBar';
 import IssuesAmountCart from './IssuesAmountCart'
 import TotalFlowChart from './TotalFlowChart';
-import {getReportFromCloudById} from "../../config/fbConfig";
+import {getReportFromCloudById} from '../../config/fbConfig';
 
 class Reports extends Component {
   constructor(props) {
@@ -47,18 +47,18 @@ class Reports extends Component {
 
   render() {
     return (
-      <div className="reports-wrapper">
-        <div className="reports-pdf">
-          <TitleComponent title="Status Reports" className="title"/>
-          <a href={`http://localhost:2000/report?id=${this.state.projectId}`} className="btn-white"
-             download="report.pdf">Download report</a>
+      <div className='reports-wrapper'>
+        <div className='reports-pdf'>
+          <TitleComponent title='Status Reports' className='title'/>
+          <a href={`http://localhost:2000/report?id=${this.state.projectId}`} className='btn-white'
+             download='report.pdf'>Download report</a>
         </div>
         <div>
           <ProgressBar percentage={this.state.percentage}/>
-          <div className="issues-amount">
-            <IssuesAmountCart name="To Do" amount={this.state.newIssues}/>
-            <IssuesAmountCart name="In Progress" amount={this.state.inProgressIssues}/>
-            <IssuesAmountCart name="Done" amount={this.state.fixedIssues}/>
+          <div className='issues-amount'>
+            <IssuesAmountCart name='To Do' amount={this.state.newIssues}/>
+            <IssuesAmountCart name='In Progress' amount={this.state.inProgressIssues}/>
+            <IssuesAmountCart name='Done' amount={this.state.fixedIssues}/>
           </div>
         </div>
         <div>

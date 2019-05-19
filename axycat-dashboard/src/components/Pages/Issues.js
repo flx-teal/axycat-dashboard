@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './Issues.scss'
-import IssuesTable from "../listingPage/Project/Issues/IssuesTable";
-import IssuesFilterPanel from "../listingPage/IssuesFilterPanel";
-import {getReportFromCloudById} from "../../config/fbConfig";
-import AddIssuePopUp from "../AddIssuePopUp/AddIssuePopUp";
+import IssuesTable from '../listingPage/Project/Issues/IssuesTable';
+import IssuesFilterPanel from '../listingPage/IssuesFilterPanel';
+import {getReportFromCloudById} from '../../config/fbConfig';
+import AddIssuePopUp from '../AddIssuePopUp/AddIssuePopUp';
 
 class Issues extends Component {
   constructor(props) {
@@ -37,8 +37,8 @@ class Issues extends Component {
   }
   render() {
     return (
-      <div className="issues">
-        <div className="issues-btn" onClick={this.togglePopup.bind(this)}>+ Add Issue</div>
+      <div className='issues'>
+        <div className='issues-btn' onClick={this.togglePopup.bind(this)}>+ Add Issue</div>
         <IssuesFilterPanel
           updateData={this.updateData}
           filterData={this.filterData}

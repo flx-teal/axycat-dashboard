@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import IssuesTableRow from "./IssuesTableRow";
+import IssuesTableRow from './IssuesTableRow';
 import {updateIssuesInCloud} from '../../../../config/fbConfig';
 
 class IssuesTable extends Component {
@@ -44,7 +44,7 @@ class IssuesTable extends Component {
           );
         });
       }
-      if (sortValue === "Name") {
+      if (sortValue === 'Name') {
         sortedList = issuesData.violations.sort((a, b) => {
           if (a.description.toLowerCase() < b.description.toLowerCase()) {
             return -1;
@@ -62,7 +62,7 @@ class IssuesTable extends Component {
           );
         });
       }
-      if (sortValue === "Date") {
+      if (sortValue === 'Date') {
         sortedList = issuesData.violations.sort((a, b) => {
           if (a.creationDate < b.creationDate) {
               return -1
@@ -81,11 +81,10 @@ class IssuesTable extends Component {
         });
       }
       
-      if (buttonName === "New") {
+      if (buttonName === 'New') {
         filteredList = issuesData.violations.filter(issue => {
-          return issue.status === "New";
+          return issue.status === 'New';
         });
-      
         showIssues = filteredList.map((issue, index) => {
           return (
             <IssuesTableRow
@@ -98,11 +97,10 @@ class IssuesTable extends Component {
           );
         });
       }
-      if (buttonName === "In Progress") {
+      if (buttonName === 'In Progress') {
         filteredList = issuesData.violations.filter(issue => {
-          return issue.status === "In Progress";
+          return issue.status === 'In Progress';
         });
-      
         showIssues = filteredList.map((issue, index) => {
           return (
             <IssuesTableRow
@@ -115,11 +113,10 @@ class IssuesTable extends Component {
           );
         });
       }
-      if (buttonName === "Done") {
+      if (buttonName === 'Done') {
         filteredList = issuesData.violations.filter(issue => {
-          return issue.status === "Done";
+          return issue.status === 'Done';
         });
-      
         showIssues = filteredList.map((issue, index) => {
           return (
             <IssuesTableRow
@@ -132,7 +129,7 @@ class IssuesTable extends Component {
           );
         });
       }
-      if (buttonName === "All") {
+      if (buttonName === 'All') {
         showIssues = issuesData.violations.map((issue, index) => {
           return (
             <IssuesTableRow
@@ -145,7 +142,7 @@ class IssuesTable extends Component {
           );
         });
       }
-      if (buttonName === "" && inputValue !== "") {
+      if (buttonName === '' && inputValue !== '') {
         searchResults = issuesData.violations.filter(issue => {
           return issue.description.toLowerCase().includes(inputValue);
         });
@@ -161,7 +158,7 @@ class IssuesTable extends Component {
           );
         });
       }
-      if (buttonName !== "" && inputValue !== "") {
+      if (buttonName !== '' && inputValue !== '') {
         searchResults = filteredList.filter(issue => {
           return issue.description.toLowerCase().includes(inputValue);
         });
@@ -177,7 +174,7 @@ class IssuesTable extends Component {
           );
         });
       }
-      if (buttonName === "All" && inputValue !== "") {
+      if (buttonName === 'All' && inputValue !== '') {
         searchResults = issuesData.violations.filter(issue => {
           return issue.description.toLowerCase().includes(inputValue);
         });
@@ -194,19 +191,19 @@ class IssuesTable extends Component {
         });
       }
       return (
-        <table className="table pdf">
-          <thead className="table-head">
-            <tr className="table-row table-header">
-              <th className="table-title" />
-              <th className="table-title">#</th>
-              <th className="table-title">Priority</th>
-              <th className="table-title">Name</th>
-              <th className="table-title">Status</th>
-              <th className="table-title">Assignee</th>
-              <th className="table-title">Update Date</th>
+        <table className='table pdf'>
+          <thead className='table-head'>
+            <tr className='table-row table-header'>
+              <th className='table-title' />
+              <th className='table-title'>#</th>
+              <th className='table-title'>Priority</th>
+              <th className='table-title'>Name</th>
+              <th className='table-title'>Status</th>
+              <th className='table-title'>Assignee</th>
+              <th className='table-title'>Update Date</th>
             </tr>
           </thead>
-          <tbody className="table-body">{showIssues}</tbody>
+          <tbody className='table-body'>{showIssues}</tbody>
         </table>
       );      
   }

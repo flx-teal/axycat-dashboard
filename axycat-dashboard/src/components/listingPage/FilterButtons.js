@@ -14,11 +14,20 @@ class FilterButtons extends React.Component {
     this.setState({value: event.target.value});
      this.props.filterData(event.target.value)
     }
-    render(){
+    render() {
         return (
             <div className='filterButtons'>
-                {this.props.buttonName && <button value={this.props.buttonName} onClick={this.buttonClick} type='button'>{this.props.buttonName}</button>}
+              {this.props.buttonName && (
+                <button
+                  value={this.props.buttonName}
+                  onClick={this.buttonClick}
+                  type='button'
+                >
+                  {this.props.buttonName}
+                </button>
+              )}
             </div>
-        );
+          );
+          
     }}
 export default FilterButtons;
