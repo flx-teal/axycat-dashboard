@@ -6,13 +6,13 @@ export default class TotalFlowChart extends Component {
   render() {
     const data = [
       ['Days', 'To Do', 'In Progress', 'Done'],
-      ['November 26', 40, 35, 20],
-      ['November 27', 40, 46, 24],
-      ['November 28', 26, 21, 35],
-      ['November 29', 40, 24, 30],
-      ['November 30', 30, 53, 35],
-      ['December 1', 38, 46, 54],
-      ['December 2', 33, 41, 56]
+      ['May 14', 13, 0, 0],
+      ['May 15', 11, 2, 0],
+      ['May 16', 10, 1, 2],
+      ['May 17', 8, 2, 3],
+      ['May 18', 8, 0, 5],
+      ['May 19', 5, 3, 5],
+      ['May 20', 3, 1, 9]
     ];
     const options = {
       hAxis: {
@@ -27,7 +27,7 @@ export default class TotalFlowChart extends Component {
       },
       vAxis: {
         minValue: 0,
-        maxValue: 80,
+        maxValue: 20,
         textStyle: { color: '#a4b5c2', fontSize: 14 }
       },
       chartArea: {

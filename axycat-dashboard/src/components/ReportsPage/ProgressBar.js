@@ -7,12 +7,12 @@ const ProgressBar = props => {
   const percentageOfFixedIssues = `${props.percentage}%`;
 
   return (
-    <div className="progress-bar-wrapper">
-      <TitleComponent title="Fixed" className="title" />
-      <div className="progress-bar">
+    <div className='progress-bar-wrapper'>
+      <TitleComponent title='Fixed' className='title' />
+      <div className='progress-bar'>
         <Filler percentage={props.percentage} />
       </div>
-      <TitleComponent title={percentageOfFixedIssues} className="title" />
+      <TitleComponent title={percentageOfFixedIssues} className='title' />
       <span>issues</span>
     </div>
   );

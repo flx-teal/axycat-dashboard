@@ -25,7 +25,7 @@ class ChartHorizMeter extends Component {
           minor.push(violations[i]);
           break;
         default:
-          console.log('There is not impacts');
+          console.log('There are no impacts.');
       }
     }
     const maxVal = critical.length + serious.length + minor.length;

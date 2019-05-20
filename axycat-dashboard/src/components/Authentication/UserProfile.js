@@ -1,6 +1,6 @@
 import React from 'react';
 import {auth} from '../../config/fbConfig';
-import {NavLink, Redirect} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import './UserProfile.scss'
 
 class UserProfile extends React.Component {

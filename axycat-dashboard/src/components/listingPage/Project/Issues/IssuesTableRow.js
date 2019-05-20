@@ -45,27 +45,27 @@ class IssuesTableRow extends React.Component {
     let format = require('date-fns/format');
     
     return (
-      <tr className="table-row table-row-render">
-        <td className="table-cell">
-          <input type="checkbox" />
+      <tr className='table-row table-row-render'>
+        <td className='table-cell'>
+          <input type='checkbox' />
         </td>
-        <td className="table-cell">{data.index}</td>
-        <td className="table-cell">
+        <td className='table-cell'>{data.index}</td>
+        <td className='table-cell'>
           <span
-            className="table-cell-priority"
+            className='table-cell-priority'
             style={this.checkImpact(this.props)}
           />
         </td>
-        <td className="table-cell table-name" onClick={this.handleClick}>
+        <td className='table-cell table-name' onClick={this.handleClick}>
           {data.data.description}
         </td>
-        <td className="table-cell">
+        <td className='table-cell'>
           <select
-            className="table-cell-select"
+            className='table-cell-select'
             value={data.data.status}
             onChange={data.issueStateOnChange}
           >
-            {["New", "In Progress", "Done"].map((item, id) => {
+            {['New', 'In Progress', 'Done'].map((item, id) => {
               return (
                 <option value={item} key={id}>
                   {item}
@@ -74,11 +74,11 @@ class IssuesTableRow extends React.Component {
             })}
           </select>
         </td>
-        <td className="table-cell">
-          <span className="table-cell-asignee" />
+        <td className='table-cell'>
+          <span className='table-cell-asignee' />
         </td>
-        <td className="table-cell">{format(issueDate, "DD-MM-YYYY")}</td>
-        <td className="">
+        <td className='table-cell'>{format(issueDate, 'DD-MM-YYYY')}</td>
+        <td className=''>
           {this.state.isClicked && (
             <IssuesPopUpDetails handleClick={this.handleClick} data={data} />
           )}

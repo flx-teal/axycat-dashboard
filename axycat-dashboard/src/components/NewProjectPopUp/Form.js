@@ -41,11 +41,9 @@ export default class Form extends Component {
     })
       .then(result => result.json())
       .then(json => {
-        //This is only for test, we can delete it later
         this.setState({
           items: json.violations
         });
-        //Check result
         if (json.violations) {
           const mappedViolations = json.violations.map((item) => {
             item.status = 'New';
@@ -53,7 +51,6 @@ export default class Form extends Component {
             return item;
           });
           json.violations = mappedViolations;
-          //If check is correct with violations errors, then we send JSON to FIREBASE via creatError function
           return addErrorToCloud(json, data);
         }
       })
@@ -71,7 +68,6 @@ export default class Form extends Component {
           console.log(error)
         }
       );
-    //Set empty string into input field
     this.setState({value: ''})
   };
 
