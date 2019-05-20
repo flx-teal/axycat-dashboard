@@ -68,7 +68,6 @@ class CheckAccessibility extends React.Component {
     })
       .then(result => result.json())
       .then(json => {
-        //This is only for test, we can delete it later
         this.setState({
           reports: json
         });
@@ -84,7 +83,6 @@ class CheckAccessibility extends React.Component {
           isLoading: false
         })
       });
-    //Set empty string into input field
     this.setState({value: ''});
   };
 

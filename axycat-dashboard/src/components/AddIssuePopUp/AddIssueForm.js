@@ -41,7 +41,6 @@ export default class AddIssuePopUp extends React.Component {
     this.setState(() => ({
       isLoading: true
     }));
-    // this.props.projectId;
     if (!this.state.name ||
       !this.state.description) {
       return this.setState({error: 'Please, fill all fields correctly!'});

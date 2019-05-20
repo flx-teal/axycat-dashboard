@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './IssuesPopUpDetails.scss';
 import HeaderPopupDetails from "./components/HeaderPopupDetails";
 import BodyPopupDetails from "./components/BodyPopupDetails";
-import FooterPopupDetails from "./components/FooterPopupDetails";
 import {updateIssuesInCloud} from '../../../../config/fbConfig';
 
 export default class IssuesPopUpDetails extends Component {
@@ -43,9 +42,6 @@ export default class IssuesPopUpDetails extends Component {
                         <div className='issues-popup-inner-wrapper wrapper-body'>
                             <h2>Issue Details</h2>
                             <BodyPopupDetails data={data.data}/>
-                        </div>
-                        <div className='issues-popup-inner-wrapper'>
-                            {/* <FooterPopupDetails/> */}
                         </div>
                     </div>
                 </div>}

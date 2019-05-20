@@ -3,8 +3,8 @@ import { Route, Link, NavLink } from 'react-router-dom';
 
 import './ProjectItemNavigation.scss';
 import SideBarDetails from '../details-components/sidebar-details/SideBarDetails';
-import Pages from "./Pages";
-import Reports from "../ReportsPage/Reports";
+import Pages from './Pages';
+import Reports from '../ReportsPage/Reports';
 import {getReportFromCloudById} from '../../config/fbConfig'
 import Issues from '../Pages/Issues';
 
@@ -61,10 +61,10 @@ export default class ProjectItemNavigation extends Component {
     const {projectId, projectName} = this.state;
 
     return (
-      <div className="sidebar-main-wrapper">
-        <div className="sidebar">
-          <p className="project-name">{ projectName }</p>
-          <nav className="navigation">
+      <div className='sidebar-main-wrapper'>
+        <div className='sidebar'>
+          <p className='project-name'>{ projectName }</p>
+          <nav className='navigation'>
             <Link to={`${match.url}/${projectId}/accessibility-overview`}>
               Accessibility Overview
             </Link>
@@ -76,8 +76,8 @@ export default class ProjectItemNavigation extends Component {
             </Link>
           </nav>
         </div>
-        <div className="router-content">
-          <NavLink id='project-list-return' activeClassName="active" to="/listing" >
+        <div className='router-content'>
+          <NavLink id='project-list-return' activeClassName='active' to='/listing' >
             <span className='returnArrow'>&#8592;</span>  All Projects
           </NavLink>
           <Route path={`${match.path}/:projectId/accessibility-overview`} component={SideBarDetails} />
