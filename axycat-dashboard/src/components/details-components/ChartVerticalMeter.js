@@ -22,8 +22,6 @@ class ChartVerticalMeter extends Component {
         case 'moderate':
           minor.push(violations[i]);
           break;
-        default:
-          console.log('There are no impacts.');
       }
     }
     cLen = critical.length;

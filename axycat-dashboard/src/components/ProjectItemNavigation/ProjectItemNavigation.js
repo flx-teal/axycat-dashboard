@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import { Route, Link, NavLink } from 'react-router-dom';
-
 import './ProjectItemNavigation.scss';
 import SideBarDetails from '../details-components/sidebar-details/SideBarDetails';
-import Pages from './Pages';
 import Reports from '../ReportsPage/Reports';
 import {getReportFromCloudById} from '../../config/fbConfig'
 import Issues from '../Pages/Issues';
@@ -81,7 +79,6 @@ export default class ProjectItemNavigation extends Component {
             <span className='returnArrow'>&#8592;</span>  All Projects
           </NavLink>
           <Route path={`${match.path}/:projectId/accessibility-overview`} component={SideBarDetails} />
-          <Route path={`${match.path}/:projectId/pages`} component={Pages}/>
           <Route path={`${match.path}/:projectId/issues`} component={Issues}/>
           <Route path={`${match.path}/:projectId/reports`} component={Reports}/>
         </div>
